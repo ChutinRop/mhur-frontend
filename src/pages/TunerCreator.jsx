@@ -221,7 +221,7 @@ export default function TunerCreator() {
 
     try {
       showToast("Publicando build...", "info");
-      const response = await fetch('http://localhost:3001/api/builds', {
+      const response = await fetch('https://mhur-backend.onrender.com/api/builds', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

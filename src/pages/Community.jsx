@@ -15,7 +15,7 @@ export default function Community() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/builds')
+    fetch('https://mhur-backend.onrender.com/api/builds')
       .then(res => res.json())
       .then(data => {
         setBuilds(data);
@@ -57,7 +57,7 @@ export default function Community() {
 
     try {
       showToast("Cargando build...", "info");
-      const resp = await fetch(`http://localhost:3001/api/builds/${buildId}`);
+      const resp = await fetch(`https://mhur-backend.onrender.com/api/builds/${buildId}`);
       if (!resp.ok) throw new Error("Build not found");
       const detailedBuild = await resp.json();
       
