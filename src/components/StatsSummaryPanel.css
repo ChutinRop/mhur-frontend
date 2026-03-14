@@ -1,0 +1,140 @@
+.stats-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.stats-empty {
+  color: var(--text-muted, #6b7280);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 2rem 1rem;
+  border: 1px dashed var(--surface-border, #3a3f4b);
+  border-radius: 8px;
+}
+
+/* ─── Stat Group ─── */
+.stat-group {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--surface-border, #3a3f4b);
+}
+
+.stat-group-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.9rem;
+  background: var(--surface-light, #1e2130);
+  user-select: none;
+}
+
+.stat-group-header.expandable {
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.stat-group-header.expandable:hover {
+  background: var(--surface-hover, #272b3d);
+}
+
+.stat-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.stat-label {
+  flex: 1;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary, #a0a6b3);
+}
+
+.stat-total {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.stat-arrow {
+  color: var(--text-muted, #6b7280);
+  font-size: 0.8rem;
+  margin-left: 4px;
+}
+
+/* ─── Children rows ─── */
+.stat-group-children {
+  background: var(--surface, #161927);
+  padding: 0.3rem 0;
+  border-top: 1px solid var(--surface-border, #3a3f4b);
+}
+
+.stat-child-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.35rem 1.2rem 0.35rem 2.4rem;
+  font-size: 0.8rem;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.stat-child-row:last-child {
+  border-bottom: none;
+}
+
+.stat-child-label {
+  color: var(--text-secondary, #a0a6b3);
+}
+
+.stat-child-value {
+  font-weight: 700;
+}
+
+/* ─── Special Tunnings Section ─── */
+.stat-specials-section {
+  margin-top: 0.6rem;
+  border: 1px solid #b026ff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.stat-specials-title {
+  background: rgba(176, 38, 255, 0.2);
+  color: #b026ff;
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 0.5rem 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.stat-special-item {
+  padding: 0.6rem 0.9rem;
+  border-top: 1px solid rgba(176, 38, 255, 0.15);
+}
+
+.stat-special-name {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.stat-special-detail {
+  font-size: 0.8rem;
+  color: #b026ff;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.stat-special-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted, #6b7280);
+  line-height: 1.4;
+}
+
+.stat-special-role {
+  font-size: 0.75rem;
+  font-style: italic;
+  opacity: 0.6;
+  margin-left: 6px;
+  font-weight: normal;
+}

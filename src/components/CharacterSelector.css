@@ -1,0 +1,286 @@
+.character-selector-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ── Selected State Card ── */
+.selected-char-card {
+  display: flex;
+  background: var(--surface-glass);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.selected-char-portrait {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: #111;
+  border: 2px solid var(--surface-border);
+}
+
+.selected-char-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.selected-char-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+}
+
+.selected-char-details {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.change-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-secondary {
+  background: var(--surface-hover);
+  color: #fff;
+  border: 1px solid var(--surface-border);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background: var(--surface-border);
+}
+
+.btn-primary {
+  background: var(--color-rapid);
+  color: var(--text-primary);
+  border: none;
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* ── Modal Overlay ── */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+}
+
+.modal-content {
+  background: #1a1e26;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  width: 90%;
+  max-width: 800px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.modal-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--surface-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.02);
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  color: #fff;
+}
+
+.modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ── Character Grid ── */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+}
+
+.char-btn {
+  background: var(--surface-glass);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.char-btn:hover {
+  border-color: var(--color-rapid);
+  background: var(--surface-hover);
+  transform: translateY(-2px);
+}
+
+.char-btn img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.char-btn span {
+  font-size: 0.75rem;
+  color: #fff;
+  text-align: center;
+  line-height: 1.1;
+}
+
+/* ── Costume Sections ── */
+.costume-section {
+  margin-bottom: 2rem;
+  background: #16181d;
+  border-radius: 8px;
+  border: 1px solid var(--surface-border);
+  overflow: hidden;
+}
+
+.costume-section-header {
+  background: #d49a00; /* Golden yellow from ref image */
+  color: #000;
+  font-weight: 800;
+  font-size: 1.2rem;
+  padding: 0.4rem 1rem;
+  text-transform: uppercase;
+}
+
+.costume-grid {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 1rem;
+  background: repeating-linear-gradient(
+    45deg,
+    #1b1604,
+    #1b1604 10px,
+    #211a05 10px,
+    #211a05 20px
+  );
+}
+
+.costume-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.2s;
+  position: relative;
+}
+
+.costume-btn:hover {
+  transform: scale(1.05);
+}
+
+.costume-btn-inner {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  background: #444;
+  border: 4px solid #aaa; /* Silver border */
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+}
+
+.costume-btn.selected .costume-btn-inner {
+  border-color: #ef4444; /* Red border for selected */
+}
+
+/* Checkmark icon for selected */
+.costume-btn.selected::after {
+  content: "✔";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: #000;
+  color: #fff;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  border: 2px solid #fff;
+}
+
+.costume-img-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.costume-name {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+}

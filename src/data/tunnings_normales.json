@@ -1,0 +1,1308 @@
+[
+    {
+        "personaje": "Izuku Midoriya",
+        "rol": "Héroe",
+        "clase": "Tanque",
+        "habilidades": [
+            {
+                "habilidad": "Defensa de Habilidad Peculiar γ+",
+                "descripcion": "Reduce el daño recibido de la Habilidad Peculiar γ.",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Izuku Midoriya (Full Bullet)",
+        "rol": "Héroe",
+        "clase": "Daño",
+        "habilidades": [
+            {
+                "habilidad": "Poder de Ataque de GP+",
+                "descripcion": "Aumenta el daño infligido al GP.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Katsuki Bakugo",
+        "rol": "Héroe",
+        "clase": "Daño",
+        "habilidades": [
+            {
+                "habilidad": "Poder de Ataque de Habilidad Peculiar α+",
+                "descripcion": "Aumenta el daño infligido con la Habilidad Peculiar α.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Katsuki Bakugo (Ametralladora)",
+        "rol": "Héroe",
+        "clase": "Velocista",
+        "habilidades": [
+            {
+                "habilidad": "Altura de Salto de Muro+",
+                "descripcion": "Aumenta tu altura de Salto de Muro.",
+                "niveles": {
+                    "1": "+5 altura",
+                    "2": "+10 altura",
+                    "3": "+15 altura",
+                    "4": "+20 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            },
+            {
+                "habilidad": "Poder de Ataque de Habilidad Peculiar γ+",
+                "descripcion": "Aumenta el daño infligido con la Habilidad Peculiar γ.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Ochaco Uraraka",
+        "rol": "Héroe",
+        "clase": "Velocista",
+        "habilidades": [
+            {
+                "habilidad": "Altura de Salto Frontal+",
+                "descripcion": "Aumenta tu altura de Salto Frontal.",
+                "niveles": {
+                    "1": "+5 altura",
+                    "2": "+10 altura",
+                    "3": "+15 altura",
+                    "4": "+20 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            }
+        ]
+    },
+    {
+        "personaje": "Ochaco Uraraka (Satélites Cero)",
+        "rol": "Héroe",
+        "clase": "Tanque",
+        "habilidades": [
+            {
+                "habilidad": "Defensa de Habilidad Peculiar β+",
+                "descripcion": "Reduce el daño recibido de la Habilidad Peculiar β.",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Altura de Salto Vertical+",
+                "descripcion": "Aumenta tu altura de Salto Vertical.",
+                "niveles": {
+                    "1": "+5 altura",
+                    "2": "+10 altura",
+                    "3": "+15 altura",
+                    "4": "+20 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            }
+        ]
+    },
+    {
+        "personaje": "Shoto Todoroki",
+        "rol": "Héroe",
+        "clase": "Daño",
+        "habilidades": [
+            {
+                "habilidad": "Poder de Ataque de Habilidad Peculiar γ+",
+                "descripcion": "Aumenta el daño infligido con la Habilidad Peculiar γ.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Shoto Todoroki (Colmillo de Hielo Viento Llama)",
+        "rol": "Héroe",
+        "clase": "Técnico",
+        "habilidades": [
+            {
+                "habilidad": "Recarga de Habilidad Peculiar β+",
+                "descripcion": "Aumenta la velocidad de recarga de la Habilidad Peculiar β.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Defensa de Habilidad Peculiar γ+",
+                "descripcion": "Reduce el daño recibido de la Habilidad Peculiar γ.",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Tenya Iida",
+        "rol": "Héroe",
+        "clase": "Velocista",
+        "habilidades": [
+            {
+                "habilidad": "Velocidad de Dash+",
+                "descripcion": "Aumenta tu velocidad de Dash.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+2.0%",
+                    "3": "+3.0%",
+                    "4": "+4.0%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Tsuyu Asui",
+        "rol": "Héroe",
+        "clase": "Velocista",
+        "habilidades": [
+            {
+                "habilidad": "Velocidad de Desplazamiento por Pared+",
+                "descripcion": "Aumenta tu velocidad de Desplazamiento por Pared.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+2.0%",
+                    "3": "+3.0%",
+                    "4": "+4.0%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Denki Kaminari",
+        "rol": "Héroe",
+        "clase": "Daño",
+        "habilidades": [
+            {
+                "habilidad": "Poder de Ataque de Habilidad Peculiar β+",
+                "descripcion": "Aumenta el daño infligido con la Habilidad Peculiar β.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Denki Kaminari (Relámpago)",
+        "rol": "Héroe",
+        "clase": "Técnico",
+        "habilidades": [
+            {
+                "habilidad": "Recarga de Habilidad Peculiar α+",
+                "descripcion": "Aumenta la velocidad de recarga de la Habilidad Peculiar α.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Poder de Ataque de Habilidad Peculiar α+",
+                "descripcion": "Aumenta el daño infligido con la Habilidad Peculiar α.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Eijiro Kirishima",
+        "rol": "Héroe",
+        "clase": "Tanque",
+        "habilidades": [
+            {
+                "habilidad": "Defensa de Habilidad Peculiar α+",
+                "descripcion": "Reduce el daño recibido de la Habilidad Peculiar α.",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Eijiro Kirishima (Propulsión Roja)",
+        "rol": "Héroe",
+        "clase": "Daño",
+        "habilidades": [
+            {
+                "habilidad": "Poder de Ataque de Habilidad Peculiar β+",
+                "descripcion": "Aumenta el daño infligido con la Habilidad Peculiar β.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Defensa de Habilidad Peculiar γ+",
+                "descripcion": "Reduce el daño recibido de la Habilidad Peculiar γ.",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Momo Yaoyorozu",
+        "rol": "Héroe",
+        "clase": "Apoyo",
+        "habilidades": [
+            {
+                "habilidad": "GP Máximo+",
+                "descripcion": "Aumenta tu GP Máximo.",
+                "niveles": {
+                    "1": "+1 altura",
+                    "2": "+2 altura",
+                    "3": "+3 altura",
+                    "4": "+4 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            }
+        ]
+    },
+    {
+        "personaje": "Fumikage Tokoyami",
+        "rol": "Héroe",
+        "clase": "Tanque",
+        "habilidades": [
+            {
+                "habilidad": "Defensa Cuerpo a Cuerpo+",
+                "descripcion": "Reduce el daño recibido de Ataques Cuerpo a Cuerpo.",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "HP Máximo en CAÍDO+",
+                "descripcion": "Aumenta tu HP cuando estás en estado CAÍDO.",
+                "niveles": {
+                    "1": "+5 altura",
+                    "2": "+10 altura",
+                    "3": "+15 altura",
+                    "4": "+20 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            }
+        ]
+    },
+    {
+        "personaje": "All Might",
+        "rol": "Héroe",
+        "clase": "Tanque",
+        "habilidades": [
+            {
+                "habilidad": "Defensa de HP+",
+                "descripcion": "Reduce el daño recibido al HP.",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "All Might (Ametralladora)",
+        "rol": "Héroe",
+        "clase": "Velocista",
+        "habilidades": [
+            {
+                "habilidad": "Altura de Salto Vertical+",
+                "descripcion": "Aumenta tu altura de Salto Vertical.",
+                "niveles": {
+                    "1": "+5 altura",
+                    "2": "+10 altura",
+                    "3": "+15 altura",
+                    "4": "+20 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            },
+            {
+                "habilidad": "Poder de Ataque Cuerpo a Cuerpo+",
+                "descripcion": "Aumenta el daño infligido con Ataques Cuerpo a Cuerpo.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Shota Aizawa",
+        "rol": "Héroe",
+        "clase": "Técnico",
+        "habilidades": [
+            {
+                "habilidad": "Recarga de Habilidad Peculiar α+",
+                "descripcion": "Aumenta la velocidad de recarga de la Habilidad Peculiar α.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Tomura Shigaraki",
+        "rol": "Villano",
+        "clase": "Daño",
+        "habilidades": [
+            {
+                "habilidad": "Poder de Ataque Cuerpo a Cuerpo+",
+                "descripcion": "Aumenta el daño infligido con Ataques Cuerpo a Cuerpo.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Tomura Shigaraki (Catástrofe)",
+        "rol": "Villano",
+        "clase": "Tanque",
+        "habilidades": [
+            {
+                "habilidad": "Defensa de Habilidad Peculiar α+",
+                "descripcion": "Reduce el daño recibido de la Habilidad Peculiar α.",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Poder de Ataque Cuerpo a Cuerpo+",
+                "descripcion": "Aumenta el daño infligido con Ataques Cuerpo a Cuerpo.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Tomura Shigaraki (Quiebre de los Mil Brazos)",
+        "rol": "Villano",
+        "clase": "Técnico",
+        "habilidades": [
+            {
+                "habilidad": "Recarga de Habilidad Peculiar α+",
+                "descripcion": "Aumenta la velocidad de recarga de la Habilidad Peculiar α.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Defensa de HP+",
+                "descripcion": "Reduce el daño recibido al HP.",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "All For One",
+        "rol": "Villano",
+        "clase": "Técnico",
+        "habilidades": [
+            {
+                "habilidad": "Recarga de Acción Especial+",
+                "descripcion": "Aumenta la velocidad de recarga de la Acción Especial.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "HP Máximo+",
+                "descripcion": "Aumenta tu HP Máximo.",
+                "niveles": {
+                    "1": "+1 altura",
+                    "2": "+2 altura",
+                    "3": "+3 altura",
+                    "4": "+4 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            }
+        ]
+    },
+    {
+        "personaje": "Dabi",
+        "rol": "Villano",
+        "clase": "Técnico",
+        "habilidades": [
+            {
+                "habilidad": "Recarga de Habilidad Peculiar β+",
+                "descripcion": "Aumenta la velocidad de recarga de la Habilidad Peculiar β.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Dabi (Antorcha Loca)",
+        "rol": "Villano",
+        "clase": "Daño",
+        "habilidades": [
+            {
+                "habilidad": "Poder de Ataque de Habilidad Peculiar α+",
+                "descripcion": "Aumenta el daño infligido con la Habilidad Peculiar α.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Defensa Cuerpo a Cuerpo+",
+                "descripcion": "Reduce el daño recibido de Ataques Cuerpo a Cuerpo.",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Himiko Toga",
+        "rol": "Villano",
+        "clase": "Técnico",
+        "habilidades": [
+            {
+                "habilidad": "Recarga de Habilidad Peculiar γ+",
+                "descripcion": "Aumenta la velocidad de recarga de la Habilidad Peculiar γ.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Himiko Toga (Danza del Aguijón)",
+        "rol": "Villano",
+        "clase": "Velocista",
+        "habilidades": [
+            {
+                "habilidad": "Altura de Salto Frontal+",
+                "descripcion": "Aumenta tu altura de Salto Frontal.",
+                "niveles": {
+                    "1": "+5 altura",
+                    "2": "+10 altura",
+                    "3": "+15 altura",
+                    "4": "+20 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            },
+            {
+                "habilidad": "Recarga de Habilidad Peculiar γ+",
+                "descripcion": "Aumenta la velocidad de recarga de la Habilidad Peculiar γ.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Endeavor",
+        "rol": "Héroe",
+        "clase": "Daño",
+        "habilidades": [
+            {
+                "habilidad": "Poder de Ataque de HP+",
+                "descripcion": "Aumenta el daño infligido al HP.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Endeavor (Puño Infernal)",
+        "rol": "Héroe",
+        "clase": "Tanque",
+        "habilidades": [
+            {
+                "habilidad": "Defensa de HP+",
+                "descripcion": "Reduce el daño recibido al HP.",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Poder de Ataque de GP+",
+                "descripcion": "Aumenta el daño infligido al GP.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Mirio Togata",
+        "rol": "Héroe",
+        "clase": "Velocista",
+        "habilidades": [
+            {
+                "habilidad": "Velocidad de Dash+",
+                "descripcion": "Aumenta tu velocidad de Dash.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+2.0%",
+                    "3": "+3.0%",
+                    "4": "+4.0%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Recarga de Habilidad Peculiar α+",
+                "descripcion": "Aumenta la velocidad de recarga de la Habilidad Peculiar α.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Mirio Togata (Contraataque Puro)",
+        "rol": "Héroe",
+        "clase": "Técnico",
+        "habilidades": [
+            {
+                "habilidad": "Recarga de Habilidad Peculiar γ+",
+                "descripcion": "Aumenta la velocidad de recarga de la Habilidad Peculiar γ.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Defensa de Habilidad Peculiar α+",
+                "descripcion": "Reduce el daño recibido de la Habilidad Peculiar α.",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Nejire Hado",
+        "rol": "Héroe",
+        "clase": "Técnico",
+        "habilidades": [
+            {
+                "habilidad": "Recarga de PU/PC+",
+                "descripcion": "Aumenta la velocidad de llenado del Medidor PU/PC.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Recarga de Habilidad Peculiar γ+",
+                "descripcion": "Aumenta la velocidad de recarga de la Habilidad Peculiar γ.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Nejire Hado (Hada)",
+        "rol": "Héroe",
+        "clase": "Apoyo",
+        "habilidades": [
+            {
+                "habilidad": "GP Máximo+",
+                "descripcion": "Aumenta tu GP Máximo.",
+                "niveles": {
+                    "1": "+1 altura",
+                    "2": "+2 altura",
+                    "3": "+3 altura",
+                    "4": "+4 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            },
+            {
+                "habilidad": "HP Máximo+",
+                "descripcion": "Aumenta tu HP Máximo.",
+                "niveles": {
+                    "1": "+1 altura",
+                    "2": "+2 altura",
+                    "3": "+3 altura",
+                    "4": "+4 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            }
+        ]
+    },
+    {
+        "personaje": "Tamaki Amajiki",
+        "rol": "Héroe",
+        "clase": "Daño",
+        "habilidades": [
+            {
+                "habilidad": "Poder de Ataque de Habilidad Peculiar γ+",
+                "descripcion": "Aumenta el daño infligido con la Habilidad Peculiar γ.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Altura de Salto de Muro+",
+                "descripcion": "Aumenta tu altura de Salto de Muro.",
+                "niveles": {
+                    "1": "+5 altura",
+                    "2": "+10 altura",
+                    "3": "+15 altura",
+                    "4": "+20 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            }
+        ]
+    },
+    {
+        "personaje": "Overhaul",
+        "rol": "Villano",
+        "clase": "Apoyo",
+        "habilidades": [
+            {
+                "habilidad": "HP Máximo+",
+                "descripcion": "Aumenta tu HP Máximo.",
+                "niveles": {
+                    "1": "+1 altura",
+                    "2": "+2 altura",
+                    "3": "+3 altura",
+                    "4": "+4 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            },
+            {
+                "habilidad": "Poder de Ataque de Habilidad Peculiar γ+",
+                "descripcion": "Aumenta el daño infligido con la Habilidad Peculiar γ.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Overhaul (Precipicio Maldito)",
+        "rol": "Villano",
+        "clase": "Tanque",
+        "habilidades": [
+            {
+                "habilidad": "Defensa de Habilidad Peculiar β+",
+                "descripcion": "Reduce el daño recibido de la Habilidad Peculiar β.",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Poder de Ataque de GP+",
+                "descripcion": "Aumenta el daño infligido al GP.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Twice",
+        "rol": "Villano",
+        "clase": "Velocista",
+        "habilidades": [
+            {
+                "habilidad": "Velocidad de Rastreo en CAÍDO+",
+                "descripcion": "Aumenta tu velocidad de movimiento cuando estás en estado CAÍDO.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+2.0%",
+                    "3": "+3.0%",
+                    "4": "+4.0%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Recarga de Habilidad Peculiar β+",
+                "descripcion": "Aumenta la velocidad de recarga de la Habilidad Peculiar β.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Mr. Compress",
+        "rol": "Villano",
+        "clase": "Apoyo",
+        "habilidades": [
+            {
+                "habilidad": "HP Máximo en CAÍDO+",
+                "descripcion": "Aumenta tu HP cuando estás en estado CAÍDO.",
+                "niveles": {
+                    "1": "+5 altura",
+                    "2": "+10 altura",
+                    "3": "+15 altura",
+                    "4": "+20 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            }
+        ]
+    },
+    {
+        "personaje": "Hawks",
+        "rol": "Héroe",
+        "clase": "Velocista",
+        "habilidades": [
+            {
+                "habilidad": "Velocidad de Dash+",
+                "descripcion": "Aumenta tu velocidad de Dash.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+2.0%",
+                    "3": "+3.0%",
+                    "4": "+4.0%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Velocidad de Desplazamiento por Pared+",
+                "descripcion": "Aumenta tu velocidad de Desplazamiento por Pared.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+2.0%",
+                    "3": "+3.0%",
+                    "4": "+4.0%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Hawks (Viento Cortante)",
+        "rol": "Héroe",
+        "clase": "Daño",
+        "habilidades": [
+            {
+                "habilidad": "Poder de Ataque de Habilidad Peculiar β+",
+                "descripcion": "Aumenta el daño infligido con la Habilidad Peculiar β.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "HP Máximo en CAÍDO+",
+                "descripcion": "Aumenta tu HP cuando estás en estado CAÍDO.",
+                "niveles": {
+                    "1": "+5 altura",
+                    "2": "+10 altura",
+                    "3": "+15 altura",
+                    "4": "+20 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            }
+        ]
+    },
+    {
+        "personaje": "Itsuka Kendo",
+        "rol": "Héroe",
+        "clase": "Tanque",
+        "habilidades": [
+            {
+                "habilidad": "Defensa Cuerpo a Cuerpo+",
+                "descripcion": "Reduce el daño recibido de Ataques Cuerpo a Cuerpo.",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Itsuka Kendo (Golpe de Palma Doble)",
+        "rol": "Héroe",
+        "clase": "Daño",
+        "habilidades": [
+            {
+                "habilidad": "Poder de Ataque de Habilidad Peculiar β+",
+                "descripcion": "Aumenta el daño infligido con la Habilidad Peculiar β.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Defensa de Habilidad Peculiar β+",
+                "descripcion": "Reduce el daño recibido de la Habilidad Peculiar β.",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Mt. Lady",
+        "rol": "Héroe",
+        "clase": "Tanque",
+        "habilidades": [
+            {
+                "habilidad": "Defensa de Habilidad Peculiar β+",
+                "descripcion": "Reduce el daño recibido de la Habilidad Peculiar β.",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Cementoss",
+        "rol": "Héroe",
+        "clase": "Apoyo",
+        "habilidades": [
+            {
+                "habilidad": "Velocidad de Carrera+",
+                "descripcion": "Aumenta tu velocidad de Carrera.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+2.0%",
+                    "3": "+3.0%",
+                    "4": "+4.0%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Ibara Shiozaki",
+        "rol": "Héroe",
+        "clase": "Apoyo",
+        "habilidades": [
+            {
+                "habilidad": "HP Máximo+",
+                "descripcion": "Aumenta tu HP Máximo.",
+                "niveles": {
+                    "1": "+1 altura",
+                    "2": "+2 altura",
+                    "3": "+3 altura",
+                    "4": "+4 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            }
+        ]
+    },
+    {
+        "personaje": "Kurogiri",
+        "rol": "Villano",
+        "clase": "Apoyo",
+        "habilidades": [
+            {
+                "habilidad": "GP Máximo+",
+                "descripcion": "Aumenta tu GP Máximo.",
+                "niveles": {
+                    "1": "+1 altura",
+                    "2": "+2 altura",
+                    "3": "+3 altura",
+                    "4": "+4 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            },
+            {
+                "habilidad": "Defensa Cuerpo a Cuerpo+",
+                "descripcion": "Reduce el daño recibido de Ataques Cuerpo a Cuerpo.",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Neito Monoma",
+        "rol": "Héroe",
+        "clase": "Técnico",
+        "habilidades": [
+            {
+                "habilidad": "Recarga de Acción Especial+",
+                "descripcion": "Aumenta la velocidad de recarga de la Acción Especial.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Velocidad de Rastreo en CAÍDO+",
+                "descripcion": "Aumenta tu velocidad de movimiento cuando estás en estado CAÍDO.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+2.0%",
+                    "3": "+3.0%",
+                    "4": "+4.0%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Hitoshi Shinso",
+        "rol": "Héroe",
+        "clase": "Daño",
+        "habilidades": [
+            {
+                "habilidad": "Poder de Ataque de Habilidad Peculiar β+",
+                "descripcion": "Aumenta el daño infligido con la Habilidad Peculiar β.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Altura de Salto Frontal+",
+                "descripcion": "Aumenta tu altura de Salto Frontal.",
+                "niveles": {
+                    "1": "+5 altura",
+                    "2": "+10 altura",
+                    "3": "+15 altura",
+                    "4": "+20 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            }
+        ]
+    },
+    {
+        "personaje": "Present Mic",
+        "rol": "Héroe",
+        "clase": "Daño",
+        "habilidades": [
+            {
+                "habilidad": "Poder de Ataque de HP+",
+                "descripcion": "Aumenta el daño infligido al HP.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Recarga de Acción Especial+",
+                "descripcion": "Aumenta la velocidad de recarga de la Acción Especial.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Lady Nagant",
+        "rol": "Villano",
+        "clase": "Daño",
+        "habilidades": [
+            {
+                "habilidad": "Poder de Ataque de Habilidad Peculiar α+",
+                "descripcion": "Aumenta el daño infligido con la Habilidad Peculiar α.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Altura de Salto de Muro+",
+                "descripcion": "Aumenta tu altura de Salto de Muro.",
+                "niveles": {
+                    "1": "+5 altura",
+                    "2": "+10 altura",
+                    "3": "+15 altura",
+                    "4": "+20 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            }
+        ]
+    },
+    {
+        "personaje": "All Might Acorazado",
+        "rol": "Héroe",
+        "clase": "Técnico",
+        "habilidades": [
+            {
+                "habilidad": "Recarga de Habilidad Peculiar β+",
+                "descripcion": "Aumenta la velocidad de recarga de la Habilidad Peculiar β.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Altura de Salto Vertical+",
+                "descripcion": "Aumenta tu altura de Salto Vertical.",
+                "niveles": {
+                    "1": "+5 altura",
+                    "2": "+10 altura",
+                    "3": "+15 altura",
+                    "4": "+20 altura"
+                },
+                "tipo_valor": "altura_unidades"
+            }
+        ]
+    },
+    {
+        "personaje": "All For One (Edad Juvenil)",
+        "rol": "Villano",
+        "clase": "Tanque",
+        "habilidades": [
+            {
+                "habilidad": "Defensa de Habilidad Peculiar γ+",
+                "descripcion": "Reduce el daño recibido de la Habilidad Peculiar γ.",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Recarga de PU/PC+",
+                "descripcion": "Aumenta la velocidad de llenado del Medidor PU/PC.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    },
+    {
+        "personaje": "Izuku Midoriya OFA",
+        "rol": "Héroe",
+        "clase": "Velocista",
+        "habilidades": [
+            {
+                "habilidad": "Velocidad de Carrera+",
+                "descripcion": "Aumenta tu velocidad de Carrera.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+2.0%",
+                    "3": "+3.0%",
+                    "4": "+4.0%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Poder de Ataque Cuerpo a Cuerpo+",
+                "descripcion": "Aumenta el daño infligido con Ataques Cuerpo a Cuerpo.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
+    }
+]

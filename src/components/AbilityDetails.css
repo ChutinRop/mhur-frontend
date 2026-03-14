@@ -1,0 +1,107 @@
+.ability-details-placeholder {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+  border: 1px dashed var(--surface-border);
+}
+
+.ability-details {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  background: #11151c; /* Fondo oscuro liso */
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+}
+
+.ability-icon-block {
+  width: 90px;
+  height: 90px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Borde interno en lugar de borde amarillo exterior grueso */
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2); 
+}
+
+.ability-icon-inner {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0.6);
+  border: 2px solid rgba(255,255,255,0.8);
+}
+
+.ability-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.ability-char-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.ability-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+
+.ability-desc-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #fff;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.ability-desc-icon {
+  font-size: 0.75rem;
+  margin-top: 0.2rem;
+}
+
+.ability-level-info {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.level-up-text {
+  color: #3b82f6; /* Texto azul claro */
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.levels-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem; /* Espaciado ajustado para verse en línea */
+}
+
+.level-item {
+  font-size: 0.85rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.level-label {
+  color: var(--text-muted);
+}
+
+.sub-effect {
+  color: #eab308; /* Texto amarillo */
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: 0.25rem;
+}

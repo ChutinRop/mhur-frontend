@@ -1,0 +1,59 @@
+.tuner-slots-grid-container {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+}
+
+.slots-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 900px) {
+  .tuner-slots-grid-container {
+    flex-direction: column;
+  }
+}
+
+/* --- Max All Button --- */
+.max-all-btn {
+  background: linear-gradient(
+    90deg, 
+    #ff0000, 
+    #ff7f00, 
+    #ffff00, 
+    #00ff00, 
+    #0000ff, 
+    #4b0082, 
+    #8b00ff, 
+    #ff0000
+  );
+  background-size: 800% 100%;
+  animation: rainbow-pan 5s linear infinite;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.max-all-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.max-all-btn:active {
+  transform: scale(0.95);
+}
+
+@keyframes rainbow-pan {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
