@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import TunerCreator from './pages/TunerCreator';
 import Database from './pages/Database';
 import Community from './pages/Community';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import Toast, { showToast } from './components/UIFeedback/Toast';
 import CustomModal from './components/UIFeedback/CustomModal';
 import './App.css';
@@ -137,7 +138,16 @@ function App() {
           <Route path="/" element={<Database />} />
           <Route path="/creator" element={<TunerCreator />} />
           <Route path="/community" element={<Community />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
         </Routes>
+
+        <footer style={{ padding: '2rem', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.05)', marginTop: '4rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginBottom: '1rem' }}>
+             <Link to="/privacy" style={{ color: 'var(--text-muted)', fontSize: '0.85rem', textDecoration: 'none' }}>Política de Privacidad</Link>
+          </div>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>© 2026 MHUR Tunning - Todos los derechos reservados.</p>
+        </footer>
+        
         <Toast />
       </div>
     </Router>
