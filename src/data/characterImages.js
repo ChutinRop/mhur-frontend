@@ -145,20 +145,25 @@ export function getAnyCharacterImage(personaje, tipo = 'normal') {
   if (!personaje) return null;
   const suffix = `|${tipo}`;
   
-  // 1. Try to find an exact match for the full character name first
+  // 1. Try to find a match for the full character name (case-insensitive for the name part)
+  const lowerSearch = personaje.toLowerCase();
   for (const [key, path] of Object.entries(characterImages)) {
-    if (key.startsWith(personaje + '|') && key.endsWith(suffix)) {
+    const [keyName, ...rest] = key.split('|');
+    const keyType = rest[rest.length - 1];
+    
+    if (keyName.toLowerCase() === lowerSearch && keyType === tipo) {
       return path;
     }
   }
 
-  // 2. If no exact match, try the base name (fallback)
-  const base = personaje.replace(/\s*\(.*?\)$/, '').trim();
-  if (base !== personaje) {
-    for (const [key, path] of Object.entries(characterImages)) {
-      if (key.startsWith(base + '|') && key.endsWith(suffix)) {
-        return path;
-      }
+  // 2. If no exact match, try the base name (fallback, case-insensitive)
+  const base = personaje.replace(/\s*\(.*?\)$/, '').trim().toLowerCase();
+  for (const [key, path] of Object.entries(characterImages)) {
+    const [keyName, ...rest] = key.split('|');
+    const keyType = rest[rest.length - 1];
+    
+    if (keyName.toLowerCase() === base && keyType === tipo) {
+      return path;
     }
   }
 

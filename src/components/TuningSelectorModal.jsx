@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { FiX } from 'react-icons/fi';
+import { FiX, FiSearch } from 'react-icons/fi';
 import './TuningSelectorModal.css';
 
 import normalesData from '../data/tunnings_normales.json';
@@ -8,6 +8,7 @@ import especialesData from '../data/tunnings_especiales.json';
 import { getAnyCharacterImage } from '../data/characterImages';
 
 const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, characterBuild, activeSlotIndex, onSelectTuning }) => {
+  const [searchTerm, setSearchTerm] = useState('');
   if (!isOpen || !slotData || !characterData) return null;
 
   const tunings = useMemo(() => {
@@ -62,24 +63,32 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
     return availableTunings;
   }, [slotData, characterData, characterBuild, activeSlotIndex]);
 
-  // Group the tunings by character name so we can render one card per character
+  // Group the tunings by character name and filter by searchTerm
   const groupedTunings = useMemo(() => {
     const groups = {};
+    const lowerSearch = searchTerm.toLowerCase().trim();
+
     tunings.forEach(t => {
-      const charName = t.personaje;
-      if (!groups[charName]) {
-        groups[charName] = {
-          personaje: charName,
-          rol: t.rol,
-          clase: t.clase,
-          imageType: slotData.tipo === 'Especial' ? 'especial' : 'normal',
-          habilidades: []
-        };
+      const charMatch = t.personaje.toLowerCase().includes(lowerSearch);
+      const skillMatch = (t.habilidad || '').toLowerCase().includes(lowerSearch);
+      const descMatch = (t.descripcion || '').toLowerCase().includes(lowerSearch);
+
+      if (!lowerSearch || charMatch || skillMatch || descMatch) {
+        const charName = t.personaje;
+        if (!groups[charName]) {
+          groups[charName] = {
+            personaje: charName,
+            rol: t.rol,
+            clase: t.clase,
+            imageType: slotData.tipo === 'Especial' ? 'especial' : 'normal',
+            habilidades: []
+          };
+        }
+        groups[charName].habilidades.push(t);
       }
-      groups[charName].habilidades.push(t);
     });
     return Object.values(groups);
-  }, [tunings, slotData.tipo]);
+  }, [tunings, slotData.tipo, searchTerm]);
 
   // Helper to determine badge color based on role
   const getBadgeClass = (rol) => {
@@ -98,7 +107,25 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
     <div className="tuning-modal-overlay" onClick={onClose}>
       <div className="tuning-modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="tuning-modal-header">
-          <h3>Seleccionar Tuning {slotData.tipo}</h3>
+          <div className="tuning-modal-title-area">
+            <h3>Seleccionar Tuning {slotData.tipo}</h3>
+            <div className="tuning-search-wrapper">
+              <FiSearch className="tuning-search-icon" />
+              <input 
+                type="text" 
+                placeholder="Buscar por personaje o habilidad..." 
+                className="tuning-search-input"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                autoFocus
+              />
+              {searchTerm && (
+                <button className="tuning-search-clear" onClick={() => setSearchTerm('')}>
+                  <FiX />
+                </button>
+              )}
+            </div>
+          </div>
           <button className="tuning-modal-close" onClick={onClose}>
             <FiX />
           </button>

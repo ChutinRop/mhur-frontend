@@ -81,9 +81,10 @@ function Navigation() {
             <FiAlertTriangle style={{ fontSize: '1rem' }} />
             🚀 ESTAMOS EN BETA: Aún faltan agregar algunas imágenes de personajes. Si encuentras un error, por favor repórtalo.
           </span>
-          <button 
-            onClick={() => window.open('https://discord.com/invite/JdnGVhBtn4', '_blank')}
+          <a 
+            href="mailto:shootingrob13@gmail.com?subject=Reporte%20de%20Error%20-%20MHUR%20Tunning&body=Hola%20ChutinRop,%20encontr%C3%A9%20un%20error%20en%20la%20p%C3%A1gina:"
             style={{
+              textDecoration: 'none',
               background: 'white',
               color: '#6366f1',
               border: 'none',
@@ -101,7 +102,7 @@ function Navigation() {
             onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
           >
             <FiLifeBuoy /> REPORTAR ERROR
-          </button>
+          </a>
           <button 
             onClick={() => setShowBanner(false)}
             style={{
