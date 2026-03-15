@@ -16,8 +16,8 @@
   background: #11141a;
   border: 1px solid var(--surface-border);
   border-radius: var(--radius-lg);
-  width: 90%;
-  max-width: 900px;
+  width: 95%;
+  max-width: 1200px;
   max-height: 85vh;
   display: flex;
   flex-direction: column;

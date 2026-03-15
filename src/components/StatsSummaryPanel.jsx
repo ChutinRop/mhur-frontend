@@ -8,15 +8,16 @@ function parseNumeric(str) {
   return match ? parseFloat(match[0]) : 0;
 }
 
-// ─── Helper: Convert a fractional-minute value to MM:SS format ───
-function minutesToMMSS(val) {
-  if (!val || val === 0) return '0:00s';
-  const totalSecs = Math.round(val * 60);
+// ─── Helper: Convert seconds to "X min Y s" or "Y s" format ───
+function formatTimeDisplay(totalSecs) {
+  if (!totalSecs || totalSecs === 0) return '0s';
   const mins = Math.floor(totalSecs / 60);
-  const secs = totalSecs % 60;
-  return mins > 0
-    ? `${mins}:${String(secs).padStart(2, '0')}s`
-    : `${secs}s`;
+  const secs = Math.round(totalSecs % 60);
+  
+  if (mins > 0) {
+    return secs > 0 ? `${mins} min ${secs} s` : `${mins} min`;
+  }
+  return `${secs} s`;
 }
 
 // ─── Helper: Determine the SUB-TYPE of a skill name (α, β, γ, or "generic") ───
@@ -267,7 +268,7 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
                   </div>
                   <div className="stat-special-detail">
                     {s.tipo === 'tiempo_frames'
-                      ? `Duración: ${minutesToMMSS(s.value)}`
+                      ? `Duración: ${formatTimeDisplay(s.value)}`
                       : `Valor: ${s.value}`}
                   </div>
                   <div className="stat-special-desc">{s.descripcion}</div>

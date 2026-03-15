@@ -87,8 +87,8 @@ export default function CharacterSelector({ selectedChar, setSelectedChar }) {
 
       {/* ── Modal Overlay via Portal ── */}
       {isModalOpen && createPortal(
-        <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
-          <div className="modal-content" onClick={e => e.stopPropagation()}>
+        <div className="char-modal-overlay" onClick={() => setIsModalOpen(false)}>
+          <div className="char-modal-content" onClick={e => e.stopPropagation()}>
             
             <div className="modal-header">
               <h3>

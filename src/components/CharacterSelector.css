@@ -81,7 +81,7 @@
 }
 
 /* ── Modal Overlay ── */
-.modal-overlay {
+.char-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -95,12 +95,12 @@
   z-index: 999999;
 }
 
-.modal-content {
+.char-modal-content {
   background: #1a1e26;
   border: 1px solid var(--surface-border);
   border-radius: var(--radius-lg);
-  width: 90%;
-  max-width: 800px;
+  width: 95%;
+  max-width: 1200px;
   max-height: 85vh;
   display: flex;
   flex-direction: column;

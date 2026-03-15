@@ -17,7 +17,7 @@
 }
 
 /* --- Max All Button --- */
-.max-all-btn {
+.btn-rainbow-max {
   background: linear-gradient(
     90deg, 
     #ff0000, 
@@ -44,12 +44,12 @@
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.max-all-btn:hover {
+.btn-rainbow-max:hover {
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }
 
-.max-all-btn:active {
+.btn-rainbow-max:active {
   transform: scale(0.95);
 }
 

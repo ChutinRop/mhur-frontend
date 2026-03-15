@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FiCheckCircle, FiAlertCircle, FiInfo } from 'react-icons/fi';
 import './Toast.css';
 
 let toastTimeout;
@@ -23,9 +24,18 @@ export default function Toast() {
 
   if (!toast.visible) return null;
 
+  const getIcon = () => {
+    switch (toast.type) {
+      case 'success': return <FiCheckCircle className="toast-icon" />;
+      case 'error': return <FiAlertCircle className="toast-icon" />;
+      default: return <FiInfo className="toast-icon" />;
+    }
+  };
+
   return (
     <div className={`toast-container ${toast.type} ${toast.visible ? 'fade-in' : ''}`}>
       <div className="toast-content glass-panel">
+        {getIcon()}
         <span className="toast-message">{toast.message}</span>
       </div>
     </div>

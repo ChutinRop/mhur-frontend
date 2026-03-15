@@ -36,6 +36,7 @@ export default function TunerSlotsGrid({
         {/* The Special Header Slot */}
         <TunerSlot 
           isSpecial={true} 
+          slotPosition={'left'}
           heroOrVillain={leftRole} 
           data={leftSpecial}
           isSelected={activeSlotIndex === 'left-special'}
@@ -70,6 +71,7 @@ export default function TunerSlotsGrid({
         {/* The Special Header Slot */}
         <TunerSlot 
           isSpecial={true} 
+          slotPosition={'right'}
           heroOrVillain={rightRole} 
           data={rightSpecial}
           isSelected={activeSlotIndex === 'right-special'}

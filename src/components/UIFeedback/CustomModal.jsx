@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FiAlertCircle, FiCheckCircle, FiInfo, FiHelpCircle } from 'react-icons/fi';
 import './CustomModal.css';
 
 export default function CustomModal({ isOpen, onClose, title, message, type = 'alert', onConfirm, defaultValue = '' }) {
@@ -13,18 +14,32 @@ export default function CustomModal({ isOpen, onClose, title, message, type = 'a
   const handleConfirm = () => {
     if (type === 'prompt') {
       onConfirm(inputValue);
-    } else {
+    } else if (onConfirm) {
       onConfirm();
     }
     onClose();
   };
 
+  const getIcon = () => {
+    switch (type) {
+      case 'confirm': return <FiHelpCircle className="modal-icon confirm" />;
+      case 'prompt': return <FiInfo className="modal-icon prompt" />;
+      case 'success': return <FiCheckCircle className="modal-icon success" />;
+      default: return <FiAlertCircle className="modal-icon alert" />;
+    }
+  };
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content glass-panel" onClick={e => e.stopPropagation()}>
-        <div className="modal-header">
-          <h3>{title}</h3>
-        </div>
+        {getIcon()}
+        
+        {title && (
+          <div className="modal-header">
+            <h3>{title}</h3>
+          </div>
+        )}
+        
         <div className="modal-body">
           <p>{message}</p>
           {type === 'prompt' && (
@@ -43,7 +58,7 @@ export default function CustomModal({ isOpen, onClose, title, message, type = 'a
             <button className="modal-btn secondary" onClick={onClose}>Cancelar</button>
           )}
           <button className="modal-btn primary" onClick={handleConfirm}>
-            {type === 'confirm' ? 'Aceptar' : 'Continuar'}
+            {type === 'confirm' ? 'Aceptar' : (type === 'prompt' ? 'Guardar' : 'Entendido')}
           </button>
         </div>
       </div>

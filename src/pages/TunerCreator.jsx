@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { FiSave, FiUploadCloud, FiShare2 } from 'react-icons/fi';
+import { FiShare2 } from 'react-icons/fi';
 import CharacterSelector from '../components/CharacterSelector';
 import TunerSlotsGrid from '../components/TunerSlotsGrid';
 import TuningSelectorModal from '../components/TuningSelectorModal';
@@ -10,7 +10,10 @@ import CustomModal from '../components/UIFeedback/CustomModal';
 import { generateTags } from '../utils/tagGenerator';
 
 export default function TunerCreator() {
-  const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const [selectedCharacter, setSelectedCharacter] = useState(() => {
+    const saved = localStorage.getItem('mhur_creator_character');
+    return saved ? JSON.parse(saved) : null;
+  });
   const location = useLocation();
   
   // Tuner Grid States
@@ -20,9 +23,22 @@ export default function TunerCreator() {
   const fileInputRef = useRef(null);
 
   // The actual build: mapping of slotIndex -> tuningObject
-  const [characterBuild, setCharacterBuild] = useState({});
-  const [slotLevels, setSlotLevels] = useState({});
+  const [characterBuild, setCharacterBuild] = useState(() => {
+    const saved = localStorage.getItem('mhur_creator_build');
+    return saved ? JSON.parse(saved) : {};
+  });
+  const [slotLevels, setSlotLevels] = useState(() => {
+    const saved = localStorage.getItem('mhur_creator_levels');
+    return saved ? JSON.parse(saved) : {};
+  });
   const [modalConfig, setModalConfig] = useState({ isOpen: false, type: 'alert', title: '', message: '', onConfirm: () => {} });
+
+  // Auto-save to localStorage
+  useEffect(() => {
+    localStorage.setItem('mhur_creator_character', JSON.stringify(selectedCharacter));
+    localStorage.setItem('mhur_creator_build', JSON.stringify(characterBuild));
+    localStorage.setItem('mhur_creator_levels', JSON.stringify(slotLevels));
+  }, [selectedCharacter, characterBuild, slotLevels]);
 
   // Handle imported build from Community page
   useEffect(() => {
@@ -92,7 +108,7 @@ export default function TunerCreator() {
       } else {
         const numericId = parseInt(slotId, 10);
         let slotData;
-        if (numericId >= 1 && numericId <= 5) slotData = ranuras[numericId];
+        if (numericId >= 1 && numericId >= 1 && numericId <= 5) slotData = ranuras[numericId];
         else if (numericId >= 6 && numericId <= 10) slotData = ranuras[numericId + 1];
         if (slotData) maxLevel = (slotData.rol === 'Universal') ? 3 : 4;
         else maxLevel = 3;
@@ -210,49 +226,85 @@ export default function TunerCreator() {
       return;
     }
 
-    const buildData = {
-      characterName: selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo,
-      selectedCharacter,
-      characterBuild,
-      slotLevels
-    };
+    setModalConfig({
+      isOpen: true,
+      type: 'confirm',
+      title: 'Publicar Tuning',
+      message: `¿Estás seguro de que deseas publicar el tuning de ${selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo}? Otros jugadores podrán verlo e importarlo.`,
+      onConfirm: async () => {
+        const buildData = {
+          characterName: selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo,
+          selectedCharacter,
+          characterBuild,
+          slotLevels
+        };
 
-    const tags = generateTags(characterBuild, slotLevels);
+        const tags = generateTags(characterBuild, slotLevels);
 
-    try {
-      showToast("Publicando build...", "info");
-      const response = await fetch('https://mhur-backend.onrender.com/api/builds', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          character_name: buildData.characterName,
-          creator_name: creatorName,
-          build_data: buildData,
-          tags: tags
-        }),
-      });
-
-      if (response.ok) {
-        showToast(`¡Build de ${buildData.characterName} publicada en la nube!`, "success");
-      } else {
-        const errorData = await response.json();
-        if (response.status === 409) {
-          setModalConfig({
-            isOpen: true,
-            type: 'alert',
-            title: 'Configuración Duplicada',
-            message: errorData.error,
-            onConfirm: () => {}
+        try {
+          showToast("Publicando build...", "info");
+          const response = await fetch('https://mhur-backend.onrender.com/api/builds', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              character_name: buildData.characterName,
+              creator_name: creatorName,
+              build_data: buildData,
+              tags: tags
+            }),
           });
-        } else {
-          showToast(`Error: ${errorData.error || 'Fallo de publicación'}`, "error");
+
+          if (response.ok) {
+            showToast(`¡Build de ${buildData.characterName} publicada exitosamente!`, "success");
+            setModalConfig({
+              isOpen: true,
+              type: 'success',
+              title: '¡Publicado!',
+              message: `Tu tuning de ${buildData.characterName} ya está disponible en la sección de Builds Públicas.`,
+              onConfirm: () => {}
+            });
+          } else {
+            const errorData = await response.json();
+            if (response.status === 409) {
+              setModalConfig({
+                isOpen: true,
+                type: 'alert',
+                title: 'Tuning ya publicado',
+                message: errorData.error,
+                onConfirm: () => {}
+              });
+            } else {
+              showToast(`Error: ${errorData.error || 'Fallo de publicación'}`, "error");
+            }
+          }
+        } catch (error) {
+          showToast("No se pudo conectar con el servidor", "error");
         }
       }
-    } catch (error) {
-      showToast("No se pudo conectar con el servidor", "error");
-    }
+    });
+  };
+
+  const handleResetBuild = () => {
+    setModalConfig({
+      isOpen: true,
+      type: 'confirm',
+      title: 'Eliminar Todo',
+      message: '¿Estás seguro de que quieres borrar el tuning actual? Se perderá todo el progreso.',
+      onConfirm: () => {
+        setSelectedCharacter(null);
+        setCharacterBuild({});
+        setSlotLevels({});
+        setActiveSlotIndex(null);
+        setActiveSlotData(null);
+        setIsTuningModalOpen(false);
+        localStorage.removeItem('mhur_creator_character');
+        localStorage.removeItem('mhur_creator_build');
+        localStorage.removeItem('mhur_creator_levels');
+        showToast("Progreso borrado correctamente", "info");
+      }
+    });
   };
 
   return (
@@ -272,7 +324,25 @@ export default function TunerCreator() {
           <section className="glass-panel" style={{ padding: '2rem', paddingBottom: '3rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
               <h2>Ranuras de Equipamiento</h2>
-              <button className="max-all-btn" onClick={handleMaxAllLevels} title="Mejorar al máximo">Max.</button>
+              <button 
+                className="btn-rainbow-max" 
+                onClick={handleMaxAllLevels}
+                title="Mejorar todos los Tunnings equipados al nivel máximo"
+              >Max.</button>
+              <button 
+                className="action-btn" 
+                title="Eliminar progreso del personaje y tunnings" 
+                onClick={handleResetBuild}
+                style={{ 
+                  background: 'rgba(239, 68, 68, 0.1)', 
+                  color: '#ef4444', 
+                  border: '1px solid rgba(239, 68, 68, 0.2)',
+                  fontSize: '0.75rem',
+                  padding: '0.4rem 0.8rem',
+                  height: 'auto',
+                  marginLeft: 'auto'
+                }}
+              >ELIMINAR TODO</button>
             </div>
             <TunerSlotsGrid 
               selectedChar={selectedCharacter}
@@ -288,16 +358,49 @@ export default function TunerCreator() {
       </div>
 
       <aside className="right-column glass-panel" style={{ padding: '2rem', position: 'sticky', top: '2rem' }}>
-        <div style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <h2 style={{ margin: 0 }}>
-            Resumen {selectedCharacter && <span style={{fontSize: '1rem', color: 'var(--color-rapid)', marginLeft: '10px'}}>{selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo}</span>}
-          </h2>
-          <div style={{ display: 'flex', gap: '15px' }}>
-            <FiUploadCloud className="icon-btn" title="Importar" onClick={() => fileInputRef.current && fileInputRef.current.click()} />
-            <input type="file" accept=".json" style={{ display: 'none' }} ref={fileInputRef} onChange={handleImportBuild} />
-            <FiSave className="icon-btn" style={{ color: 'var(--color-rapid)' }} title="Exportar" onClick={handleExportBuild} />
-            <FiShare2 className="icon-btn" style={{ color: 'var(--color-tecnico)' }} title="Publicar" onClick={handlePublishBuild} />
+        <div className="summary-header">
+          <div className="summary-title-row">
+            <h2 className="summary-title">Resumen</h2>
+            <div className="summary-actions">
+              <button 
+                className="action-btn import-btn" 
+                title="Importar Build (Cargar archivo .json)" 
+                onClick={() => fileInputRef.current && fileInputRef.current.click()}
+              >
+                IMPORTAR
+              </button>
+              <input 
+                type="file" 
+                accept=".json" 
+                style={{ display: 'none' }} 
+                ref={fileInputRef}
+                onChange={handleImportBuild}
+              />
+              <button 
+                className="action-btn export-btn" 
+                title="Guardar / Exportar Build Localmente" 
+                onClick={handleExportBuild}
+              >
+                EXPORTAR
+              </button>
+              <button 
+                className="action-btn publish-btn" 
+                title="Publicar Build en la Nube" 
+                onClick={handlePublishBuild}
+              >
+                <FiShare2 /> PUBLICAR
+              </button>
+            </div>
           </div>
+          
+          {selectedCharacter && (
+            <div className="summary-character-info">
+              <span className="char-label">Personaje:</span>
+              <span className="char-name">
+                {selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo}
+              </span>
+            </div>
+          )}
         </div>
         <StatsSummaryPanel characterBuild={characterBuild} slotLevels={slotLevels} />
       </aside>

@@ -19,6 +19,7 @@ export default function TunerSlot({
   data, 
   isSelected = false,
   isSpecial = false,
+  slotPosition = null,
   heroOrVillain = null,
   onClick,
   onRemove,
@@ -35,8 +36,8 @@ export default function TunerSlot({
     const firstTuning = Array.isArray(selectedTuning) ? selectedTuning[0] : selectedTuning;
     tuningRole = firstTuning.rol; // 'Universal', 'Héroe', 'Villano'
     if (isSpecial) {
-      // Left Special slot has heroOrVillain = 'Héroe', Right has 'Villano'
-      maxLevel = (heroOrVillain === 'Héroe') ? 10 : 11;
+      // Left Special slot max level is 10, Right is 11
+      maxLevel = (slotPosition === 'left') ? 10 : 11;
     } else {
       // Normal slots: if the SLOTS role is not Universal, it gets 1 extra level (max 4)
       maxLevel = (data?.rol === 'Universal') ? 3 : 4;

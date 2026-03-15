@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
-import { FiUser, FiDatabase, FiEdit, FiGlobe, FiLogOut } from 'react-icons/fi';
+import { FiUser, FiDatabase, FiEdit, FiGlobe, FiLogOut, FiAlertTriangle, FiLifeBuoy } from 'react-icons/fi';
+import { FaTwitch, FaYoutube, FaTiktok, FaDiscord } from 'react-icons/fa';
 import clsx from 'clsx';
 import TunerCreator from './pages/TunerCreator';
 import Database from './pages/Database';
@@ -14,6 +15,7 @@ function Navigation() {
   const location = useLocation();
   const [username, setUsername] = useState(localStorage.getItem('mhur_username') || '');
   const [modalConfig, setModalConfig] = useState({ isOpen: false, type: 'alert', title: '', message: '', onConfirm: () => {}, defaultValue: '' });
+  const [showBanner, setShowBanner] = useState(true);
 
   const handleSetName = () => {
     setModalConfig({
@@ -57,6 +59,65 @@ function Navigation() {
         {...modalConfig} 
         onClose={() => setModalConfig(prev => ({ ...prev, isOpen: false }))} 
       />
+
+      {/* ── Beta Banner ── */}
+      {showBanner && (
+        <div className="beta-banner" style={{
+          background: 'linear-gradient(90deg, #6366f1 0%, #a855f7 100%)',
+          color: 'white',
+          padding: '0.6rem 1rem',
+          textAlign: 'center',
+          fontSize: '0.85rem',
+          fontWeight: '600',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '1rem',
+          position: 'relative',
+          zIndex: 10001,
+          boxShadow: '0 4px 10px rgba(0,0,0,0.2)'
+        }}>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <FiAlertTriangle style={{ fontSize: '1rem' }} />
+            🚀 ESTAMOS EN BETA: Aún faltan agregar algunas imágenes de personajes. Si encuentras un error, por favor repórtalo.
+          </span>
+          <button 
+            onClick={() => window.open('https://discord.com/invite/JdnGVhBtn4', '_blank')}
+            style={{
+              background: 'white',
+              color: '#6366f1',
+              border: 'none',
+              padding: '0.2rem 0.8rem',
+              borderRadius: '20px',
+              fontSize: '0.75rem',
+              fontWeight: '700',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.3rem',
+              transition: 'transform 0.2s'
+            }}
+            onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+            onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+          >
+            <FiLifeBuoy /> REPORTAR ERROR
+          </button>
+          <button 
+            onClick={() => setShowBanner(false)}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: 'rgba(255,255,255,0.7)',
+              fontSize: '1.2rem',
+              cursor: 'pointer',
+              padding: '0 0.5rem',
+              position: 'absolute',
+              right: '1rem'
+            }}
+          >&times;</button>
+        </div>
+      )}
+
       {/* ── Banner ── */}
       <div style={{ width: '100%', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
         <img
@@ -141,11 +202,18 @@ function App() {
           <Route path="/privacy" element={<PrivacyPolicy />} />
         </Routes>
 
-        <footer style={{ padding: '2rem', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.05)', marginTop: '4rem' }}>
+        <footer style={{ padding: '3rem 2rem', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.05)', marginTop: '4rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginBottom: '1.5rem' }}>
+            <a href="https://www.twitch.tv/chutinrop" target="_blank" rel="noreferrer" className="social-link twitch"><FaTwitch /></a>
+            <a href="https://www.youtube.com/@chutinrop" target="_blank" rel="noreferrer" className="social-link youtube"><FaYoutube /></a>
+            <a href="https://www.tiktok.com/@chutinrop1" target="_blank" rel="noreferrer" className="social-link tiktok"><FaTiktok /></a>
+            <a href="https://discord.com/invite/JdnGVhBtn4" target="_blank" rel="noreferrer" className="social-link discord"><FaDiscord /></a>
+          </div>
+          
           <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginBottom: '1rem' }}>
              <Link to="/privacy" style={{ color: 'var(--text-muted)', fontSize: '0.85rem', textDecoration: 'none' }}>Política de Privacidad</Link>
           </div>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>© 2026 MHUR Tunning - Todos los derechos reservados.</p>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>© 2026 MHUR Tunning - Hecho por ChutinRop. Todos los derechos reservados.</p>
         </footer>
         
         <Toast />
