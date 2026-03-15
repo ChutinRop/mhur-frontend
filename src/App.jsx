@@ -1,5 +1,5 @@
+// Deploy Build: v1.0.2 - Full Sync
 import React, { useState, useEffect } from 'react';
-// Deploy Build: v1.0.1
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { FiUser, FiDatabase, FiEdit, FiGlobe, FiLogOut, FiAlertTriangle, FiLifeBuoy } from 'react-icons/fi';
 import { FaTwitch, FaYoutube, FaTiktok, FaDiscord } from 'react-icons/fa';
