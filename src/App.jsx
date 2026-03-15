@@ -9,6 +9,7 @@ import Community from './pages/Community';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Toast, { showToast } from './components/UIFeedback/Toast';
 import CustomModal from './components/UIFeedback/CustomModal';
+import ReportModal from './components/UIFeedback/ReportModal';
 import './App.css';
 
 function Navigation() {
@@ -16,6 +17,7 @@ function Navigation() {
   const [username, setUsername] = useState(localStorage.getItem('mhur_username') || '');
   const [modalConfig, setModalConfig] = useState({ isOpen: false, type: 'alert', title: '', message: '', onConfirm: () => {}, defaultValue: '' });
   const [showBanner, setShowBanner] = useState(true);
+  const [showReportModal, setShowReportModal] = useState(false);
 
   const handleSetName = () => {
     setModalConfig({
@@ -53,11 +55,46 @@ function Navigation() {
     });
   };
 
+  const handleReportError = (e) => {
+    e.preventDefault();
+    setShowReportModal(true);
+  };
+
+  const submitReport = async (reportData) => {
+    const formData = new FormData();
+    formData.append('description', reportData.description);
+    formData.append('username', username || 'Usuario Anónimo');
+    
+    if (reportData.image) {
+      formData.append('image', reportData.image);
+    }
+
+    const API_URL = import.meta.env.VITE_API_URL || 'https://mhur-backend.onrender.com';
+    
+    const response = await fetch(`${API_URL}/api/reports`, {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || 'Error del servidor al enviar el reporte.');
+    }
+
+    showToast("¡Reporte enviado! Gracias por tu ayuda.", "success");
+  };
+
   return (
     <>
       <CustomModal 
         {...modalConfig} 
         onClose={() => setModalConfig(prev => ({ ...prev, isOpen: false }))} 
+      />
+      
+      <ReportModal 
+        isOpen={showReportModal} 
+        onClose={() => setShowReportModal(false)}
+        onSubmit={submitReport}
       />
 
       {/* ── Beta Banner ── */}
@@ -81,10 +118,9 @@ function Navigation() {
             <FiAlertTriangle style={{ fontSize: '1rem' }} />
             🚀 ESTAMOS EN BETA: Aún faltan agregar algunas imágenes de personajes. Si encuentras un error, por favor repórtalo.
           </span>
-          <a 
-            href="mailto:shootingrob13@gmail.com?subject=Reporte%20de%20Error%20-%20MHUR%20Tunning&body=Hola%20ChutinRop,%20encontr%C3%A9%20un%20error%20en%20la%20p%C3%A1gina:"
+          <button 
+            onClick={handleReportError}
             style={{
-              textDecoration: 'none',
               background: 'white',
               color: '#6366f1',
               border: 'none',
@@ -96,13 +132,14 @@ function Navigation() {
               display: 'flex',
               alignItems: 'center',
               gap: '0.3rem',
-              transition: 'transform 0.2s'
+              transition: 'transform 0.2s',
+              fontFamily: 'inherit'
             }}
             onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
             onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
           >
             <FiLifeBuoy /> REPORTAR ERROR
-          </a>
+          </button>
           <button 
             onClick={() => setShowBanner(false)}
             style={{
