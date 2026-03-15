@@ -178,7 +178,7 @@ function Navigation() {
 
           <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2 }}>
             <h1 className="header-title" style={{ margin: 0, fontSize: '1.9rem' }}>
-              MHUR Tunnign <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontWeight: 'normal' }}>Chutunning</span>
+              MHUR Tunning <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontWeight: 'normal' }}>Chutunning</span>
             </h1>
             <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', letterSpacing: '0.04em' }}>
               Hecho por ChutinRop
