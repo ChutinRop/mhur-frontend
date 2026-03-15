@@ -32,9 +32,13 @@ export default function TunerSlot({
 
   let maxLevel = 1;
   let tuningRole = '';
-  if (selectedTuning) {
-    const firstTuning = Array.isArray(selectedTuning) ? selectedTuning[0] : selectedTuning;
-    tuningRole = firstTuning.rol; // 'Universal', 'Héroe', 'Villano'
+  
+  // Safely get the first tuning item if it's an array
+  const hasSelection = selectedTuning && (Array.isArray(selectedTuning) ? selectedTuning.length > 0 : true);
+  const mainTuning = hasSelection ? (Array.isArray(selectedTuning) ? selectedTuning[0] : selectedTuning) : null;
+
+  if (mainTuning) {
+    tuningRole = mainTuning.rol; // 'Universal', 'Héroe', 'Villano'
     if (isSpecial) {
       // Left Special slot max level is 10, Right is 11
       maxLevel = (slotPosition === 'left') ? 10 : 11;
@@ -45,7 +49,6 @@ export default function TunerSlot({
   }
 
   if (isSpecial) {
-    const mainTuning = Array.isArray(selectedTuning) ? selectedTuning[0] : selectedTuning;
     return (
       <div 
         className={`tuner-slot-special ${selectedTuning ? 'locked' : ''}`} 
@@ -69,9 +72,9 @@ export default function TunerSlot({
             {selectedTuning && (
               <img 
                 src={getCharacterImage(
-                  mainTuning.personaje, 
-                  mainTuning.rol,
-                  mainTuning.clase,
+                  mainTuning?.personaje, 
+                  mainTuning?.rol,
+                  mainTuning?.clase,
                   'especial'
                 ) || "/assets/Images/Rank/No_Rank.png"} 
                 alt="Tuning Icon" 
@@ -116,7 +119,6 @@ export default function TunerSlot({
     );
   }
 
-  const mainTuningNormal = Array.isArray(selectedTuning) ? selectedTuning[0] : selectedTuning;
 
   return (
     <div 
@@ -169,9 +171,9 @@ export default function TunerSlot({
           {selectedTuning ? (
             <img 
                src={getCharacterImage(
-                 mainTuningNormal.personaje, 
-                 mainTuningNormal.rol,
-                 mainTuningNormal.clase,
+                 mainTuning?.personaje, 
+                 mainTuning?.rol,
+                 mainTuning?.clase,
                  'normal'
                ) || "/assets/Images/Rank/No_Rank.png"} 
                alt="Tuning Owner" 
