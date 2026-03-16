@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { FiX } from 'react-icons/fi';
 import { getCharacterImage } from '../data/characterImages';
 import './TunerSlot.css';
@@ -27,6 +27,29 @@ export default function TunerSlot({
   onLevelChange,
   selectedTuning = null
 }) {
+  const titleRef = useRef(null);
+  const containerRef = useRef(null);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+
+  useEffect(() => {
+    if (selectedTuning && titleRef.current && containerRef.current) {
+      const scrollWidth = titleRef.current.scrollWidth;
+      const clientWidth = containerRef.current.clientWidth;
+      // We check against (clientWidth - 5) to give a tiny buffer
+      const isOverflowing = scrollWidth > (clientWidth + 2);
+      setShouldAnimate(isOverflowing);
+      
+      if (isOverflowing) {
+        const translateDistance = scrollWidth - clientWidth;
+        titleRef.current.style.setProperty('--translate-dist', `-${translateDistance}px`);
+        // Speed: ~30px per second, min 3s, max 12s
+        const duration = Math.min(Math.max(translateDistance / 30, 3), 12);
+        titleRef.current.style.setProperty('--duration', `${duration}s`);
+      }
+    } else {
+      setShouldAnimate(false);
+    }
+  }, [selectedTuning]);
   // data contains { tipo, clase, rol } from trajes_es.json
   const color = data ? getClassColor(data.clase) : '#444';
 
@@ -61,13 +84,23 @@ export default function TunerSlot({
           </button>
         )}
         <div className="special-header">
-          <h4>
-            {selectedTuning 
-              ? (Array.isArray(selectedTuning) 
-                  ? selectedTuning.map(t => t.habilidad).join(' & ') 
-                  : selectedTuning.habilidad) 
-              : 'Habilidad especial de Tuning'}
-          </h4>
+          <div className="slot-title-container" ref={containerRef} style={{ margin: '0', flex: 1 }}>
+            <h4 
+              ref={titleRef} 
+              className={shouldAnimate ? 'marquee-active' : ''}
+              style={{ 
+                whiteSpace: 'nowrap', 
+                display: 'inline-block',
+                maxWidth: 'none'
+              }}
+            >
+              {selectedTuning 
+                ? (Array.isArray(selectedTuning) 
+                    ? selectedTuning.map(t => t.habilidad).join(' & ') 
+                    : selectedTuning.habilidad) 
+                : 'Habilidad especial de Tuning'}
+            </h4>
+          </div>
           <div className="special-badge" style={{ backgroundColor: color }}>
             {selectedTuning && (
               <img 
@@ -139,12 +172,17 @@ export default function TunerSlot({
       <div className="slot-main">
         <div className="slot-content unlocked">
           <span className="slot-number-unlocked">{number}</span>
-          <div className="slot-title">
-            {selectedTuning 
-              ? (Array.isArray(selectedTuning) 
-                  ? selectedTuning.map((t, i) => <div key={i}>{t.habilidad}</div>) 
-                  : selectedTuning.habilidad) 
-              : 'Sin configurar'}
+          <div className="slot-title-container" ref={containerRef}>
+            <div 
+              className={`slot-title ${shouldAnimate ? 'marquee-active' : ''}`} 
+              ref={titleRef}
+            >
+              {selectedTuning 
+                ? (Array.isArray(selectedTuning) 
+                    ? selectedTuning.map((t, i) => <span key={i}>{t.habilidad}{i < selectedTuning.length - 1 ? ' & ' : ''}</span>) 
+                    : selectedTuning.habilidad) 
+                : 'Sin configurar'}
+            </div>
           </div>
           <div className="slot-level-band" style={{ backgroundColor: color }}>
             <span className="level-text">

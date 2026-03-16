@@ -63,19 +63,33 @@
   justify-content: flex-end; /* Push bands to the bottom */
 }
 
-/* Unlocked State */
+.slot-content.unlocked .slot-title-container {
+  margin: auto 65px auto 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
 .slot-content.unlocked .slot-title {
-  font-size: 0.9rem; /* Smaller font for long skill names */
+  display: inline-block;
+  font-size: 1.15rem;
   font-weight: 900;
   color: #000;
-  margin: 5px 65px 0 15px; /* Margin right 65px to avoid hexagon */
-  line-height: 1.1;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
   text-transform: uppercase;
+  padding-right: 50px; /* Gap for looping */
+}
+
+/* ── Marquee Animation ── */
+.marquee-active {
+  animation: marquee var(--duration, 8s) ease-in-out infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  15% { transform: translateX(0); } /* Initial pause */
+  80% { transform: translateX(var(--translate-dist, -20%)); }
+  90% { transform: translateX(var(--translate-dist, -20%)); } /* End pause */
+  100% { transform: translateX(0); } /* Reset */
 }
 
 /* Larger font when slot is empty */
