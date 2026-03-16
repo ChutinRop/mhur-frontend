@@ -47,6 +47,7 @@
   border-radius: 6px;
   z-index: 2;
   display: flex;
+  overflow: hidden; /* BACK TO HIDDEN: The close button is outside */
   box-sizing: border-box;
 }
 
@@ -62,40 +63,61 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end; /* Push bands to the bottom */
+  min-width: 0; /* CRITICAL: Allows flex item to shrink below content size */
   overflow: hidden;
 }
 
-.slot-content.unlocked .slot-title {
+/* ── Marquee Stack ── */
+.slot-title-stack, .special-title-stack {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 1.05rem; /* Reverting to large font but slightly optimized */
+  min-width: 0;
+  overflow: hidden;
+  margin: auto 65px auto 15px;
+  gap: 2px;
+}
+
+.special-title-stack {
+  margin: 0;
+}
+
+.marquee-line-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.slot-title-line {
+  display: inline-block;
+  font-size: 1.1rem;
   font-weight: 900;
   color: #000;
-  margin: auto 65px auto 15px;
-  line-height: 1.1;
   text-transform: uppercase;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
-.slot-content.unlocked .slot-title div {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.slot-number-unlocked {
-  position: absolute;
-  top: 5px;
-  left: 15px;
-  font-size: 3rem;
+.slot-title-placeholder {
+  font-size: 1.2rem;
   font-weight: 900;
-  color: rgba(0, 0, 0, 0.1);
-  line-height: 1;
-  pointer-events: none;
+  color: #000;
+  opacity: 0.4;
+  text-transform: uppercase;
+}
+
+/* ── Marquee Animation ── */
+.marquee-active {
+  display: inline-block;
+  animation: marquee var(--duration, 8s) ease-in-out infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  15% { transform: translateX(0); } /* Initial pause */
+  80% { transform: translateX(var(--translate-dist, -20%)); }
+  90% { transform: translateX(var(--translate-dist, -20%)); } /* End pause */
+  100% { transform: translateX(0); } /* Reset */
 }
 
 /* Larger font when slot is empty */
@@ -128,11 +150,10 @@
 }
 
 .role-text {
-  font-weight: 900;
-  font-size: 0.7rem; /* REDUCED to fit in area */
-  letter-spacing: -0.2px;
-  opacity: 0.6;
-  white-space: nowrap;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  opacity: 0.5; /* fade slightly like screenshot */
 }
 
 .level-text {
@@ -304,9 +325,9 @@
 
 .role-text-special {
   color: var(--primary-accent, #b026ff);
-  font-weight: 900;
+  font-weight: 800;
   font-style: italic;
-  font-size: 0.65rem; /* REDUCED to fit */
+  font-size: 0.8rem;
   letter-spacing: 0.5px;
 }
 @media (max-width: 480px) {
@@ -322,10 +343,15 @@
   .slot-main {
     border-width: 4px;
   }
-  .slot-content.unlocked .slot-title {
-    font-size: 0.9rem;
+  .slot-title-stack {
     margin-left: 10px;
     margin-right: 50px;
+  }
+  .slot-title-line {
+    font-size: 0.85rem;
+  }
+  .slot-title-placeholder {
+    font-size: 1rem;
   }
   .slot-number-unlocked {
     font-size: 2.2rem;
