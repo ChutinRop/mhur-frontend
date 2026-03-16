@@ -142,6 +142,34 @@
   margin-left: 0.75rem;
 }
 
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  border: 1px solid var(--surface-border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+  background: var(--surface-hover);
+  border-color: var(--text-secondary);
+  transform: translateY(-1px);
+}
+
+.nav-link.active {
+  color: var(--text-primary);
+  background: rgba(59, 130, 246, 0.1);
+  border-color: var(--color-rapid);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.15);
+}
+
 .header-right {
   display: flex;
   align-items: center;
@@ -160,24 +188,37 @@
 
 .user-name {
   color: var(--text-primary);
+  font-weight: 700;
 }
 
 .logout-btn {
-  padding: 0.4rem !important;
+  padding: 0.5rem !important;
   display: flex;
   align-items: center;
+  justify-content: center;
   color: var(--color-rapid) !important;
   background: transparent !important;
   border: 1px solid var(--color-rapid) !important;
+  border-radius: 50% !important;
+  width: 32px;
+  height: 32px;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover {
+  background: rgba(59, 130, 246, 0.1) !important;
+  transform: scale(1.1);
 }
 
 .login-btn {
-  padding: 0.5rem 1rem !important;
+  padding: 0.6rem 1.2rem !important;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   color: var(--text-primary) !important;
   background: var(--color-rapid) !important;
+  border-radius: var(--radius-sm) !important;
+  font-weight: 600;
 }
 
 /* ── Layout ── */
@@ -223,13 +264,13 @@
   }
   .header {
     flex-direction: column;
-    gap: 1.25rem;
-    padding: 1.25rem !important;
+    gap: 1.5rem;
+    padding: 1.5rem !important;
   }
   .header-left {
     flex-direction: column;
     width: 100%;
-    gap: 1rem;
+    gap: 1.25rem;
   }
   .header-logo {
     height: 60px;
@@ -249,14 +290,26 @@
     font-size: 0.65rem;
   }
   .header-nav {
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns to "square it up" */
+    gap: 0.5rem;
     width: 100%;
     margin-left: 0;
+  }
+  .header-nav .nav-link {
+    justify-content: center;
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+  /* Make the third link span full width to keep it centered/squared if needed */
+  .header-nav .nav-link:nth-child(3) {
+    grid-column: span 2;
   }
   .header-right {
     justify-content: center;
     width: 100%;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--surface-border);
   }
 }
 
