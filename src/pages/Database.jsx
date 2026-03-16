@@ -1,7 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { FiSearch, FiX, FiStar, FiList } from 'react-icons/fi';
+import clsx from 'clsx';
 import { getCharacterImage } from '../data/characterImages';
 import '../components/AbilityDetails.css';
+import './Database.css';
 
 // ── Datos ─────────────────────────────────────────────────────────────────────
 // Para actualizar solo reemplaza los archivos JSON en src/data/ y recompila.
@@ -73,7 +75,7 @@ const selectStyle = {
   borderRadius: 'var(--radius-sm)',
   color: '#fff',
   padding: '0.5rem 0.75rem',
-  fontSize: '0.9rem',
+  fontSize: '0.9rem', 
   outline: 'none',
   cursor: 'pointer',
 };
@@ -90,23 +92,23 @@ function CharacterCard({ group, tipo = 'especial' }) {
   const cardColor = getClassColor(group.clase);
   const imgSrc = getCharacterImage(group.personaje, group.rol, group.clase, tipo);
   return (
-    <div className="ability-details" style={{ margin: 0, alignItems: 'flex-start' }}>
+    <div className="ability-details database-char-card" style={{ margin: 0, alignItems: 'flex-start' }}>
       {/* Ícono coloreado — muestra imagen si existe, placeholder si no */}
       <div className="ability-icon-block" style={{ backgroundColor: cardColor, overflow: 'hidden', flexShrink: 0 }}>
         {imgSrc
-          ? <img src={imgSrc} alt={group.personaje} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          ? <img src={imgSrc} alt={group.personaje} className="char-img-full" />
           : <div className="ability-icon-inner"></div>
         }
       </div>
 
       {/* Contenido */}
-      <div className="ability-info" style={{ width: '100%' }}>
+      <div className="ability-info database-char-info" style={{ width: '100%' }}>
         {/* Cabecera */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+        <div className="database-char-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
           <h4 className="ability-char-name">{group.personaje}</h4>
-          <div style={{ display: 'flex', gap: '0.4rem' }}>
-            <span style={rolStyle(group.rol)}>{group.rol}</span>
-            <span style={{ fontSize: '0.7rem', padding: '0.15rem 0.5rem', background: 'var(--surface-hover)', borderRadius: '4px', color: cardColor, fontWeight: 'bold', border: `1px solid ${cardColor}40` }}>
+          <div className="char-badges-group" style={{ display: 'flex', gap: '0.4rem' }}>
+            <span className="char-rol-badge" style={rolStyle(group.rol)}>{group.rol}</span>
+            <span className="char-clase-badge" style={{ fontSize: '0.7rem', padding: '0.15rem 0.5rem', borderRadius: '4px', color: cardColor, fontWeight: 'bold', border: `1px solid ${cardColor}40` }}>
               {group.clase}
             </span>
           </div>
@@ -155,32 +157,36 @@ function FilterBar({ roles, clases, baseNames, filters, setFilters }) {
   const clear = () => setFilters({ search: '', rol: '', clase: '', personaje: '' });
 
   return (
-    <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
-      <div style={{ display: 'flex', alignItems: 'center', background: 'var(--surface-hover)', padding: '0.5rem 1rem', borderRadius: 'var(--radius-sm)', minWidth: '230px', border: '1px solid var(--surface-border)' }}>
-        <FiSearch style={{ color: 'var(--text-muted)', marginRight: '0.5rem', flexShrink: 0 }} />
-        <input type="text" placeholder="Buscar habilidad..." value={search}
+    <div className="filter-bar" style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
+      <div className="filter-input-wrapper" style={{ display: 'flex', alignItems: 'center', background: 'var(--surface-hover)', padding: '0.5rem 1rem', borderRadius: 'var(--radius-sm)', minWidth: '230px', border: '1px solid var(--surface-border)' }}>
+        <FiSearch className="filter-icon" style={{ color: 'var(--text-muted)', marginRight: '0.5rem', flexShrink: 0 }} />
+        <input 
+          type="text" 
+          placeholder="Buscar habilidad..." 
+          value={search}
           onChange={set('search')}
-          style={{ background: 'transparent', border: 'none', color: '#fff', outline: 'none', width: '100%' }} />
+          className="filter-input" 
+          style={{ background: 'transparent', border: 'none', color: '#fff', outline: 'none', width: '100%' }}
+        />
       </div>
 
-      <select value={rol}      onChange={set('rol')}      style={selectStyle}>
+      <select value={rol} onChange={set('rol')} className="filter-select" style={selectStyle}>
         <option value="">Todos los Roles</option>
         {roles.map(r => <option key={r} value={r}>{r}</option>)}
       </select>
 
-      <select value={clase}    onChange={set('clase')}    style={selectStyle}>
+      <select value={clase} onChange={set('clase')} className="filter-select" style={selectStyle}>
         <option value="">Todas las Clases</option>
         {clases.map(c => <option key={c} value={c}>{c}</option>)}
       </select>
 
-      {/* Filtro por nombre BASE -- se compara con baseName() de cada entrada */}
-      <select value={personaje} onChange={set('personaje')} style={{ ...selectStyle, maxWidth: '240px' }}>
+      <select value={personaje} onChange={set('personaje')} className="filter-select" style={{ ...selectStyle, maxWidth: '240px' }}>
         <option value="">Todos los Personajes</option>
         {baseNames.map(p => <option key={p} value={p}>{p}</option>)}
       </select>
 
       {hasFilters && (
-        <button onClick={clear} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', padding: '0.5rem 0.85rem', background: 'rgba(239,68,68,0.15)', border: '1px solid #ef444460', borderRadius: 'var(--radius-sm)', color: '#ef4444', cursor: 'pointer', fontSize: '0.85rem' }}>
+        <button onClick={clear} className="filter-clear-btn" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', padding: '0.5rem 0.85rem', background: 'rgba(239,68,68,0.15)', border: '1px solid #ef444460', borderRadius: 'var(--radius-sm)', color: '#ef4444', cursor: 'pointer', fontSize: '0.85rem' }}>
           <FiX /> Limpiar
         </button>
       )}
@@ -210,27 +216,21 @@ export default function Database() {
   const normales   = useMemo(() => applyFilters(normalesGrupo,  filters), [filters]);
 
   const tabBtn = (id, icon, label) => (
-    <button onClick={() => setTab(id)} style={{
-      display: 'flex', alignItems: 'center', gap: '0.5rem',
-      padding: '0.6rem 1.25rem',
-      borderRadius: 'var(--radius-sm)',
-      border: tab === id ? '1px solid var(--surface-border)' : '1px solid transparent',
-      background: tab === id ? 'var(--surface-glass)' : 'transparent',
-      color: tab === id ? '#fff' : 'var(--text-muted)',
-      fontWeight: tab === id ? '600' : '400',
-      cursor: 'pointer', fontSize: '0.95rem', transition: 'all 0.2s',
-    }}>
-      {icon} {label}
+    <button 
+      onClick={() => setTab(id)} 
+      className={clsx('database-tab-btn', tab === id && 'active')}
+    >
+      {icon} <span>{label}</span>
     </button>
   );
 
   return (
-    <main className="main-content" style={{ display: 'block' }}>
-      <section className="glass-panel" style={{ padding: '2rem' }}>
+    <main className="main-content database-page-container" style={{ display: 'block' }}>
+      <section className="glass-panel database-section" style={{ padding: '2rem' }}>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
-          <h2>Tunnings</h2>
-          <div style={{ display: 'flex', gap: '0.5rem', background: 'var(--surface-hover)', padding: '0.35rem', borderRadius: 'var(--radius-sm)' }}>
+        <div className="database-header-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+          <h2 className="database-title">Tunnings</h2>
+          <div className="database-tabs-wrapper" style={{ display: 'flex', gap: '0.5rem', background: 'var(--surface-hover)', padding: '0.35rem', borderRadius: 'var(--radius-sm)' }}>
             {tabBtn('especiales', <FiStar />,  `Especiales (${especiales.length})`)}
             {tabBtn('normales',   <FiList />,  `Normales (${normales.length})`)}
           </div>
@@ -240,9 +240,9 @@ export default function Database() {
           <>
             <FilterBar roles={E_ROLES} clases={E_CLASES} baseNames={E_BASE_NAMES}
               filters={filters} setFilters={setFilters} />
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div className="database-list" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               {especiales.map((g, i) => <CharacterCard key={i} group={g} tipo="especial" />)}
-              {especiales.length === 0 && <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-muted)' }}>No se encontraron resultados.</div>}
+              {especiales.length === 0 && <div className="no-results" style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-muted)' }}>No se encontraron resultados.</div>}
             </div>
           </>
         )}
@@ -251,9 +251,9 @@ export default function Database() {
           <>
             <FilterBar roles={N_ROLES} clases={N_CLASES} baseNames={N_BASE_NAMES}
               filters={filters} setFilters={setFilters} />
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div className="database-list" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               {normales.map((g, i) => <CharacterCard key={i} group={g} tipo="normal" />)}
-              {normales.length === 0 && <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-muted)' }}>No se encontraron resultados.</div>}
+              {normales.length === 0 && <div className="no-results" style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-muted)' }}>No se encontraron resultados.</div>}
             </div>
           </>
         )}
