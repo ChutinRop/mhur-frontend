@@ -107,7 +107,7 @@ html, body, #root {
   height: 250px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  border-bottom: 1px solid var(--surface-border);
+  border-bottom: 2px solid var(--color-rapid); /* Thicker accent border */
   z-index: 10;
 }
 

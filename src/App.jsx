@@ -185,8 +185,6 @@ function App() {
   return (
     <Router>
       <div className="app-main-wrapper">
-        <Navigation />
-        
         {/* ── Full Width Hero ── */}
         <div className="app-hero-banner-full">
           <img
@@ -195,6 +193,8 @@ function App() {
             className="app-hero-image-full"
           />
         </div>
+
+        <Navigation />
 
         <div className="app-container">
           <Routes>
