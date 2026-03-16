@@ -98,12 +98,17 @@ html, body, #root {
 
 /* ── Hero Banner Full Width ── */
 .app-hero-banner-full {
-  width: 100%;
-  height: 250px;
+  width: 100vw;
   position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  height: 250px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   border-bottom: 1px solid var(--surface-border);
+  z-index: 10;
 }
 
 .app-hero-image-full {
