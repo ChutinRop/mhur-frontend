@@ -267,6 +267,12 @@ export default function TunerCreator() {
         if (battleStyleLabel && battleStyleLabel !== "Base") {
           tags.unshift(`BStyle:${battleStyleLabel}`);
         }
+        
+        // Inject outfit name for backend compatibility
+        const outfitName = selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo;
+        if (outfitName) {
+          tags.push(`Traje:${outfitName}`);
+        }
 
         try {
           showToast("Publicando build...", "info");

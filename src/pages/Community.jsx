@@ -211,7 +211,10 @@ export default function Community() {
                           </span>
                         )}
                       </div>
-                      
+                      {/* Outfit name display */}
+                      <div className="build-card-outfit-name" style={{ fontSize: '0.8rem', opacity: 0.7, color: 'var(--text-secondary)', marginTop: '2px' }}>
+                        {build.tags?.find(t => t.startsWith('Traje:'))?.replace('Traje:', '') || build.build_data?.selectedCharacter?.nombre_completo || build.character_name}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -235,7 +238,7 @@ export default function Community() {
                       ⚔️ {build.tags?.find(t => t.startsWith('BStyle:'))?.replace('BStyle:', '') || getStyleLabel(build.build_data?.styleName, build.character_name)}
                     </span>
                   )}
-                  {build.tags && build.tags.filter(tag => !tag.startsWith('BStyle:')).map((tag, i) => (
+                  {build.tags && build.tags.filter(tag => !tag.startsWith('BStyle:') && !tag.startsWith('Traje:')).map((tag, i) => (
                     <span key={i} className={`tag-badge ${tag === 'Berserker' ? 'berserker' : 'normal'}`} style={{
                       fontSize: '0.7rem', 
                       padding: '2px 8px', 
