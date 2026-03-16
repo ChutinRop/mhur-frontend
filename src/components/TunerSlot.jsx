@@ -139,7 +139,7 @@ export default function TunerSlot({
       <div className="slot-main">
         <div className="slot-content unlocked">
           <span className="slot-number-unlocked">{number}</span>
-          <div className="slot-title" style={{ fontSize: selectedTuning ? '1.0rem' : '1.3rem' }}>
+          <div className="slot-title">
             {selectedTuning 
               ? (Array.isArray(selectedTuning) 
                   ? selectedTuning.map((t, i) => <div key={i}>{t.habilidad}</div>) 
