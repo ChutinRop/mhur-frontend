@@ -94,7 +94,7 @@
   display: inline-block;
   font-size: 1.1rem;
   font-weight: 900;
-  color: #000;
+  color: #000; /* Force black for maximum readability */
   text-transform: uppercase;
 }
 
