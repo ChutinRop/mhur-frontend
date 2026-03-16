@@ -14,6 +14,54 @@ const getClassColor = (clase) => {
   }
 };
 
+const MarqueeLine = ({ text, color = 'inherit', isHeader = false }) => {
+  const containerRef = useRef(null);
+  const textRef = useRef(null);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+
+  useEffect(() => {
+    // Small delay to ensure layout is ready
+    const timer = setTimeout(() => {
+      if (textRef.current && containerRef.current) {
+        const scrollWidth = textRef.current.scrollWidth;
+        const clientWidth = containerRef.current.clientWidth;
+        const isOverflowing = scrollWidth > clientWidth;
+        setShouldAnimate(isOverflowing);
+
+        if (isOverflowing) {
+          const translateDistance = scrollWidth - clientWidth;
+          textRef.current.style.setProperty('--translate-dist', `-${translateDistance}px`);
+          const duration = Math.min(Math.max(translateDistance / 30, 3), 12);
+          textRef.current.style.setProperty('--duration', `${duration}s`);
+        }
+      }
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [text]);
+
+  return (
+    <div className="marquee-line-container" ref={containerRef}>
+      {isHeader ? (
+        <h4 
+          ref={textRef} 
+          className={shouldAnimate ? 'marquee-active' : ''}
+          style={{ whiteSpace: 'nowrap', display: 'inline-block' }}
+        >
+          {text}
+        </h4>
+      ) : (
+        <div 
+          ref={textRef} 
+          className={`slot-title-line ${shouldAnimate ? 'marquee-active' : ''}`}
+          style={{ color: color }}
+        >
+          {text}
+        </div>
+      )}
+    </div>
+  );
+};
+
 export default function TunerSlot({ 
   number, 
   data, 
@@ -27,30 +75,6 @@ export default function TunerSlot({
   onLevelChange,
   selectedTuning = null
 }) {
-  const titleRef = useRef(null);
-  const containerRef = useRef(null);
-  const [shouldAnimate, setShouldAnimate] = useState(false);
-
-  useEffect(() => {
-    if (selectedTuning && titleRef.current && containerRef.current) {
-      const scrollWidth = titleRef.current.scrollWidth;
-      const clientWidth = containerRef.current.clientWidth;
-      // We check against (clientWidth - 5) to give a tiny buffer
-      const isOverflowing = scrollWidth > (clientWidth + 2);
-      setShouldAnimate(isOverflowing);
-      
-      if (isOverflowing) {
-        const translateDistance = scrollWidth - clientWidth;
-        titleRef.current.style.setProperty('--translate-dist', `-${translateDistance}px`);
-        // Speed: ~30px per second, min 3s, max 12s
-        const duration = Math.min(Math.max(translateDistance / 30, 3), 12);
-        titleRef.current.style.setProperty('--duration', `${duration}s`);
-      }
-    } else {
-      setShouldAnimate(false);
-    }
-  }, [selectedTuning]);
-  // data contains { tipo, clase, rol } from trajes_es.json
   const color = data ? getClassColor(data.clase) : '#444';
 
   let maxLevel = 1;
@@ -84,22 +108,18 @@ export default function TunerSlot({
           </button>
         )}
         <div className="special-header">
-          <div className="slot-title-container" ref={containerRef} style={{ margin: '0', flex: 1, minWidth: 0, overflow: 'hidden' }}>
-            <h4 
-              ref={titleRef} 
-              className={shouldAnimate ? 'marquee-active' : ''}
-              style={{ 
-                whiteSpace: 'nowrap', 
-                display: 'inline-block',
-                maxWidth: 'none'
-              }}
-            >
-              {selectedTuning 
-                ? (Array.isArray(selectedTuning) 
-                    ? selectedTuning.map(t => t.habilidad).join(' & ') 
-                    : selectedTuning.habilidad) 
-                : 'Habilidad especial de Tuning'}
-            </h4>
+          <div className="special-title-stack">
+            {selectedTuning ? (
+              Array.isArray(selectedTuning) ? (
+                selectedTuning.map((t, i) => (
+                  <MarqueeLine key={i} text={t.habilidad} isHeader={true} />
+                ))
+              ) : (
+                <MarqueeLine text={selectedTuning.habilidad} isHeader={true} />
+              )
+            ) : (
+              <h4>Habilidad especial de Tuning</h4>
+            )}
           </div>
           <div className="special-badge" style={{ backgroundColor: color }}>
             {selectedTuning && (
@@ -172,17 +192,18 @@ export default function TunerSlot({
       <div className="slot-main">
         <div className="slot-content unlocked">
           <span className="slot-number-unlocked">{number}</span>
-          <div className="slot-title-container" ref={containerRef}>
-            <div 
-              className={`slot-title ${shouldAnimate ? 'marquee-active' : ''}`} 
-              ref={titleRef}
-            >
-              {selectedTuning 
-                ? (Array.isArray(selectedTuning) 
-                    ? selectedTuning.map((t, i) => <span key={i}>{t.habilidad}{i < selectedTuning.length - 1 ? ' & ' : ''}</span>) 
-                    : selectedTuning.habilidad) 
-                : 'Sin configurar'}
-            </div>
+          <div className="slot-title-stack">
+            {selectedTuning ? (
+              Array.isArray(selectedTuning) ? (
+                selectedTuning.map((t, i) => (
+                  <MarqueeLine key={i} text={t.habilidad} />
+                ))
+              ) : (
+                <MarqueeLine text={selectedTuning.habilidad} />
+              )
+            ) : (
+              <div className="slot-title-placeholder">Sin configurar</div>
+            )}
           </div>
           <div className="slot-level-band" style={{ backgroundColor: color }}>
             <span className="level-text">
