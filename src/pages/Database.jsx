@@ -228,9 +228,9 @@ export default function Database() {
     <main className="main-content database-page-container" style={{ display: 'block' }}>
       <section className="glass-panel database-section" style={{ padding: '2rem' }}>
 
-        <div className="database-header-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+        <div className="database-header-row">
           <h2 className="database-title">Tunnings</h2>
-          <div className="database-tabs-wrapper" style={{ display: 'flex', gap: '0.5rem', background: 'var(--surface-hover)', padding: '0.35rem', borderRadius: 'var(--radius-sm)' }}>
+          <div className="database-tabs-wrapper">
             {tabBtn('especiales', <FiStar />,  `Especiales (${especiales.length})`)}
             {tabBtn('normales',   <FiList />,  `Normales (${normales.length})`)}
           </div>
