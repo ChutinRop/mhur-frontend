@@ -66,10 +66,11 @@
 
 /* Unlocked State */
 .slot-content.unlocked .slot-title {
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   font-weight: 900;
   color: #000;
-  margin: auto 0 auto 15px; /* Center vertically, padding left */
+  margin: auto 60px auto 15px; /* Added right margin to avoid hexagon overlap */
+  line-height: 1.1;
 }
 
 .slot-number-unlocked {
@@ -165,7 +166,7 @@
 
 .special-header h4 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   font-weight: 900;
 }
 
@@ -271,4 +272,54 @@
   font-style: italic;
   font-size: 0.8rem;
   letter-spacing: 0.5px;
+}
+@media (max-width: 480px) {
+  .tuner-slot-container {
+    height: 65px;
+    margin-bottom: 10px;
+  }
+  .slot-shadow-1 {
+    top: 3px;
+    left: 3px;
+  }
+  .slot-shadow-2 {
+    top: 6px;
+    left: 6px;
+  }
+  .slot-content.unlocked .slot-title {
+    font-size: 0.95rem;
+    margin-left: 10px;
+    margin-right: 45px;
+  }
+  .slot-number-unlocked {
+    font-size: 2.2rem;
+    left: 10px;
+  }
+  .slot-level-band {
+    padding-left: 10px;
+    padding-right: 45px;
+    font-size: 0.85rem;
+  }
+  .role-text {
+    font-size: 0.7rem;
+  }
+  .class-hexagon {
+    width: 55px;
+    height: 65px;
+  }
+  .special-header h4 {
+    font-size: 0.9rem;
+  }
+  .special-badge {
+    width: 40px;
+    height: 40px;
+  }
+  .special-footer {
+    font-size: 0.75rem;
+  }
+  .lvl-btn {
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+  }
 }
