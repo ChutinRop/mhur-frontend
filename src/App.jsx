@@ -182,6 +182,15 @@ function Navigation() {
 }
 
 function App() {
+  useEffect(() => {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+      setTimeout(() => {
+        showToast("📱 Si la página se ve mal en móvil, actívala en 'Modo Escritorio' para una mejor experiencia.", "info", 8000);
+      }, 1500);
+    }
+  }, []);
+
   return (
     <Router>
       <div className="app-main-wrapper">

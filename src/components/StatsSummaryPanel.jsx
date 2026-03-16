@@ -30,9 +30,10 @@ function getSubType(name) {
 
 // ─── Helper: Categorize a skill name into a top-level group ───
 function categorizeSkill(name) {
+  if (name.includes('HP Máximo en CAÍDO')) return 'hp_caido';
   if (name.includes('HP Máximo')) return 'hp_maximo';
-  if (name.includes('HP Máximo en CAÍDO') || name.includes('en CAÍDO')) return 'hp_caido';
   if (name.includes('GP Máximo')) return 'gp_maximo';
+  if (name.includes('Velocidad de Rastreo')) return 'velocidad_rastreo';
   if (name.includes('Defensa de HP')) return 'defensa_hp';
   if (name.includes('Defensa de Habilidad Peculiar')) return 'defensa_habilidad';
   if (name.includes('Defensa Cuerpo a Cuerpo')) return 'defensa_cac';
@@ -86,11 +87,12 @@ const STAT_GROUPS = [
     label: 'Velocidad',
     icon: '💨',
     color: '#00d5ff',
-    children: ['velocidad_dash', 'velocidad_desp', 'velocidad_mov'],
+    children: ['velocidad_dash', 'velocidad_desp', 'velocidad_mov', 'velocidad_rastreo'],
     childLabels: {
       velocidad_dash: 'Dash',
       velocidad_desp: 'Desplazamiento por Pared',
       velocidad_mov: 'Movimiento',
+      velocidad_rastreo: 'Rastreo en CAÍDO',
     }
   },
   {
@@ -167,7 +169,12 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
         const catKey = categorizeSkill(t.habilidad);
         const subType = getSubType(t.habilidad);
         const numVal = parseNumeric(levelVal);
-        const unit = String(levelVal).includes('altura') ? 'unidades' : '%';
+        
+        // Default logic: Speed and Recharge are percentages, others are units.
+        let unit = 'unidades';
+        if (catKey === 'recarga' || catKey.startsWith('velocidad')) {
+          unit = '%';
+        }
 
         if (!agg[catKey]) agg[catKey] = {};
         const subKey = subType || 'general';
@@ -182,9 +189,11 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
 
   const formatVal = (num, unit) => {
     const sign = num >= 0 ? '+' : '';
-    return unit === 'unidades'
-      ? `${sign}${num} u.`
-      : `${sign}${num.toFixed(1)}%`;
+    if (unit === 'unidades') {
+      const displayVal = Number.isInteger(num) ? num : num.toFixed(1);
+      return `${sign}${displayVal} u.`;
+    }
+    return `${sign}${num.toFixed(1)}%`;
   };
 
   const hasAnyStats = Object.keys(aggregated.normal).length > 0 || aggregated.specials.length > 0;
@@ -197,6 +206,10 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
         </div>
       ) : (
         <>
+          <div className="stats-hint">
+            <span className="hint-icon">💡</span>
+            <span className="hint-text">Presiona las flechas para más información detallada</span>
+          </div>
           {/* ── NORMAL STAT GROUPS ── */}
           {STAT_GROUPS.map(group => {
             const childCats = group.children.filter(c => aggregated.normal[c]);

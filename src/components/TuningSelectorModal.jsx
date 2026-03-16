@@ -7,7 +7,7 @@ import normalesData from '../data/tunnings_normales.json';
 import especialesData from '../data/tunnings_especiales.json';
 import { getAnyCharacterImage } from '../data/characterImages';
 
-const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, characterBuild, activeSlotIndex, onSelectTuning }) => {
+const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, characterBuild, activeSlotIndex, onSelectTuning, selectedStyle }) => {
   if (!isOpen || !slotData || !characterData) return null;
 
   const tunings = useMemo(() => {
@@ -114,13 +114,15 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
               const classColorHex = getClassColor(slotData.clase); 
               const iconImage = getAnyCharacterImage(group.personaje, group.imageType) || "/assets/Images/Rank/No_Rank.png"; 
 
-              return (
-                <div 
-                  key={groupIdx} 
-                  className="tuning-card" 
-                  onClick={() => handleSelect(group.habilidades)}
-                  style={{ borderLeft: `6px solid ${classColorHex}` }}
-                >
+                const isMatchingStyle = group.personaje === selectedStyle;
+
+                return (
+                  <div 
+                    key={groupIdx} 
+                    className={`tuning-card ${isMatchingStyle ? 'matching-style' : ''}`} 
+                    onClick={() => handleSelect(group.habilidades)}
+                    style={{ borderLeft: `6px solid ${classColorHex}` }}
+                  >
                   <div className="tuning-card-icon-container">
                     <img src={iconImage} alt={group.personaje} />
                   </div>

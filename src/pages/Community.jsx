@@ -4,6 +4,7 @@ import { FiDownload, FiUser, FiCalendar, FiSearch, FiTrendingUp } from 'react-ic
 import { showToast } from '../components/UIFeedback/Toast';
 import CustomModal from '../components/UIFeedback/CustomModal';
 import { getAnyCharacterImage } from '../data/characterImages';
+import './Community.css';
 
 export default function Community() {
   const [builds, setBuilds] = useState([]);
@@ -80,14 +81,14 @@ export default function Community() {
   });
 
   return (
-    <main className="main-content" style={{ display: 'block' }}>
+    <main className="main-content community-page-container" style={{ display: 'block' }}>
       <CustomModal 
         {...modalConfig} 
         onClose={() => setModalConfig(prev => ({ ...prev, isOpen: false }))} 
       />
 
-      <section className="glass-panel" style={{ padding: '2rem', marginBottom: '2rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem' }}>
+      <section className="glass-panel community-section" style={{ padding: '2rem', marginBottom: '2rem' }}>
+        <div className="community-header-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1,5rem' }}>
           <div>
             <h2>Comunidad de Tunnings</h2>
             <p style={{ marginTop: '0.5rem', color: 'var(--text-muted)' }}>
@@ -95,7 +96,7 @@ export default function Community() {
             </p>
           </div>
           
-          <div className="search-container glass-panel" style={{ 
+          <div className="community-search-wrapper glass-panel" style={{ 
             display: 'flex', 
             alignItems: 'center', 
             padding: '0.5rem 1.25rem', 
@@ -111,6 +112,7 @@ export default function Community() {
               placeholder="Buscar personaje o etiqueta..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              className="community-search-input"
               style={{ 
                 background: 'transparent', 
                 border: 'none', 
@@ -125,7 +127,7 @@ export default function Community() {
       </section>
 
       {loading ? (
-        <div style={{ textAlign: 'center', padding: '3rem' }}>Cargando builds...</div>
+        <div className="loading-container" style={{ textAlign: 'center', padding: '3rem' }}>Cargando builds...</div>
       ) : (
         <div className="builds-grid" style={{ 
           display: 'grid', 
@@ -138,10 +140,25 @@ export default function Community() {
             </p>
           ) : (
             filteredBuilds.map(build => {
-              const charImg = build.build_data?.selectedCharacter?.personaje
-                ? getAnyCharacterImage(build.build_data.selectedCharacter.personaje, 'normal')
-                : null;
+               const charImg = build.build_data?.selectedCharacter?.personaje
+                 ? getAnyCharacterImage(build.build_data.selectedCharacter.personaje, 'normal')
+                 : null;
               
+              
+              const getStyleLabel = (name, charName) => {
+                if (!name) return "BASE";
+                const match = name.match(/\((.*?)\)/);
+                if (match) return match[1].toUpperCase();
+                
+                // Normalize for comparison
+                const cleanName = name.trim();
+                const cleanChar = charName?.trim();
+                
+                if (cleanName === cleanChar || !name.includes("(")) return "BASE";
+                
+                return cleanName.toUpperCase();
+              };
+
               return (
               <div key={build._id} className="glass-panel build-card" style={{ 
                 padding: '1.5rem', 
@@ -155,7 +172,7 @@ export default function Community() {
               }}>
                 {/* Popularity Ribbon for highly imported builds */}
                 {build.imports > 5 && (
-                  <div style={{
+                  <div className="popularity-ribbon" style={{
                     position: 'absolute',
                     top: '10px',
                     right: '-30px',
@@ -172,39 +189,54 @@ export default function Community() {
                   </div>
                 )}
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <div className="build-card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                  <div className="build-card-creator-info" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                     {charImg ? (
                       <img 
                         src={charImg} 
                         alt={build.character_name} 
-                        style={{ width: '50px', height: '50px', borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(255,255,255,0.1)' }} 
+                        className="build-card-portrait"
+                        style={{ width: '50px', height: '50px', borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(255,255,255,0.1)' }}
                         onError={(e) => { e.target.style.display = 'none'; }}
                       />
                     ) : (
-                      <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'rgba(255,255,255,0.1)', border: '2px solid rgba(255,255,255,0.05)' }} />
+                      <div className="build-card-portrait-placeholder" style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'rgba(255,255,255,0.1)', border: '2px solid rgba(255,255,255,0.05)' }} />
                     )}
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                        <h3 style={{ margin: 0, color: 'var(--color-rapid)', fontSize: '1.1rem' }}>{build.character_name}</h3>
+                    <div className="build-card-title-group" style={{ display: 'flex', flexDirection: 'column' }}>
+                      <div className="build-card-name-row" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <h3 className="build-card-char-name" style={{ margin: 0, color: 'var(--color-rapid)', fontSize: '1.1rem' }}>{build.character_name}</h3>
                         {build.imports > 0 && (
-                          <span title={`${build.imports} importaciones`} style={{ display: 'flex', alignItems: 'center', color: '#10b981', fontSize: '0.8rem', background: 'rgba(16, 185, 129, 0.1)', padding: '2px 6px', borderRadius: '10px' }}>
+                          <span title={`${build.imports} importaciones`} className="import-count-badge" style={{ display: 'flex', alignItems: 'center', color: '#10b981', fontSize: '0.8rem', background: 'rgba(16, 185, 129, 0.1)', padding: '2px 6px', borderRadius: '10px' }}>
                             <FiTrendingUp style={{ marginRight: '3px' }}/> {build.imports}
                           </span>
                         )}
                       </div>
-                      {build.build_data?.selectedCharacter?.personaje && (
-                        <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '2px' }}>
-                           👤 {build.build_data.selectedCharacter.personaje}
-                        </span>
-                      )}
+                      
                     </div>
                   </div>
                 </div>
                 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                  {build.tags && build.tags.map((tag, i) => (
-                    <span key={i} style={{ 
+                <div className="build-card-tags" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                  {/* Battle Style Tag (from build_data or tags array) */}
+                  {(build.build_data?.styleName && getStyleLabel(build.build_data.styleName, build.character_name) !== "BASE" || (build.tags && build.tags.some(t => t.startsWith('BStyle:')))) && (
+                    <span className="style-tag-badge" style={{
+                      fontSize: '0.7rem',
+                      padding: '2px 8px',
+                      borderRadius: '12px',
+                      background: 'rgba(255, 204, 0, 0.15)',
+                      color: '#ffcc00',
+                      border: '1px solid rgba(255, 204, 0, 0.4)',
+                      fontWeight: '800',
+                      textTransform: 'uppercase',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '4px'
+                    }}>
+                      ⚔️ {build.tags?.find(t => t.startsWith('BStyle:'))?.replace('BStyle:', '') || getStyleLabel(build.build_data?.styleName, build.character_name)}
+                    </span>
+                  )}
+                  {build.tags && build.tags.filter(tag => !tag.startsWith('BStyle:')).map((tag, i) => (
+                    <span key={i} className={`tag-badge ${tag === 'Berserker' ? 'berserker' : 'normal'}`} style={{
                       fontSize: '0.7rem', 
                       padding: '2px 8px', 
                       borderRadius: '12px', 
@@ -218,18 +250,18 @@ export default function Community() {
                   ))}
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: 'auto' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div className="build-card-footer" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: 'auto' }}>
+                  <div className="build-card-metadata" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+                    <div className="metadata-item" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <FiUser size={14} /> <span>{build.creator_name}</span>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <div className="metadata-item" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <FiCalendar size={14} /> <span>{new Date(build.created_at).toLocaleDateString()}</span>
                     </div>
                   </div>
                   
                   <button 
-                    className="max-all-btn" 
+                    className="max-all-btn import-btn-community" 
                     onClick={() => handleImportBuild(build._id)}
                     title="Importar esta Build al Creador"
                     style={{ 

@@ -14,7 +14,7 @@ const getClassColor = (clase) => {
   }
 };
 
-const MarqueeLine = ({ text, color = 'inherit', isHeader = false }) => {
+const MarqueeLine = ({ text, color, isHeader = false }) => {
   const containerRef = useRef(null);
   const textRef = useRef(null);
   const [shouldAnimate, setShouldAnimate] = useState(false);
@@ -53,7 +53,7 @@ const MarqueeLine = ({ text, color = 'inherit', isHeader = false }) => {
         <div 
           ref={textRef} 
           className={`slot-title-line ${shouldAnimate ? 'marquee-active' : ''}`}
-          style={{ color: color }}
+          style={color ? { color } : {}}
         >
           {text}
         </div>

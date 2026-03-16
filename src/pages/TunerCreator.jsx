@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FiShare2 } from 'react-icons/fi';
 import CharacterSelector from '../components/CharacterSelector';
@@ -8,6 +8,7 @@ import StatsSummaryPanel from '../components/StatsSummaryPanel';
 import { showToast } from '../components/UIFeedback/Toast';
 import CustomModal from '../components/UIFeedback/CustomModal';
 import { generateTags } from '../utils/tagGenerator';
+import normalesData from '../data/tunnings_normales.json';
 
 export default function TunerCreator() {
   const [selectedCharacter, setSelectedCharacter] = useState(() => {
@@ -31,6 +32,9 @@ export default function TunerCreator() {
     const saved = localStorage.getItem('mhur_creator_levels');
     return saved ? JSON.parse(saved) : {};
   });
+  const [selectedStyle, setSelectedStyle] = useState(() => {
+    return localStorage.getItem('mhur_creator_style') || null;
+  });
   const [modalConfig, setModalConfig] = useState({ isOpen: false, type: 'alert', title: '', message: '', onConfirm: () => {} });
 
   // Auto-save to localStorage
@@ -38,7 +42,8 @@ export default function TunerCreator() {
     localStorage.setItem('mhur_creator_character', JSON.stringify(selectedCharacter));
     localStorage.setItem('mhur_creator_build', JSON.stringify(characterBuild));
     localStorage.setItem('mhur_creator_levels', JSON.stringify(slotLevels));
-  }, [selectedCharacter, characterBuild, slotLevels]);
+    if (selectedStyle) localStorage.setItem('mhur_creator_style', selectedStyle);
+  }, [selectedCharacter, characterBuild, slotLevels, selectedStyle]);
 
   // Handle imported build from Community page
   useEffect(() => {
@@ -121,11 +126,27 @@ export default function TunerCreator() {
 
   const handleCharacterChange = (newChar) => {
     setSelectedCharacter(newChar);
+    setSelectedStyle(newChar?.personaje || null); // Default to base style
     setCharacterBuild({});
     setSlotLevels({});
     setActiveSlotIndex(null);
     setActiveSlotData(null);
     setIsTuningModalOpen(false);
+  };
+
+  // Get available styles for the current character
+  const availableStyles = useMemo(() => {
+    if (!selectedCharacter?.personaje) return [];
+    const baseName = selectedCharacter.personaje;
+    return normalesData
+      .filter(t => t.personaje === baseName || (t.personaje && t.personaje.startsWith(`${baseName} (`)))
+      .map(t => t.personaje);
+  }, [selectedCharacter]);
+
+  const getStyleLabel = (name) => {
+    if (!name) return "";
+    const match = name.match(/\((.*?)\)/);
+    return match ? match[1] : "Base";
   };
 
   const handleExportBuild = () => {
@@ -140,7 +161,8 @@ export default function TunerCreator() {
       return;
     }
     const buildData = {
-      characterName: selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo,
+      characterName: selectedCharacter.personaje,
+      styleName: selectedStyle || selectedCharacter.personaje,
       selectedCharacter,
       characterBuild,
       slotLevels
@@ -233,13 +255,18 @@ export default function TunerCreator() {
       message: `¿Estás seguro de que deseas publicar el tuning de ${selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo}? Otros jugadores podrán verlo e importarlo.`,
       onConfirm: async () => {
         const buildData = {
-          characterName: selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo,
+          characterName: selectedCharacter.personaje,
+          styleName: selectedStyle || selectedCharacter.personaje,
           selectedCharacter,
           characterBuild,
           slotLevels
         };
 
         const tags = generateTags(characterBuild, slotLevels);
+        const battleStyleLabel = getStyleLabel(selectedStyle || selectedCharacter.personaje);
+        if (battleStyleLabel && battleStyleLabel !== "Base") {
+          tags.unshift(`BStyle:${battleStyleLabel}`);
+        }
 
         try {
           showToast("Publicando build...", "info");
@@ -360,7 +387,6 @@ export default function TunerCreator() {
       <aside className="right-column glass-panel" style={{ padding: '2rem', position: 'sticky', top: '2rem' }}>
         <div className="summary-header">
           <div className="summary-title-row">
-            <h2 className="summary-title">Resumen</h2>
             <div className="summary-actions">
               <button 
                 className="action-btn import-btn" 
@@ -391,14 +417,41 @@ export default function TunerCreator() {
                 <FiShare2 /> PUBLICAR
               </button>
             </div>
+            <h2 className="summary-title">Resumen</h2>
           </div>
           
           {selectedCharacter && (
-            <div className="summary-character-info">
-              <span className="char-label">Personaje:</span>
-              <span className="char-name">
-                {selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo}
-              </span>
+            <div className="summary-character-info" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '4px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span className="char-label">Personaje:</span>
+                <span className="char-name" style={{ color: 'var(--color-primary)', fontWeight: 'bold' }}>
+                  {selectedCharacter.personaje}
+                </span>
+              </div>
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', opacity: 0.8 }}>
+                <span className="char-label">Traje:</span>
+                <span className="char-name">
+                  {selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo}
+                </span>
+              </div>
+              
+              {availableStyles.length > 1 && (
+                <div className="battle-style-selector" style={{ marginTop: '0.5rem', width: '100%' }}>
+                  <span className="style-label">Estilo de Batalla:</span>
+                  <div className="style-options">
+                    {availableStyles.map(style => (
+                      <button 
+                        key={style}
+                        className={`style-opt-btn ${selectedStyle === style ? 'active' : ''}`}
+                        onClick={() => setSelectedStyle(style)}
+                      >
+                        {getStyleLabel(style)}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -410,6 +463,7 @@ export default function TunerCreator() {
         onClose={() => setIsTuningModalOpen(false)}
         slotData={activeSlotData}
         characterData={selectedCharacter?._entrada}
+        selectedStyle={selectedStyle}
         characterBuild={characterBuild}
         activeSlotIndex={activeSlotIndex}
         onSelectTuning={handleSelectTuning}

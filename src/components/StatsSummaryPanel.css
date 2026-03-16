@@ -13,6 +13,35 @@
   border-radius: 8px;
 }
 
+/* ─── Stats Hint ─── */
+.stats-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.9rem;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 8px;
+  margin-bottom: 0.4rem;
+  animation: fadeInHint 0.5s ease-out;
+}
+
+.hint-icon {
+  font-size: 1rem;
+}
+
+.hint-text {
+  font-size: 0.75rem;
+  color: #bfdbfe;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+@keyframes fadeInHint {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* ─── Stat Group ─── */
 .stat-group {
   border-radius: 8px;
@@ -137,4 +166,32 @@
   opacity: 0.6;
   margin-left: 6px;
   font-weight: normal;
+}
+@media (max-width: 480px) {
+  .stat-group-header {
+    padding: 0.5rem 0.75rem;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+  }
+  .stat-total {
+    font-size: 0.9rem;
+  }
+  .stat-child-row {
+    padding: 0.3rem 0.75rem 0.3rem 1.5rem;
+    font-size: 0.75rem;
+  }
+  .stat-specials-title {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.75rem;
+  }
+  .stat-special-item {
+    padding: 0.5rem 0.75rem;
+  }
+  .stat-special-name {
+    font-size: 0.8rem;
+  }
+  .stat-special-detail {
+    font-size: 0.75rem;
+  }
 }
