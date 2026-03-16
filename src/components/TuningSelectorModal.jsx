@@ -41,14 +41,14 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
     }
 
     if (tipo === 'Especial') {
-      availableTunings = filteredEspeciales.map(t => ({
-        ...t,
-        isEquipped: alreadyEquippedPersonajes.has(t.personaje)
-      }));
+      availableTunings = filteredEspeciales.filter(t => 
+        !alreadyEquippedPersonajes.has(t.personaje) && t.personaje !== selectedStyle
+      );
     } else {
       filteredNormales.forEach(normalMatch => {
-        if (normalMatch.habilidades) {
-          const isEquipped = alreadyEquippedPersonajes.has(normalMatch.personaje);
+        if (normalMatch.habilidades && 
+            !alreadyEquippedPersonajes.has(normalMatch.personaje) && 
+            normalMatch.personaje !== selectedStyle) {
           normalMatch.habilidades.forEach(hab => {
             availableTunings.push({
               ...hab,
@@ -56,8 +56,7 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
               rol: normalMatch.rol,
               clase: normalMatch.clase,
               sub_efectos: hab.sub_efectos || null,
-              subir_nivel: hab.subir_nivel || "Sube de nivel para aumentar el efecto.",
-              isEquipped
+              subir_nivel: hab.subir_nivel || "Sube de nivel para aumentar el efecto."
             });
           });
         }
@@ -78,8 +77,7 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
           rol: t.rol,
           clase: t.clase,
           imageType: slotData.tipo === 'Especial' ? 'especial' : 'normal',
-          habilidades: [],
-          isEquipped: t.isEquipped
+          habilidades: []
         };
       }
       groups[charName].habilidades.push(t);
@@ -120,20 +118,13 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
               const classColorHex = getClassColor(slotData.clase); 
               const iconImage = getAnyCharacterImage(group.personaje, group.imageType) || "/assets/Images/Rank/No_Rank.png"; 
 
-                const isMatchingStyle = group.personaje === selectedStyle;
-
                 return (
                   <div 
                     key={groupIdx} 
-                    className={`tuning-card ${isMatchingStyle ? 'matching-style' : ''} ${group.isEquipped ? 'is-equipped-blocked' : ''}`} 
-                    onClick={group.isEquipped ? undefined : () => handleSelect(group.habilidades)}
+                    className="tuning-card" 
+                    onClick={() => handleSelect(group.habilidades)}
                     style={{ borderLeft: `6px solid ${classColorHex}` }}
                   >
-                  {group.isEquipped && (
-                    <div className="equipped-overlay-badge">
-                      UTILIZADO
-                    </div>
-                  )}
                   <div className="tuning-card-icon-container">
                     <img src={iconImage} alt={group.personaje} />
                   </div>
