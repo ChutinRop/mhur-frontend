@@ -41,10 +41,14 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
     }
 
     if (tipo === 'Especial') {
-      availableTunings = filteredEspeciales.filter(t => !alreadyEquippedPersonajes.has(t.personaje));
+      availableTunings = filteredEspeciales.map(t => ({
+        ...t,
+        isEquipped: alreadyEquippedPersonajes.has(t.personaje)
+      }));
     } else {
       filteredNormales.forEach(normalMatch => {
-        if (normalMatch.habilidades && !alreadyEquippedPersonajes.has(normalMatch.personaje)) {
+        if (normalMatch.habilidades) {
+          const isEquipped = alreadyEquippedPersonajes.has(normalMatch.personaje);
           normalMatch.habilidades.forEach(hab => {
             availableTunings.push({
               ...hab,
@@ -52,7 +56,8 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
               rol: normalMatch.rol,
               clase: normalMatch.clase,
               sub_efectos: hab.sub_efectos || null,
-              subir_nivel: hab.subir_nivel || "Sube de nivel para aumentar el efecto."
+              subir_nivel: hab.subir_nivel || "Sube de nivel para aumentar el efecto.",
+              isEquipped
             });
           });
         }
@@ -73,7 +78,8 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
           rol: t.rol,
           clase: t.clase,
           imageType: slotData.tipo === 'Especial' ? 'especial' : 'normal',
-          habilidades: []
+          habilidades: [],
+          isEquipped: t.isEquipped
         };
       }
       groups[charName].habilidades.push(t);
@@ -119,10 +125,15 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
                 return (
                   <div 
                     key={groupIdx} 
-                    className={`tuning-card ${isMatchingStyle ? 'matching-style' : ''}`} 
-                    onClick={() => handleSelect(group.habilidades)}
+                    className={`tuning-card ${isMatchingStyle ? 'matching-style' : ''} ${group.isEquipped ? 'is-equipped-blocked' : ''}`} 
+                    onClick={group.isEquipped ? undefined : () => handleSelect(group.habilidades)}
                     style={{ borderLeft: `6px solid ${classColorHex}` }}
                   >
+                  {group.isEquipped && (
+                    <div className="equipped-overlay-badge">
+                      UTILIZADO
+                    </div>
+                  )}
                   <div className="tuning-card-icon-container">
                     <img src={iconImage} alt={group.personaje} />
                   </div>
