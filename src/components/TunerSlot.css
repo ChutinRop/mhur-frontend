@@ -6,6 +6,7 @@
   cursor: pointer;
   z-index: 10; /* Keep above shadows but below modals */
   pointer-events: auto;
+  min-width: 0;
 }
 
 /* ── 3D Layered Shadows giving depth effect ── */
