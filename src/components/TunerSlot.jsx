@@ -84,7 +84,7 @@ export default function TunerSlot({
           </button>
         )}
         <div className="special-header">
-          <div className="slot-title-container" ref={containerRef} style={{ margin: '0', flex: 1 }}>
+          <div className="slot-title-container" ref={containerRef} style={{ margin: '0', flex: 1, minWidth: 0, overflow: 'hidden' }}>
             <h4 
               ref={titleRef} 
               className={shouldAnimate ? 'marquee-active' : ''}
