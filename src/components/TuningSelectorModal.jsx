@@ -40,15 +40,19 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
       filteredNormales = filteredNormales.filter(t => t.rol === slotData.rol);
     }
 
+    const getBaseName = (name) => name.split('(')[0].trim().toLowerCase();
+    const currentBaseName = getBaseName(characterData.personaje);
+
     if (tipo === 'Especial') {
       availableTunings = filteredEspeciales.filter(t => 
-        !alreadyEquippedPersonajes.has(t.personaje) && t.personaje !== selectedStyle
+        !alreadyEquippedPersonajes.has(t.personaje) && 
+        getBaseName(t.personaje) !== currentBaseName
       );
     } else {
       filteredNormales.forEach(normalMatch => {
         if (normalMatch.habilidades && 
             !alreadyEquippedPersonajes.has(normalMatch.personaje) && 
-            normalMatch.personaje !== selectedStyle) {
+            getBaseName(normalMatch.personaje) !== currentBaseName) {
           normalMatch.habilidades.forEach(hab => {
             availableTunings.push({
               ...hab,
