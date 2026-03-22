@@ -38,11 +38,12 @@ function categorizeSkill(name) {
   if (name.includes('Defensa de Habilidad Peculiar')) return 'defensa_habilidad';
   if (name.includes('Defensa Cuerpo a Cuerpo')) return 'defensa_cac';
   if (name.includes('Poder de Ataque de Habilidad Peculiar')) return 'ataque_habilidad';
+  if (name.includes('Poder de Ataque de HP')) return 'ataque_hp';
   if (name.includes('Poder de Ataque Cuerpo a Cuerpo') || name.includes('Poder de Ataque de GP')) return 'ataque_cac';
-  if (name.includes('Recarga de Habilidad Peculiar') || name.includes('Recarga de PU')) return 'recarga';
+  if (name.includes('Recarga de Habilidad Peculiar') || name.includes('Recarga de PU') || name.includes('Recarga de Acción Especial')) return 'recarga';
   if (name.includes('Velocidad de Dash')) return 'velocidad_dash';
   if (name.includes('Velocidad de Desplazamiento')) return 'velocidad_desp';
-  if (name.includes('Velocidad de Movimiento')) return 'velocidad_mov';
+  if (name.includes('Velocidad de Movimiento') || name.includes('Velocidad de Carrera')) return 'velocidad_mov';
   if (name.includes('Altura de Salto Frontal')) return 'salto_frontal';
   if (name.includes('Altura de Salto Vertical')) return 'salto_vertical';
   if (name.includes('Altura de Salto de Muro')) return 'salto_muro';
@@ -56,10 +57,11 @@ const STAT_GROUPS = [
     label: 'Poder de Ataque',
     icon: '🗡️',
     color: '#ff4444',
-    children: ['ataque_habilidad', 'ataque_cac'],
+    children: ['ataque_habilidad', 'ataque_cac', 'ataque_hp'],
     childLabels: {
       ataque_habilidad: 'Habilidad Peculiar',
       ataque_cac: 'Cuerpo a Cuerpo / GP',
+      ataque_hp: 'HP Directo',
     }
   },
   {
