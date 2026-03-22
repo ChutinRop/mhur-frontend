@@ -148,10 +148,18 @@ export default function CharacterSelector({ selectedChar, setSelectedChar }) {
                               onClick={() => handleSelectCostume(v)}
                             >
                               <div className="costume-btn-inner">
-                                {/* Placeholder since we don't have costume images yet */}
-                                <div className="costume-img-placeholder">
-                                  {v.variante}
-                                </div>
+                                {v.imagen_url ? (
+                                  <img 
+                                    src={v.imagen_url} 
+                                    alt={v.variante} 
+                                    className="costume-img" 
+                                    loading="lazy"
+                                  />
+                                ) : (
+                                  <div className="costume-img-placeholder">
+                                    {v.variante}
+                                  </div>
+                                )}
                               </div>
                               <span className="costume-name">{v.variante}</span>
                             </button>

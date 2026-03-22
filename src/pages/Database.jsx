@@ -96,7 +96,7 @@ function CharacterCard({ group, tipo = 'especial' }) {
       {/* Ícono coloreado — muestra imagen si existe, placeholder si no */}
       <div className="ability-icon-block" style={{ backgroundColor: cardColor, overflow: 'hidden', flexShrink: 0 }}>
         {imgSrc
-          ? <img src={imgSrc} alt={group.personaje} className="char-img-full" />
+          ? <img src={imgSrc} alt={group.personaje} className="char-img-full" loading="lazy" />
           : <div className="ability-icon-inner"></div>
         }
       </div>
