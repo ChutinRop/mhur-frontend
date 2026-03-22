@@ -139,6 +139,25 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
     const agg = {};
     const specials = [];
 
+    // 1. Detect Reparador (Monoma) multipliers for each column
+    let leftMultiplier = 1;
+    let rightMultiplier = 1;
+
+    const getReparadorMultiplier = (tuning, level) => {
+      const t = Array.isArray(tuning) ? tuning[0] : tuning;
+      if (t?.habilidad === "Reparador") {
+        return parseFloat(t.niveles?.[String(level)]) || 1;
+      }
+      return 1;
+    };
+
+    if (characterBuild['left-special']) {
+      leftMultiplier = getReparadorMultiplier(characterBuild['left-special'], slotLevels['left-special'] || 1);
+    }
+    if (characterBuild['right-special']) {
+      rightMultiplier = getReparadorMultiplier(characterBuild['right-special'], slotLevels['right-special'] || 1);
+    }
+
     Object.entries(characterBuild).forEach(([slotId, tuning]) => {
       if (!tuning) return;
 
@@ -159,7 +178,10 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
         return;
       }
 
-      // Normal tunings: may have multiple habilidades
+      // 2. Normal tunings: apply column multiplier
+      const numericId = parseInt(slotId, 10);
+      const colMultiplier = (numericId >= 1 && numericId <= 5) ? leftMultiplier : rightMultiplier;
+
       const habilidades = Array.isArray(tuning) ? tuning : [tuning];
       habilidades.forEach(t => {
         if (!t) return;
@@ -168,7 +190,7 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
 
         const catKey = categorizeSkill(t.habilidad);
         const subType = getSubType(t.habilidad);
-        const numVal = parseNumeric(levelVal);
+        const numVal = parseNumeric(levelVal) * colMultiplier;
         
         // Default logic: Speed and Recharge are percentages, others are units.
         let unit = 'unidades';
