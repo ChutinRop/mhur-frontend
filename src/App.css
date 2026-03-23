@@ -8,63 +8,64 @@
   min-height: 100vh;
 }
 
-/* ── Beta Banner ── */
-.beta-banner {
-  background: linear-gradient(90deg, #6366f1 0%, #a855f7 100%);
-  color: white;
-  padding: 0.6rem 2rem;
-  text-align: center;
-  font-size: 0.85rem;
-  font-weight: 600;
+/* ── Floating Report FAB ── */
+.floating-report-fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
   gap: 0.75rem;
-  position: relative;
-  z-index: 10001;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.beta-banner-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  line-height: 1.4;
-}
-
-.beta-banner-icon {
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
-
-.beta-report-btn {
-  background: white;
-  color: #6366f1;
-  border: none;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 800;
+  padding: 0.75rem 1.25rem;
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  transition: transform 0.2s;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
 }
 
-.beta-banner-close {
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 4px 8px;
-  position: absolute;
-  right: 0.5rem;
-  top: 50%;
-  transform: translateY(-50%);
+.floating-report-fab svg {
+  font-size: 1.25rem;
+  color: #a855f7; /* Purple accent */
+}
+
+.floating-report-fab span {
+  max-width: 0;
+  opacity: 0;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.floating-report-fab:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #a855f7;
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 40px rgba(168, 85, 247, 0.2);
+}
+
+.floating-report-fab:hover span {
+  max-width: 200px;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .floating-report-fab {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    padding: 0.75rem;
+  }
+  
+  .floating-report-fab span {
+    display: none;
+  }
 }
 
 html,

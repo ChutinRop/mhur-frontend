@@ -13,77 +13,9 @@ import CustomModal from './components/UIFeedback/CustomModal';
 import ReportModal from './components/UIFeedback/ReportModal';
 import './App.css';
 
-function Navigation() {
+function Navigation({ username, handleLogout, handleSetName }) {
   const location = useLocation();
-  const [username, setUsername] = useState(localStorage.getItem('mhur_username') || '');
-  const [modalConfig, setModalConfig] = useState({ isOpen: false, type: 'alert', title: '', message: '', onConfirm: () => {}, defaultValue: '' });
-  const [showBanner, setShowBanner] = useState(true);
-  const [showReportModal, setShowReportModal] = useState(false);
-
-  const handleSetName = () => {
-    setModalConfig({
-      isOpen: true,
-      type: 'prompt',
-      title: 'Identificación de Tunner',
-      message: 'Introduce tu nombre para que tus builds sean reconocidas en la comunidad:',
-      defaultValue: username,
-      onConfirm: (name) => {
-        if (name && name.trim() !== "") {
-          const cleanName = name.trim();
-          setUsername(cleanName);
-          localStorage.setItem('mhur_username', cleanName);
-          window.dispatchEvent(new Event('storage'));
-          showToast(`¡Bienvenido, ${cleanName}!`, 'success');
-        } else {
-          showToast("El nombre no puede estar vacío", "error");
-        }
-      }
-    });
-  };
-
-  const handleLogout = () => {
-    setModalConfig({
-      isOpen: true,
-      type: 'confirm',
-      title: 'Cerrar Sesión',
-      message: '¿Estás seguro de que quieres cerrar sesión o cambiar de nombre?',
-      onConfirm: () => {
-        setUsername('');
-        localStorage.removeItem('mhur_username');
-        window.dispatchEvent(new Event('storage'));
-        showToast("Sesión cerrada correctamente", "info");
-      }
-    });
-  };
-
-  const handleReportError = (e) => {
-    e.preventDefault();
-    setShowReportModal(true);
-  };
-
-  const submitReport = async (reportData) => {
-    const formData = new FormData();
-    formData.append('description', reportData.description);
-    formData.append('username', username || 'Usuario Anónimo');
-    
-    if (reportData.image) {
-      formData.append('image', reportData.image);
-    }
-
-    const API_URL = import.meta.env.VITE_API_URL || 'https://mhur-backend.onrender.com';
-    
-    const response = await fetch(`${API_URL}/api/reports`, {
-      method: 'POST',
-      body: formData,
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.error || 'Error del servidor al enviar el reporte.');
-    }
-
-    showToast("¡Reporte enviado! Gracias por tu ayuda.", "success");
-  };
+  const [modalConfig, setModalConfig] = useState({ isOpen: false, type: 'alert', title: '', message: '', onConfirm: () => {}, defaultValue: username });
 
   return (
     <>
@@ -92,32 +24,6 @@ function Navigation() {
         onClose={() => setModalConfig(prev => ({ ...prev, isOpen: false }))} 
       />
       
-      <ReportModal 
-        isOpen={showReportModal} 
-        onClose={() => setShowReportModal(false)}
-        onSubmit={submitReport}
-      />
-
-      {/* ── Beta Banner ── */}
-      {showBanner && (
-        <div className="beta-banner">
-          <span className="beta-banner-content">
-            <FiAlertTriangle className="beta-banner-icon" />
-            🚀 ESTAMOS EN BETA: Aún faltan agregar algunas imágenes de personajes. Si encuentras un error, por favor repórtalo.
-          </span>
-          <button 
-            onClick={handleReportError}
-            className="beta-report-btn"
-          >
-            <FiLifeBuoy /> REPORTAR ERROR
-          </button>
-          <button 
-            onClick={() => setShowBanner(false)}
-            className="beta-banner-close"
-          >&times;</button>
-        </div>
-      )}
-
       {/* ── Header ── */}
       <div className="top-nav-wrapper">
         <header className="header glass-panel">
@@ -182,6 +88,10 @@ function Navigation() {
 }
 
 function App() {
+  const [username, setUsername] = useState(localStorage.getItem('mhur_username') || '');
+  const [showReportModal, setShowReportModal] = useState(false);
+  const [modalConfig, setModalConfig] = useState({ isOpen: false, type: 'alert', title: '', message: '', onConfirm: () => {}, defaultValue: '' });
+
   useEffect(() => {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (isMobile) {
@@ -191,9 +101,85 @@ function App() {
     }
   }, []);
 
+  const handleSetName = () => {
+    setModalConfig({
+      isOpen: true,
+      type: 'prompt',
+      title: 'Identificación de Tunner',
+      message: 'Introduce tu nombre para que tus builds sean reconocidas en la comunidad:',
+      defaultValue: username,
+      onConfirm: (name) => {
+        if (name && name.trim() !== "") {
+          const cleanName = name.trim();
+          setUsername(cleanName);
+          localStorage.setItem('mhur_username', cleanName);
+          window.dispatchEvent(new Event('storage'));
+          showToast(`¡Bienvenido, ${cleanName}!`, 'success');
+        } else {
+          showToast("El nombre no puede estar vacío", "error");
+        }
+      }
+    });
+  };
+
+  const handleLogout = () => {
+    setModalConfig({
+      isOpen: true,
+      type: 'confirm',
+      title: 'Cerrar Sesión',
+      message: '¿Estás seguro de que quieres cerrar sesión o cambiar de nombre?',
+      onConfirm: () => {
+        setUsername('');
+        localStorage.removeItem('mhur_username');
+        window.dispatchEvent(new Event('storage'));
+        showToast("Sesión cerrada correctamente", "info");
+      }
+    });
+  };
+
+  const submitReport = async (reportData) => {
+    const formData = new FormData();
+    formData.append('description', reportData.description);
+    formData.append('username', username || 'Usuario Anónimo');
+    
+    if (reportData.image) {
+      formData.append('image', reportData.image);
+    }
+
+    const API_URL = import.meta.env.VITE_API_URL || 'https://mhur-backend.onrender.com';
+    
+    try {
+      const response = await fetch(`${API_URL}/api/reports`, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Error del servidor al enviar el reporte.');
+      }
+
+      showToast("¡Reporte enviado! Gracias por tu ayuda.", "success");
+      setShowReportModal(false);
+    } catch (err) {
+      showToast(err.message, "error");
+    }
+  };
+
   return (
     <Router>
       <div className="app-main-wrapper">
+        <CustomModal 
+          {...modalConfig} 
+          onClose={() => setModalConfig(prev => ({ ...prev, isOpen: false }))} 
+        />
+        
+        <ReportModal 
+          isOpen={showReportModal} 
+          onClose={() => setShowReportModal(false)}
+          onSubmit={submitReport}
+        />
+
         {/* ── Full Width Hero ── */}
         <div className="app-hero-banner-full">
           <img
@@ -203,7 +189,7 @@ function App() {
           />
         </div>
 
-        <Navigation />
+        <Navigation username={username} handleLogout={handleLogout} handleSetName={handleSetName} />
 
         <div className="app-container">
           <Routes>
@@ -238,6 +224,16 @@ function App() {
           </footer>
           
           <Toast />
+
+          {/* ── Botón Flotante de Reporte ── */}
+          <button 
+            className="floating-report-fab"
+            onClick={() => setShowReportModal(true)}
+            title="Reportar un error"
+          >
+            <FiLifeBuoy />
+            <span>Reportar Error</span>
+          </button>
         </div>
       </div>
     </Router>
