@@ -1,7 +1,7 @@
 // Deploy Build: v1.0.2 - Full Sync
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
-import { FiUser, FiDatabase, FiEdit, FiGlobe, FiLogOut, FiAlertTriangle, FiLifeBuoy } from 'react-icons/fi';
+import { FiUser, FiDatabase, FiEdit, FiGlobe, FiLogOut, FiAlertTriangle, FiLifeBuoy, FiGift } from 'react-icons/fi';
 import { FaTwitch, FaYoutube, FaTiktok, FaDiscord } from 'react-icons/fa';
 import clsx from 'clsx';
 import TunerCreator from './pages/TunerCreator';
@@ -57,8 +57,19 @@ function Navigation({ username, handleLogout, handleSetName }) {
             </nav>
           </div>
 
-          {/* Lado derecho: login / identificación */}
+          {/* Lado derecho: login / identificación + soporte */}
           <div className="header-right">
+            <a 
+              href="https://ko-fi.com/chutinrop" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="support-btn glass-panel"
+              title="Apoyar el proyecto (Ko-fi)"
+            >
+              <FiGift />
+              <span>Apoyar</span>
+            </a>
+
             {username ? (
               <div className="user-status">
                 <span className="user-greeting">

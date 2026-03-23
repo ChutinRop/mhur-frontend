@@ -347,6 +347,49 @@ body,
   font-weight: 600;
 }
 
+/* ── Support Button (Ko-fi) ── */
+.support-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem !important;
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, #ff5e62 0%, #ff9966 100%) !important;
+  border-radius: var(--radius-sm) !important;
+  border: none !important;
+  margin-right: 0.75rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(255, 94, 98, 0.3);
+  z-index: 10;
+}
+
+.support-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 94, 98, 0.4);
+  filter: brightness(1.1);
+}
+
+.support-btn svg {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .support-btn {
+    padding: 0.6rem !important;
+    margin-right: 0.5rem;
+    border-radius: 50% !important;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+  }
+  .support-btn span {
+    display: none;
+  }
+}
+
 /* ── Layout ── */
 .main-content {
   display: grid;
