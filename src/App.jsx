@@ -225,6 +225,16 @@ function App() {
                <Link to="/privacy" className="footer-link">Política de Privacidad</Link>
             </div>
             <p className="footer-copyright">© 2026 MHUR Tunning - Hecho por ChutinRop. Todos los derechos reservados.</p>
+            <p className="footer-disclaimer" style={{ 
+              fontSize: '0.7rem', 
+              color: 'rgba(255,255,255,0.3)', 
+              maxWidth: '800px', 
+              margin: '10px auto 0',
+              lineHeight: '1.4'
+            }}>
+              MHUR Tunning es una herramienta fan no oficial. No estamos afiliados con Bandai Namco Entertainment, Sony Interactive Entertainment ni K. Horikoshi. 
+              Todos los personajes, imágenes y marcas registradas son propiedad de sus respectivos dueños.
+            </p>
           </footer>
           
           <Toast />
