@@ -173,7 +173,7 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
 
     const getFixerMultiplier = (tuning, level) => {
       const t = Array.isArray(tuning) ? tuning[0] : tuning;
-      if (t?.habilidad === "Fixer") {
+      if (t?.habilidad === "Fixer" || t?.habilidad === "Reparador") {
         return parseFloat(t.niveles?.[String(level)]) || 1;
       }
       return 1;
@@ -195,10 +195,17 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
       if (isSpecial) {
         const t = Array.isArray(tuning) ? tuning[0] : tuning;
         const levelVal = t.niveles?.[String(level)];
+        
+        // ALIAS: Treat Reparador exactly as Fixer, and Brazo Oscuro as Brazo Azabache
+        let habName = t.habilidad === 'Reparador' ? 'Fixer' : t.habilidad;
+        if (habName === 'Brazo Oscuro') habName = 'Brazo Azabache';
+        
+        const habTipo = habName === 'Fixer' ? 'multiplicador' : t.tipo_valor;
+
         specials.push({
-          habilidad: t.habilidad,
+          habilidad: habName,
           value: levelVal,
-          tipo: t.habilidad === 'Fixer' ? 'multiplicador' : t.tipo_valor,
+          tipo: habTipo,
           descripcion: t.descripcion,
           subir_nivel: t.subir_nivel,
           rol: t.rol,

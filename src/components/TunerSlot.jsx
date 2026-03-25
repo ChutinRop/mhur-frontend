@@ -111,11 +111,20 @@ export default function TunerSlot({
           <div className="special-title-stack">
             {selectedTuning ? (
               Array.isArray(selectedTuning) ? (
-                selectedTuning.map((t, i) => (
-                  <MarqueeLine key={i} text={t.habilidad} isHeader={true} />
-                ))
+                selectedTuning.map((t, i) => {
+                  let text = t.habilidad === 'Reparador' ? 'Fixer' : t.habilidad;
+                  if (text === 'Brazo Oscuro') text = 'Brazo Azabache';
+                  return <MarqueeLine key={i} text={text} isHeader={true} />;
+                })
               ) : (
-                <MarqueeLine text={selectedTuning.habilidad} isHeader={true} />
+                <MarqueeLine 
+                  text={
+                    (selectedTuning.habilidad === 'Reparador' ? 'Fixer' : selectedTuning.habilidad) === 'Brazo Oscuro' 
+                    ? 'Brazo Azabache' 
+                    : (selectedTuning.habilidad === 'Reparador' ? 'Fixer' : selectedTuning.habilidad)
+                  } 
+                  isHeader={true} 
+                />
               )
             ) : (
               <h4>Habilidad especial de Tuning</h4>
@@ -195,11 +204,19 @@ export default function TunerSlot({
           <div className="slot-title-stack">
             {selectedTuning ? (
               Array.isArray(selectedTuning) ? (
-                selectedTuning.map((t, i) => (
-                  <MarqueeLine key={i} text={t.habilidad} />
-                ))
+                selectedTuning.map((t, i) => {
+                  let text = t.habilidad === 'Reparador' ? 'Fixer' : t.habilidad;
+                  if (text === 'Brazo Oscuro') text = 'Brazo Azabache';
+                  return <MarqueeLine key={i} text={text} />;
+                })
               ) : (
-                <MarqueeLine text={selectedTuning.habilidad} />
+                <MarqueeLine 
+                  text={
+                    (selectedTuning.habilidad === 'Reparador' ? 'Fixer' : selectedTuning.habilidad) === 'Brazo Oscuro' 
+                    ? 'Brazo Azabache' 
+                    : (selectedTuning.habilidad === 'Reparador' ? 'Fixer' : selectedTuning.habilidad)
+                  } 
+                />
               )
             ) : (
               <div className="slot-title-placeholder">Sin configurar</div>
