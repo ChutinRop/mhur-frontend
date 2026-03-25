@@ -30,16 +30,21 @@ function getSubType(name) {
 
 // ─── Helper: Categorize a skill name into a top-level group ───
 function categorizeSkill(name) {
-  if (name.includes('HP Máximo en CAÍDO')) return 'hp_caido';
-  if (name.includes('HP Máximo')) return 'hp_maximo';
-  if (name.includes('GP Máximo')) return 'gp_maximo';
-  if (name.includes('Velocidad de Rastreo')) return 'velocidad_rastreo';
+  // Specific defense and attack skills first to avoid false positives in general HP
   if (name.includes('Defensa de HP')) return 'defensa_hp';
   if (name.includes('Defensa de Habilidad Peculiar')) return 'defensa_habilidad';
   if (name.includes('Defensa Cuerpo a Cuerpo')) return 'defensa_cac';
   if (name.includes('Poder de Ataque de Habilidad Peculiar')) return 'ataque_habilidad';
   if (name.includes('Poder de Ataque de HP')) return 'ataque_hp';
   if (name.includes('Poder de Ataque Cuerpo a Cuerpo') || name.includes('Poder de Ataque de GP')) return 'ataque_cac';
+  
+  // HP specifics
+  if (name.includes('HP Máximo en CAÍDO')) return 'hp_caido';
+  if (name.includes('HP Máximo')) return 'hp_maximo';
+  
+  // Others
+  if (name.includes('GP Máximo')) return 'gp_maximo';
+  if (name.includes('Velocidad de Rastreo')) return 'velocidad_rastreo';
   if (name.includes('Recarga de Habilidad Peculiar') || name.includes('Recarga de PU') || name.includes('Recarga de Acción Especial')) return 'recarga';
   if (name.includes('Velocidad de Dash')) return 'velocidad_dash';
   if (name.includes('Velocidad de Desplazamiento')) return 'velocidad_desp';
@@ -136,28 +141,49 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
 
   const toggle = (key) => setExpanded(prev => ({ ...prev, [key]: !prev[key] }));
 
+  const getSpecialLabel = (subirNivel, tipo) => {
+    if (!subirNivel) {
+      if (tipo === 'tiempo_frames') return 'Tiempo';
+      if (tipo === 'multiplicador') return 'Efecto';
+      return 'Valor';
+    }
+    const lower = subirNivel.toLowerCase();
+    if (lower.includes('restauración')) return 'Restauración';
+    if (lower.includes('carga')) return 'Carga';
+    if (lower.includes('activación')) return 'Activación';
+    if (lower.includes('tiempo')) return 'Tiempo';
+    if (lower.includes('efecto')) return 'Efecto';
+    if (lower.includes('distancia')) return 'Distancia';
+    if (lower.includes('daño')) return 'Daño';
+    if (lower.includes('atención')) return 'Aviso';
+    
+    if (tipo === 'tiempo_frames') return 'Tiempo';
+    if (tipo === 'multiplicador') return 'Efecto';
+    return 'Valor';
+  };
+
   // Build the aggregated stats: { categoryKey: { subType: { total, unit, entries[] } } }
   const aggregated = useMemo(() => {
     const agg = {};
     const specials = [];
 
-    // 1. Detect Reparador (Monoma) multipliers for each column
+    // 1. Detect Fixer (Monoma) multipliers for each column
     let leftMultiplier = 1;
     let rightMultiplier = 1;
 
-    const getReparadorMultiplier = (tuning, level) => {
+    const getFixerMultiplier = (tuning, level) => {
       const t = Array.isArray(tuning) ? tuning[0] : tuning;
-      if (t?.habilidad === "Reparador") {
+      if (t?.habilidad === "Fixer") {
         return parseFloat(t.niveles?.[String(level)]) || 1;
       }
       return 1;
     };
 
     if (characterBuild['left-special']) {
-      leftMultiplier = getReparadorMultiplier(characterBuild['left-special'], slotLevels['left-special'] || 1);
+      leftMultiplier = getFixerMultiplier(characterBuild['left-special'], slotLevels['left-special'] || 1);
     }
     if (characterBuild['right-special']) {
-      rightMultiplier = getReparadorMultiplier(characterBuild['right-special'], slotLevels['right-special'] || 1);
+      rightMultiplier = getFixerMultiplier(characterBuild['right-special'], slotLevels['right-special'] || 1);
     }
 
     Object.entries(characterBuild).forEach(([slotId, tuning]) => {
@@ -167,14 +193,14 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
       const isSpecial = slotId === 'left-special' || slotId === 'right-special';
 
       if (isSpecial) {
-        // Special tunings: just show name + current level value
         const t = Array.isArray(tuning) ? tuning[0] : tuning;
         const levelVal = t.niveles?.[String(level)];
         specials.push({
           habilidad: t.habilidad,
           value: levelVal,
-          tipo: t.tipo_valor,
+          tipo: t.habilidad === 'Fixer' ? 'multiplicador' : t.tipo_valor,
           descripcion: t.descripcion,
+          subir_nivel: t.subir_nivel,
           rol: t.rol,
         });
         return;
@@ -194,7 +220,6 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
         const subType = getSubType(t.habilidad);
         const numVal = parseNumeric(levelVal) * colMultiplier;
         
-        // Default logic: Speed and Recharge are percentages, others are units.
         let unit = 'unidades';
         if (catKey === 'recarga' || catKey.startsWith('velocidad')) {
           unit = '%';
@@ -215,7 +240,7 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
     const sign = num >= 0 ? '+' : '';
     if (unit === 'unidades') {
       const displayVal = Number.isInteger(num) ? num : num.toFixed(1);
-      return `${sign}${displayVal} u.`;
+      return `${sign}${displayVal} in.`;
     }
     return `${sign}${num.toFixed(1)}%`;
   };
@@ -304,9 +329,24 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
                     {s.rol && <span className="stat-special-role">({s.rol === 'Universal' ? 'Universal' : (s.rol === 'Héroe' ? 'Héroe' : 'Villano')})</span>}
                   </div>
                   <div className="stat-special-detail">
-                    {s.tipo === 'tiempo_frames'
-                      ? `Duración: ${formatTimeDisplay(s.value)}`
-                      : `Valor: ${s.value}`}
+                    {(() => {
+                      const label = getSpecialLabel(s.subir_nivel, s.tipo);
+                      const isTime = s.tipo === 'tiempo_frames' && !['Restauración', 'Carga', 'Daño', 'Efecto'].includes(label);
+                      
+                      return (
+                        <>
+                          <span className="detail-label">{label}:</span>{' '}
+                          <span className="detail-value">
+                            {isTime
+                              ? formatTimeDisplay(s.value)
+                              : s.tipo === 'multiplicador'
+                                ? `x${s.value.toFixed(1)}`
+                                : s.value
+                            }
+                          </span>
+                        </>
+                      );
+                    })()}
                   </div>
                   <div className="stat-special-desc">{s.descripcion}</div>
                 </div>

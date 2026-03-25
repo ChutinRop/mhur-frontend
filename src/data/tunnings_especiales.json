@@ -1,1333 +1,1335 @@
 [
     {
-        "personaje": "Izuku Midoriya",
-        "rol": "Héroe",
-        "clase": "Tanque",
-        "habilidad": "Rescate Civil Veloz",
-        "descripcion": "Durante un tiempo determinado tras el inicio de la batalla, reduce el tiempo necesario para rescatar/amenazar a un civil.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 60,
-            "2": 90,
-            "3": 120,
-            "4": 150,
-            "5": 180,
-            "6": 370,
-            "7": 490,
-            "8": 610,
-            "9": 730,
-            "10": 850,
-            "11": 1200
-        },
-        "sub_efectos": {
-            "1": 0.2
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Izuku Midoriya",
+        "rol":  "Héroe",
+        "clase":  "Tanque",
+        "habilidad":  "Rescate Civil Veloz",
+        "descripcion":  "Durante un tiempo determinado tras el inicio de la batalla, reduce el tiempo necesario para rescatar/amenazar a un civil.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  60,
+                        "2":  90,
+                        "3":  120,
+                        "4":  150,
+                        "5":  180,
+                        "6":  370,
+                        "7":  490,
+                        "8":  610,
+                        "9":  730,
+                        "10":  850,
+                        "11":  1200
+                    },
+        "sub_efectos":  {
+                            "1":  0.2
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Izuku Midoriya (Full Bullet)",
-        "rol": "Héroe",
-        "clase": "Daño",
-        "habilidad": "Localizador de Kota",
-        "descripcion": "Te muestra la ubicación de Kota en el Escenario y el Mapa.",
-        "subir_nivel": "Sube de nivel para reducir el tiempo de activación del efecto.",
-        "niveles": {
-            "1": 60,
-            "2": 56,
-            "3": 52,
-            "4": 48,
-            "5": 44,
-            "6": 24,
-            "7": 20,
-            "8": 16,
-            "9": 12,
-            "10": 8,
-            "11": 0
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Izuku Midoriya (Full Bullet)",
+        "rol":  "Héroe",
+        "clase":  "Daño",
+        "habilidad":  "Localizador de Kota",
+        "descripcion":  "Te muestra la ubicación de Kota en el Escenario y el Mapa.",
+        "subir_nivel":  "Sube de nivel para reducir el tiempo de activación del efecto.",
+        "niveles":  {
+                        "1":  60,
+                        "2":  56,
+                        "3":  52,
+                        "4":  48,
+                        "5":  44,
+                        "6":  24,
+                        "7":  20,
+                        "8":  16,
+                        "9":  12,
+                        "10":  8,
+                        "11":  0
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Katsuki Bakugo",
-        "rol": "Héroe",
-        "clase": "Daño",
-        "habilidad": "Carga PU Aplastante",
-        "descripcion": "Llena tu Medidor PU/PC cuando derrotes a un oponente.",
-        "subir_nivel": "Sube de nivel para aumentar la cantidad de carga.",
-        "niveles": {
-            "1": "-1.0%",
-            "2": "-2.0%",
-            "3": "-3.0%",
-            "4": "-4.0%",
-            "5": "-5.0%",
-            "6": "-15.0%",
-            "7": "-16.0%",
-            "8": "-17.0%",
-            "9": "-18.0%",
-            "10": "-19.0%",
-            "11": "-20.0%"
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "porcentaje"
+        "personaje":  "Katsuki Bakugo",
+        "rol":  "Héroe",
+        "clase":  "Daño",
+        "habilidad":  "Carga PU Aplastante",
+        "descripcion":  "Llena tu Medidor PU/PC cuando derrotes a un oponente.",
+        "subir_nivel":  "Sube de nivel para aumentar la cantidad de carga.",
+        "niveles":  {
+                        "1":  "-1.0%",
+                        "2":  "-2.0%",
+                        "3":  "-3.0%",
+                        "4":  "-4.0%",
+                        "5":  "-5.0%",
+                        "6":  "-15.0%",
+                        "7":  "-16.0%",
+                        "8":  "-17.0%",
+                        "9":  "-18.0%",
+                        "10":  "-19.0%",
+                        "11":  "-20.0%"
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "porcentaje"
     },
     {
-        "personaje": "Katsuki Bakugo (Ametralladora)",
-        "rol": "Héroe",
-        "clase": "Velocista",
-        "habilidad": "Turbo PU",
-        "descripcion": "Cuando derritas a un oponente, llena tu Medidor PU/PC y te permite correr por paredes durante un tiempo determinado.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 6,
-            "2": 7,
-            "3": 8,
-            "4": 9,
-            "5": 10,
-            "6": 20,
-            "7": 25,
-            "8": 30,
-            "9": 35,
-            "10": 40,
-            "11": 50
-        },
-        "sub_efectos": {
-            "1": 0.95
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Katsuki Bakugo (Ametralladora)",
+        "rol":  "Héroe",
+        "clase":  "Velocista",
+        "habilidad":  "Turbo PU",
+        "descripcion":  "Cuando derritas a un oponente, llena tu Medidor PU/PC y te permite correr por paredes durante un tiempo determinado.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  6,
+                        "2":  7,
+                        "3":  8,
+                        "4":  9,
+                        "5":  10,
+                        "6":  20,
+                        "7":  25,
+                        "8":  30,
+                        "9":  35,
+                        "10":  40,
+                        "11":  50
+                    },
+        "sub_efectos":  {
+                            "1":  0.95
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Ochaco Uraraka",
-        "rol": "Héroe",
-        "clase": "Velocista",
-        "habilidad": "Rapidez de Venganza",
-        "descripcion": "Cuando tu Guardia se rompe, aumenta tu velocidad de movimiento y te permite correr por paredes durante un tiempo determinado.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 3,
-            "2": 3.5,
-            "3": 4,
-            "4": 4.5,
-            "5": 5,
-            "6": 10,
-            "7": 11.5,
-            "8": 13,
-            "9": 14.5,
-            "10": 16,
-            "11": 20
-        },
-        "sub_efectos": {
-            "1": 1.2
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Ochaco Uraraka",
+        "rol":  "Héroe",
+        "clase":  "Velocista",
+        "habilidad":  "Rapidez de Venganza",
+        "descripcion":  "Cuando tu Guardia se rompe, aumenta tu velocidad de movimiento y te permite correr por paredes durante un tiempo determinado.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  3,
+                        "2":  3.5,
+                        "3":  4,
+                        "4":  4.5,
+                        "5":  5,
+                        "6":  10,
+                        "7":  11.5,
+                        "8":  13,
+                        "9":  14.5,
+                        "10":  16,
+                        "11":  20
+                    },
+        "sub_efectos":  {
+                            "1":  1.2
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Ochaco Uraraka (Satélites Cero)",
-        "rol": "Héroe",
-        "clase": "Tanque",
-        "habilidad": "Salto Espacial",
-        "descripcion": "Durante un tiempo determinado tras el inicio de la batalla, los saltos verticales son mejorados.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 60,
-            "2": 90,
-            "3": 120,
-            "4": 150,
-            "5": 180,
-            "6": 370,
-            "7": 490,
-            "8": 610,
-            "9": 730,
-            "10": 850,
-            "11": 1200
-        },
-        "sub_efectos": {
-            "1": 1,
-            "2": 1100
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Ochaco Uraraka (Satélites Cero)",
+        "rol":  "Héroe",
+        "clase":  "Tanque",
+        "habilidad":  "Salto Espacial",
+        "descripcion":  "Durante un tiempo determinado tras el inicio de la batalla, los saltos verticales son mejorados.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  60,
+                        "2":  90,
+                        "3":  120,
+                        "4":  150,
+                        "5":  180,
+                        "6":  370,
+                        "7":  490,
+                        "8":  610,
+                        "9":  730,
+                        "10":  850,
+                        "11":  1200
+                    },
+        "sub_efectos":  {
+                            "1":  1,
+                            "2":  1100
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Shoto Todoroki",
-        "rol": "Héroe",
-        "clase": "Daño",
-        "habilidad": "Resistir Calor",
-        "descripcion": "Cancela inmediatamente todos los efectos de quemadura.",
-        "subir_nivel": "Sube de nivel para reducir el tiempo de activación.",
-        "niveles": {
-            "1": 70,
-            "2": 65,
-            "3": 60,
-            "4": 55,
-            "5": 50,
-            "6": 25,
-            "7": 21,
-            "8": 17,
-            "9": 14,
-            "10": 10,
-            "11": 5
-        },
-        "sub_efectos": {
-            "1": 0.01
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Shoto Todoroki",
+        "rol":  "Héroe",
+        "clase":  "Daño",
+        "habilidad":  "Resistir Calor",
+        "descripcion":  "Cancela inmediatamente todos los efectos de quemadura.",
+        "subir_nivel":  "Sube de nivel para reducir el tiempo de activación.",
+        "niveles":  {
+                        "1":  70,
+                        "2":  65,
+                        "3":  60,
+                        "4":  55,
+                        "5":  50,
+                        "6":  25,
+                        "7":  21,
+                        "8":  17,
+                        "9":  14,
+                        "10":  10,
+                        "11":  5
+                    },
+        "sub_efectos":  {
+                            "1":  0.01
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Shoto Todoroki (Colmillo de Hielo Viento Llama)",
-        "rol": "Héroe",
-        "clase": "Técnico",
-        "habilidad": "Resistir Frío",
-        "descripcion": "Cancela inmediatamente todos los efectos de congelación.",
-        "subir_nivel": "Sube de nivel para reducir el tiempo de activación.",
-        "niveles": {
-            "1": 70,
-            "2": 65,
-            "3": 60,
-            "4": 55,
-            "5": 50,
-            "6": 25,
-            "7": 21,
-            "8": 17,
-            "9": 14,
-            "10": 10,
-            "11": 5
-        },
-        "sub_efectos": {
-            "1": 0.1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Shoto Todoroki (Colmillo de Hielo Viento Llama)",
+        "rol":  "Héroe",
+        "clase":  "Técnico",
+        "habilidad":  "Resistir Frío",
+        "descripcion":  "Cancela inmediatamente todos los efectos de congelación.",
+        "subir_nivel":  "Sube de nivel para reducir el tiempo de activación.",
+        "niveles":  {
+                        "1":  70,
+                        "2":  65,
+                        "3":  60,
+                        "4":  55,
+                        "5":  50,
+                        "6":  25,
+                        "7":  21,
+                        "8":  17,
+                        "9":  14,
+                        "10":  10,
+                        "11":  5
+                    },
+        "sub_efectos":  {
+                            "1":  0.1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Tenya Iida",
-        "rol": "Héroe",
-        "clase": "Velocista",
-        "habilidad": "Corredor de Muros",
-        "descripcion": "Te permite correr por paredes durante un tiempo determinado tras el inicio de la batalla.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 60,
-            "2": 90,
-            "3": 120,
-            "4": 150,
-            "5": 180,
-            "6": 370,
-            "7": 490,
-            "8": 610,
-            "9": 730,
-            "10": 850,
-            "11": 1200
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Tenya Iida",
+        "rol":  "Héroe",
+        "clase":  "Velocista",
+        "habilidad":  "Corredor de Muros",
+        "descripcion":  "Te permite correr por paredes durante un tiempo determinado tras el inicio de la batalla.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  60,
+                        "2":  90,
+                        "3":  120,
+                        "4":  150,
+                        "5":  180,
+                        "6":  370,
+                        "7":  490,
+                        "8":  610,
+                        "9":  730,
+                        "10":  850,
+                        "11":  1200
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Tsuyu Asui",
-        "rol": "Héroe",
-        "clase": "Velocista",
-        "habilidad": "Camuflaje",
-        "descripcion": "Te vuelve invisible durante un tiempo determinado si un aliado cae.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 30,
-            "2": 32,
-            "3": 34,
-            "4": 36,
-            "5": 38,
-            "6": 50,
-            "7": 58,
-            "8": 66,
-            "9": 74,
-            "10": 82,
-            "11": 90
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Tsuyu Asui",
+        "rol":  "Héroe",
+        "clase":  "Velocista",
+        "habilidad":  "Camuflaje",
+        "descripcion":  "Te vuelve invisible durante un tiempo determinado si un aliado cae.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  30,
+                        "2":  32,
+                        "3":  34,
+                        "4":  36,
+                        "5":  38,
+                        "6":  50,
+                        "7":  58,
+                        "8":  66,
+                        "9":  74,
+                        "10":  82,
+                        "11":  90
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Denki Kaminari",
-        "rol": "Héroe",
-        "clase": "Daño",
-        "habilidad": "Resistir Descarga",
-        "descripcion": "Cancela inmediatamente todos los efectos de aturdimiento.",
-        "subir_nivel": "Sube de nivel para reducir el tiempo de activación.",
-        "niveles": {
-            "1": 70,
-            "2": 65,
-            "3": 60,
-            "4": 55,
-            "5": 50,
-            "6": 25,
-            "7": 21,
-            "8": 17,
-            "9": 14,
-            "10": 10,
-            "11": 5
-        },
-        "sub_efectos": {
-            "1": 0.1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Denki Kaminari",
+        "rol":  "Héroe",
+        "clase":  "Daño",
+        "habilidad":  "Resistir Descarga",
+        "descripcion":  "Cancela inmediatamente todos los efectos de aturdimiento.",
+        "subir_nivel":  "Sube de nivel para reducir el tiempo de activación.",
+        "niveles":  {
+                        "1":  70,
+                        "2":  65,
+                        "3":  60,
+                        "4":  55,
+                        "5":  50,
+                        "6":  25,
+                        "7":  21,
+                        "8":  17,
+                        "9":  14,
+                        "10":  10,
+                        "11":  5
+                    },
+        "sub_efectos":  {
+                            "1":  0.1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Denki Kaminari (Relámpago)",
-        "rol": "Héroe",
-        "clase": "Técnico",
-        "habilidad": "Electrificación",
-        "descripcion": "Electrifica a los enemigos durante un tiempo determinado cuando rompes su Guardia.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 3,
-            "2": 3.5,
-            "3": 4,
-            "4": 4.5,
-            "5": 5,
-            "6": 10,
-            "7": 11,
-            "8": 12,
-            "9": 13,
-            "10": 14,
-            "11": 15
-        },
-        "sub_efectos": {
-            "1": 0.8
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Denki Kaminari (Relámpago)",
+        "rol":  "Héroe",
+        "clase":  "Técnico",
+        "habilidad":  "Electrificación",
+        "descripcion":  "Electrifica a los enemigos durante un tiempo determinado cuando rompes su Guardia.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  3,
+                        "2":  3.5,
+                        "3":  4,
+                        "4":  4.5,
+                        "5":  5,
+                        "6":  10,
+                        "7":  11,
+                        "8":  12,
+                        "9":  13,
+                        "10":  14,
+                        "11":  15
+                    },
+        "sub_efectos":  {
+                            "1":  0.8
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Eijiro Kirishima",
-        "rol": "Héroe",
-        "clase": "Tanque",
-        "habilidad": "Indestructible",
-        "descripcion": "Cuando derritas a un oponente, te permite resistir el retroceso de los ataques enemigos durante un tiempo determinado.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 10,
-            "2": 10.5,
-            "3": 11,
-            "4": 11.5,
-            "5": 12,
-            "6": 15,
-            "7": 16,
-            "8": 17,
-            "9": 18,
-            "10": 19,
-            "11": 20
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Eijiro Kirishima",
+        "rol":  "Héroe",
+        "clase":  "Tanque",
+        "habilidad":  "Indestructible",
+        "descripcion":  "Cuando derritas a un oponente, te permite resistir el retroceso de los ataques enemigos durante un tiempo determinado.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  10,
+                        "2":  10.5,
+                        "3":  11,
+                        "4":  11.5,
+                        "5":  12,
+                        "6":  15,
+                        "7":  16,
+                        "8":  17,
+                        "9":  18,
+                        "10":  19,
+                        "11":  20
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Eijiro Kirishima (Propulsión Roja)",
-        "rol": "Héroe",
-        "clase": "Daño",
-        "habilidad": "Fuerza de Voluntad",
-        "descripcion": "Te deja con 1 HP tras recibir un ataque fatal.",
-        "subir_nivel": "Sube de nivel para reducir el tiempo de activación.",
-        "niveles": {
-            "1": 720,
-            "2": 600,
-            "3": 540,
-            "4": 480,
-            "5": 420,
-            "6": 210,
-            "7": 180,
-            "8": 150,
-            "9": 120,
-            "10": 90,
-            "11": 60
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Eijiro Kirishima (Propulsión Roja)",
+        "rol":  "Héroe",
+        "clase":  "Daño",
+        "habilidad":  "Fuerza de Voluntad",
+        "descripcion":  "Te deja con 1 HP tras recibir un ataque fatal.",
+        "subir_nivel":  "Sube de nivel para reducir el tiempo de activación.",
+        "niveles":  {
+                        "1":  720,
+                        "2":  600,
+                        "3":  540,
+                        "4":  480,
+                        "5":  420,
+                        "6":  210,
+                        "7":  180,
+                        "8":  150,
+                        "9":  120,
+                        "10":  90,
+                        "11":  60
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Momo Yaoyorozu",
-        "rol": "Héroe",
-        "clase": "Apoyo",
-        "habilidad": "Análisis de Campo",
-        "descripcion": "Te muestra la ubicación de la próxima Zona Segura.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 40,
-            "2": 50,
-            "3": 60,
-            "4": 70,
-            "5": 80,
-            "6": 205,
-            "7": 330,
-            "8": 455,
-            "9": 565,
-            "10": 685,
-            "11": 805
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Momo Yaoyorozu",
+        "rol":  "Héroe",
+        "clase":  "Apoyo",
+        "habilidad":  "Análisis de Campo",
+        "descripcion":  "Te muestra la ubicación de la próxima Zona Segura.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  40,
+                        "2":  50,
+                        "3":  60,
+                        "4":  70,
+                        "5":  80,
+                        "6":  205,
+                        "7":  330,
+                        "8":  455,
+                        "9":  565,
+                        "10":  685,
+                        "11":  805
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Fumikage Tokoyami",
-        "rol": "Héroe",
-        "clase": "Tanque",
-        "habilidad": "Brazo Oscuro",
-        "descripcion": "Los Ataques Finales restauran HP, y el retroceso de ataques enemigos se previene mientras atacas.",
-        "subir_nivel": "Sube de nivel para aumentar la cantidad de restauración.",
-        "niveles": {
-            "1": 20,
-            "2": 25,
-            "3": 30,
-            "4": 35,
-            "5": 40,
-            "6": 70,
-            "7": 80,
-            "8": 90,
-            "9": 100,
-            "10": 110,
-            "11": 125
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Fumikage Tokoyami",
+        "rol":  "Héroe",
+        "clase":  "Tanque",
+        "habilidad":  "Brazo Oscuro",
+        "descripcion":  "Los Ataques Finales restauran HP, y el retroceso de ataques enemigos se previene mientras atacas.",
+        "subir_nivel":  "Sube de nivel para aumentar la cantidad de restauración.",
+        "niveles":  {
+                        "1":  20,
+                        "2":  25,
+                        "3":  30,
+                        "4":  35,
+                        "5":  40,
+                        "6":  70,
+                        "7":  80,
+                        "8":  90,
+                        "9":  100,
+                        "10":  110,
+                        "11":  125
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "All Might",
-        "rol": "Héroe",
-        "clase": "Tanque",
-        "habilidad": "Símbolo de Paz",
-        "descripcion": "Aumenta tu Medidor PU/PC al inicio de la batalla.",
-        "subir_nivel": "Sube de nivel para aumentar la cantidad de carga.",
-        "niveles": {
-            "1": "-97.0%",
-            "2": "-95.0%",
-            "3": "-93.0%",
-            "4": "-91.0%",
-            "5": "-85.0%",
-            "6": "-60.0%",
-            "7": "-56.0%",
-            "8": "-52.0%",
-            "9": "-48.0%",
-            "10": "-44.0%",
-            "11": "-40.0%"
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "porcentaje"
+        "personaje":  "All Might",
+        "rol":  "Héroe",
+        "clase":  "Tanque",
+        "habilidad":  "Símbolo de Paz",
+        "descripcion":  "Aumenta tu Medidor PU/PC al inicio de la batalla.",
+        "subir_nivel":  "Sube de nivel para aumentar la cantidad de carga.",
+        "niveles":  {
+                        "1":  "-97.0%",
+                        "2":  "-95.0%",
+                        "3":  "-93.0%",
+                        "4":  "-91.0%",
+                        "5":  "-85.0%",
+                        "6":  "-60.0%",
+                        "7":  "-56.0%",
+                        "8":  "-52.0%",
+                        "9":  "-48.0%",
+                        "10":  "-44.0%",
+                        "11":  "-40.0%"
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "porcentaje"
     },
     {
-        "personaje": "All Might (Ametralladora)",
-        "rol": "Héroe",
-        "clase": "Velocista",
-        "habilidad": "Forma Muscular",
-        "descripcion": "Activar PU/PC restaura HP y otorga resistencia al retroceso mientras está activo.",
-        "subir_nivel": "Sube de nivel para aumentar la cantidad de restauración.",
-        "niveles": {
-            "1": 20,
-            "2": 25,
-            "3": 30,
-            "4": 35,
-            "5": 40,
-            "6": 70,
-            "7": 80,
-            "8": 90,
-            "9": 100,
-            "10": 110,
-            "11": 125
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "All Might (Ametralladora)",
+        "rol":  "Héroe",
+        "clase":  "Velocista",
+        "habilidad":  "Forma Muscular",
+        "descripcion":  "Activar PU/PC restaura HP y otorga resistencia al retroceso mientras está activo.",
+        "subir_nivel":  "Sube de nivel para aumentar la cantidad de restauración.",
+        "niveles":  {
+                        "1":  20,
+                        "2":  25,
+                        "3":  30,
+                        "4":  35,
+                        "5":  40,
+                        "6":  70,
+                        "7":  80,
+                        "8":  90,
+                        "9":  100,
+                        "10":  110,
+                        "11":  125
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Shota Aizawa",
-        "rol": "Héroe",
-        "clase": "Técnico",
-        "habilidad": "Reabastecimiento Veloz",
-        "descripcion": "Durante un tiempo determinado tras el inicio de la batalla, reduce el tiempo necesario para usar Objetos de Recuperación de GP.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 60,
-            "2": 90,
-            "3": 120,
-            "4": 150,
-            "5": 180,
-            "6": 370,
-            "7": 490,
-            "8": 610,
-            "9": 730,
-            "10": 850,
-            "11": 1200
-        },
-        "sub_efectos": {
-            "1": 0.7
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Shota Aizawa",
+        "rol":  "Héroe",
+        "clase":  "Técnico",
+        "habilidad":  "Reabastecimiento Veloz",
+        "descripcion":  "Durante un tiempo determinado tras el inicio de la batalla, reduce el tiempo necesario para usar Objetos de Recuperación de GP.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  60,
+                        "2":  90,
+                        "3":  120,
+                        "4":  150,
+                        "5":  180,
+                        "6":  370,
+                        "7":  490,
+                        "8":  610,
+                        "9":  730,
+                        "10":  850,
+                        "11":  1200
+                    },
+        "sub_efectos":  {
+                            "1":  0.7
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Tomura Shigaraki",
-        "rol": "Villano",
-        "clase": "Daño",
-        "habilidad": "Golpe de Venganza",
-        "descripcion": "Aumenta tu Poder de Ataque durante un tiempo determinado si tu Guardia se rompe.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 5,
-            "2": 5.5,
-            "3": 6,
-            "4": 6.5,
-            "5": 7,
-            "6": 14,
-            "7": 15,
-            "8": 16,
-            "9": 17,
-            "10": 18,
-            "11": 20
-        },
-        "sub_efectos": {
-            "1": 1.1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Tomura Shigaraki",
+        "rol":  "Villano",
+        "clase":  "Daño",
+        "habilidad":  "Golpe de Venganza",
+        "descripcion":  "Aumenta tu Poder de Ataque durante un tiempo determinado si tu Guardia se rompe.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  5,
+                        "2":  5.5,
+                        "3":  6,
+                        "4":  6.5,
+                        "5":  7,
+                        "6":  14,
+                        "7":  15,
+                        "8":  16,
+                        "9":  17,
+                        "10":  18,
+                        "11":  20
+                    },
+        "sub_efectos":  {
+                            "1":  1.1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Tomura Shigaraki (Catástrofe)",
-        "rol": "Villano",
-        "clase": "Tanque",
-        "habilidad": "Fragilización",
-        "descripcion": "Inflige BAJA de Defensa durante un tiempo determinado a los oponentes que golpeas con ataques cuerpo a cuerpo.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 2,
-            "2": 3,
-            "3": 4,
-            "4": 5,
-            "5": 6,
-            "6": 10,
-            "7": 11,
-            "8": 12,
-            "9": 13,
-            "10": 14,
-            "11": 15
-        },
-        "sub_efectos": {
-            "1": 1.1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Tomura Shigaraki (Catástrofe)",
+        "rol":  "Villano",
+        "clase":  "Tanque",
+        "habilidad":  "Fragilización",
+        "descripcion":  "Inflige BAJA de Defensa durante un tiempo determinado a los oponentes que golpeas con ataques cuerpo a cuerpo.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  2,
+                        "2":  3,
+                        "3":  4,
+                        "4":  5,
+                        "5":  6,
+                        "6":  10,
+                        "7":  11,
+                        "8":  12,
+                        "9":  13,
+                        "10":  14,
+                        "11":  15
+                    },
+        "sub_efectos":  {
+                            "1":  1.1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Tomura Shigaraki (Quiebre de los Mil Brazos)",
-        "rol": "Villano",
-        "clase": "Técnico",
-        "habilidad": "Hiper Regeneración",
-        "descripcion": "Romper la Guardia de un oponente recupera GP y HP gradualmente por un tiempo limitado.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 3,
-            "2": 4,
-            "3": 5,
-            "4": 6,
-            "5": 7,
-            "6": 10,
-            "7": 11,
-            "8": 12,
-            "9": 13,
-            "10": 14,
-            "11": 15
-        },
-        "sub_efectos": {
-            "1": 20,
-            "2": 4
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Tomura Shigaraki (Quiebre de los Mil Brazos)",
+        "rol":  "Villano",
+        "clase":  "Técnico",
+        "habilidad":  "Hiper Regeneración",
+        "descripcion":  "Romper la Guardia de un oponente recupera GP y HP gradualmente por un tiempo limitado.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  3,
+                        "2":  4,
+                        "3":  5,
+                        "4":  6,
+                        "5":  7,
+                        "6":  10,
+                        "7":  11,
+                        "8":  12,
+                        "9":  13,
+                        "10":  14,
+                        "11":  15
+                    },
+        "sub_efectos":  {
+                            "1":  20,
+                            "2":  4
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "All For One",
-        "rol": "Villano",
-        "clase": "Técnico",
-        "habilidad": "Impulso de Recarga de Ataque Especial",
-        "descripcion": "Aumenta tu Velocidad de Recarga de Acción Especial durante un tiempo determinado tras derribar a un oponente.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 5,
-            "2": 5.5,
-            "3": 6,
-            "4": 6.5,
-            "5": 7,
-            "6": 14,
-            "7": 15,
-            "8": 16,
-            "9": 17,
-            "10": 18,
-            "11": 20
-        },
-        "sub_efectos": {
-            "1": 5
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "All For One",
+        "rol":  "Villano",
+        "clase":  "Técnico",
+        "habilidad":  "Impulso de Recarga de Ataque Especial",
+        "descripcion":  "Aumenta tu Velocidad de Recarga de Acción Especial durante un tiempo determinado tras derribar a un oponente.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  5,
+                        "2":  5.5,
+                        "3":  6,
+                        "4":  6.5,
+                        "5":  7,
+                        "6":  14,
+                        "7":  15,
+                        "8":  16,
+                        "9":  17,
+                        "10":  18,
+                        "11":  20
+                    },
+        "sub_efectos":  {
+                            "1":  5
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Dabi",
-        "rol": "Villano",
-        "clase": "Técnico",
-        "habilidad": "Técnica de Venganza",
-        "descripcion": "Aumenta tu Velocidad de Recarga durante un tiempo determinado si tu Guardia se rompe.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 5,
-            "2": 5.5,
-            "3": 6,
-            "4": 6.5,
-            "5": 7,
-            "6": 14,
-            "7": 15,
-            "8": 16,
-            "9": 17,
-            "10": 18,
-            "11": 20
-        },
-        "sub_efectos": {
-            "1": 1.5
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Dabi",
+        "rol":  "Villano",
+        "clase":  "Técnico",
+        "habilidad":  "Técnica de Venganza",
+        "descripcion":  "Aumenta tu Velocidad de Recarga durante un tiempo determinado si tu Guardia se rompe.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  5,
+                        "2":  5.5,
+                        "3":  6,
+                        "4":  6.5,
+                        "5":  7,
+                        "6":  14,
+                        "7":  15,
+                        "8":  16,
+                        "9":  17,
+                        "10":  18,
+                        "11":  20
+                    },
+        "sub_efectos":  {
+                            "1":  1.5
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Dabi (Antorcha Loca)",
-        "rol": "Villano",
-        "clase": "Daño",
-        "habilidad": "Auto-Revive Veloz",
-        "descripcion": "Reduce el tiempo que tardas en recuperarte del estado CAÍDO.",
-        "subir_nivel": "Sube de nivel para reducir aún más.",
-        "niveles": {
-            "1": 1,
-            "2": 2,
-            "3": 3,
-            "4": 4,
-            "5": 5,
-            "6": 6,
-            "7": 7,
-            "8": 8,
-            "9": 9,
-            "10": 10,
-            "11": 12
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Dabi (Antorcha Loca)",
+        "rol":  "Villano",
+        "clase":  "Daño",
+        "habilidad":  "Auto-Revive Veloz",
+        "descripcion":  "Reduce el tiempo que tardas en recuperarte del estado CAÍDO.",
+        "subir_nivel":  "Sube de nivel para reducir aún más.",
+        "niveles":  {
+                        "1":  1,
+                        "2":  2,
+                        "3":  3,
+                        "4":  4,
+                        "5":  5,
+                        "6":  6,
+                        "7":  7,
+                        "8":  8,
+                        "9":  9,
+                        "10":  10,
+                        "11":  12
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Himiko Toga",
-        "rol": "Villano",
-        "clase": "Técnico",
-        "habilidad": "Vampiro de HP",
-        "descripcion": "Restaura tu HP cuando derritas a un oponente.",
-        "subir_nivel": "Sube de nivel para aumentar la cantidad de restauración.",
-        "niveles": {
-            "1": 50,
-            "2": 54,
-            "3": 58,
-            "4": 62,
-            "5": 66,
-            "6": 90,
-            "7": 95,
-            "8": 100,
-            "9": 105,
-            "10": 110,
-            "11": 125
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Himiko Toga",
+        "rol":  "Villano",
+        "clase":  "Técnico",
+        "habilidad":  "Vampiro de HP",
+        "descripcion":  "Restaura tu HP cuando derritas a un oponente.",
+        "subir_nivel":  "Sube de nivel para aumentar la cantidad de restauración.",
+        "niveles":  {
+                        "1":  50,
+                        "2":  54,
+                        "3":  58,
+                        "4":  62,
+                        "5":  66,
+                        "6":  90,
+                        "7":  95,
+                        "8":  100,
+                        "9":  105,
+                        "10":  110,
+                        "11":  125
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Himiko Toga (Danza del Aguijón)",
-        "rol": "Villano",
-        "clase": "Velocista",
-        "habilidad": "Vampiro de GP",
-        "descripcion": "Restaura tu GP cuando derritas a un oponente.",
-        "subir_nivel": "Sube de nivel para aumentar la cantidad de restauración.",
-        "niveles": {
-            "1": 20,
-            "2": 24,
-            "3": 28,
-            "4": 32,
-            "5": 36,
-            "6": 60,
-            "7": 65,
-            "8": 70,
-            "9": 75,
-            "10": 80,
-            "11": 95
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Himiko Toga (Danza del Aguijón)",
+        "rol":  "Villano",
+        "clase":  "Velocista",
+        "habilidad":  "Vampiro de GP",
+        "descripcion":  "Restaura tu GP cuando derritas a un oponente.",
+        "subir_nivel":  "Sube de nivel para aumentar la cantidad de restauración.",
+        "niveles":  {
+                        "1":  20,
+                        "2":  24,
+                        "3":  28,
+                        "4":  32,
+                        "5":  36,
+                        "6":  60,
+                        "7":  65,
+                        "8":  70,
+                        "9":  75,
+                        "10":  80,
+                        "11":  95
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Endeavor",
-        "rol": "Héroe",
-        "clase": "Daño",
-        "habilidad": "PU Potenciado",
-        "descripcion": "Aumenta el Poder de Ataque de tu ataque PU/PC, pero reduce su duración.",
-        "subir_nivel": "Sube de nivel para aumentar la duración activa del PU/PC.",
-        "niveles": {
-            "1": 3.5,
-            "2": 4,
-            "3": 4.5,
-            "4": 5,
-            "5": 5.5,
-            "6": 7.5,
-            "7": 8,
-            "8": 8.5,
-            "9": 9,
-            "10": 9.5,
-            "11": 10
-        },
-        "sub_efectos": {
-            "1": 1.5
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Endeavor",
+        "rol":  "Héroe",
+        "clase":  "Daño",
+        "habilidad":  "PU Potenciado",
+        "descripcion":  "Aumenta el Poder de Ataque de tu ataque PU/PC, pero reduce su duración.",
+        "subir_nivel":  "Sube de nivel para aumentar la duración activa del PU/PC.",
+        "niveles":  {
+                        "1":  3.5,
+                        "2":  4,
+                        "3":  4.5,
+                        "4":  5,
+                        "5":  5.5,
+                        "6":  7.5,
+                        "7":  8,
+                        "8":  8.5,
+                        "9":  9,
+                        "10":  9.5,
+                        "11":  10
+                    },
+        "sub_efectos":  {
+                            "1":  1.5
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Endeavor (Puño Infernal)",
-        "rol": "Héroe",
-        "clase": "Tanque",
-        "habilidad": "Quemadura Total",
-        "descripcion": "Aumenta la duración activa del PU/PC.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 2,
-            "2": 3,
-            "3": 4,
-            "4": 5,
-            "5": 6,
-            "6": 10,
-            "7": 11,
-            "8": 12,
-            "9": 13,
-            "10": 14,
-            "11": 15
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Endeavor (Puño Infernal)",
+        "rol":  "Héroe",
+        "clase":  "Tanque",
+        "habilidad":  "Quemadura Total",
+        "descripcion":  "Aumenta la duración activa del PU/PC.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  2,
+                        "2":  3,
+                        "3":  4,
+                        "4":  5,
+                        "5":  6,
+                        "6":  10,
+                        "7":  11,
+                        "8":  12,
+                        "9":  13,
+                        "10":  14,
+                        "11":  15
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Mirio Togata",
-        "rol": "Héroe",
-        "clase": "Velocista",
-        "habilidad": "Cuasi-Permeación",
-        "descripcion": "Te vuelve invencible durante un tiempo determinado tras el inicio de la batalla. El efecto termina si intentas atacar.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 10,
-            "2": 11,
-            "3": 12,
-            "4": 13,
-            "5": 14,
-            "6": 24,
-            "7": 26,
-            "8": 28,
-            "9": 30,
-            "10": 32,
-            "11": 40
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Mirio Togata",
+        "rol":  "Héroe",
+        "clase":  "Velocista",
+        "habilidad":  "Cuasi-Permeación",
+        "descripcion":  "Te vuelve invencible durante un tiempo determinado tras el inicio de la batalla. El efecto termina si intentas atacar.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  10,
+                        "2":  11,
+                        "3":  12,
+                        "4":  13,
+                        "5":  14,
+                        "6":  24,
+                        "7":  26,
+                        "8":  28,
+                        "9":  30,
+                        "10":  32,
+                        "11":  40
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Mirio Togata (Contraataque Puro)",
-        "rol": "Héroe",
-        "clase": "Técnico",
-        "habilidad": "Permeación Crítica",
-        "descripcion": "Gana invencibilidad temporal si tu Guardia se rompe. El efecto termina si intentas atacar.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 1.3,
-            "2": 1.8,
-            "3": 2.3,
-            "4": 2.8,
-            "5": 3.3,
-            "6": 4.5,
-            "7": 5,
-            "8": 5.5,
-            "9": 6,
-            "10": 6.5,
-            "11": 7
-        },
-        "sub_efectos": {
-            "1": 1.3,
-            "2": 30
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Mirio Togata (Contraataque Puro)",
+        "rol":  "Héroe",
+        "clase":  "Técnico",
+        "habilidad":  "Permeación Crítica",
+        "descripcion":  "Gana invencibilidad temporal si tu Guardia se rompe. El efecto termina si intentas atacar.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  1.3,
+                        "2":  1.8,
+                        "3":  2.3,
+                        "4":  2.8,
+                        "5":  3.3,
+                        "6":  4.5,
+                        "7":  5,
+                        "8":  5.5,
+                        "9":  6,
+                        "10":  6.5,
+                        "11":  7
+                    },
+        "sub_efectos":  {
+                            "1":  1.3,
+                            "2":  30
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Nejire Hado",
-        "rol": "Héroe",
-        "clase": "Técnico",
-        "habilidad": "Salto Espiral",
-        "descripcion": "Te otorga el salto de Nejire Hado durante un tiempo determinado tras el inicio de la batalla.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 60,
-            "2": 90,
-            "3": 120,
-            "4": 150,
-            "5": 180,
-            "6": 370,
-            "7": 490,
-            "8": 610,
-            "9": 730,
-            "10": 850,
-            "11": 1200
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Nejire Hado",
+        "rol":  "Héroe",
+        "clase":  "Técnico",
+        "habilidad":  "Salto Espiral",
+        "descripcion":  "Te otorga el salto de Nejire Hado durante un tiempo determinado tras el inicio de la batalla.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  60,
+                        "2":  90,
+                        "3":  120,
+                        "4":  150,
+                        "5":  180,
+                        "6":  370,
+                        "7":  490,
+                        "8":  610,
+                        "9":  730,
+                        "10":  850,
+                        "11":  1200
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Nejire Hado (Hada)",
-        "rol": "Héroe",
-        "clase": "Apoyo",
-        "habilidad": "Fortuna Retorcida",
-        "descripcion": "Al usar un Objeto de Recuperación de equipo, hay una probabilidad de que el objeto no se consuma.",
-        "subir_nivel": "La probabilidad de activación aumenta al subir de nivel.",
-        "niveles": {
-            "1": 5,
-            "2": 10,
-            "3": 15,
-            "4": 20,
-            "5": 25,
-            "6": 30,
-            "7": 35,
-            "8": 40,
-            "9": 45,
-            "10": 50,
-            "11": 55
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Nejire Hado (Hada)",
+        "rol":  "Héroe",
+        "clase":  "Apoyo",
+        "habilidad":  "Fortuna Retorcida",
+        "descripcion":  "Al usar un Objeto de Recuperación de equipo, hay una probabilidad de que el objeto no se consuma.",
+        "subir_nivel":  "La probabilidad de activación aumenta al subir de nivel.",
+        "niveles":  {
+                        "1":  5,
+                        "2":  10,
+                        "3":  15,
+                        "4":  20,
+                        "5":  25,
+                        "6":  30,
+                        "7":  35,
+                        "8":  40,
+                        "9":  45,
+                        "10":  50,
+                        "11":  55
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Tamaki Amajiki",
-        "rol": "Héroe",
-        "clase": "Daño",
-        "habilidad": "Manifestación de Habilidad",
-        "descripcion": "Aumenta la duración activa de las habilidades al usar una Carta de Habilidad Peculiar.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": "+10.0%",
-            "2": "+15.0%",
-            "3": "+20.0%",
-            "4": "+25.0%",
-            "5": "+30.0%",
-            "6": "+35.0%",
-            "7": "+40.0%",
-            "8": "+45.0%",
-            "9": "+50.0%",
-            "10": "+55.0%",
-            "11": "+60.0%"
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "porcentaje"
+        "personaje":  "Tamaki Amajiki",
+        "rol":  "Héroe",
+        "clase":  "Daño",
+        "habilidad":  "Manifestación de Habilidad",
+        "descripcion":  "Aumenta la duración activa de las habilidades al usar una Carta de Habilidad Peculiar.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  "+10.0%",
+                        "2":  "+15.0%",
+                        "3":  "+20.0%",
+                        "4":  "+25.0%",
+                        "5":  "+30.0%",
+                        "6":  "+35.0%",
+                        "7":  "+40.0%",
+                        "8":  "+45.0%",
+                        "9":  "+50.0%",
+                        "10":  "+55.0%",
+                        "11":  "+60.0%"
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "porcentaje"
     },
     {
-        "personaje": "Overhaul",
-        "rol": "Villano",
-        "clase": "Apoyo",
-        "habilidad": "Revivir Reforzado",
-        "descripcion": "Restaura el GP de los aliados que revives.",
-        "subir_nivel": "Sube de nivel para aumentar la cantidad de restauración.",
-        "niveles": {
-            "1": 10,
-            "2": 20,
-            "3": 30,
-            "4": 40,
-            "5": 50,
-            "6": 100,
-            "7": 125,
-            "8": 150,
-            "9": 175,
-            "10": 200,
-            "11": 250
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Overhaul",
+        "rol":  "Villano",
+        "clase":  "Apoyo",
+        "habilidad":  "Revivir Reforzado",
+        "descripcion":  "Restaura el GP de los aliados que revives.",
+        "subir_nivel":  "Sube de nivel para aumentar la cantidad de restauración.",
+        "niveles":  {
+                        "1":  10,
+                        "2":  20,
+                        "3":  30,
+                        "4":  40,
+                        "5":  50,
+                        "6":  100,
+                        "7":  125,
+                        "8":  150,
+                        "9":  175,
+                        "10":  200,
+                        "11":  250
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Overhaul (Precipicio Maldito)",
-        "rol": "Villano",
-        "clase": "Tanque",
-        "habilidad": "Rechazo PU",
-        "descripcion": "Al activar PU/PC, cualquier oponente lanzado recibe daño.",
-        "subir_nivel": "El daño aumenta al subir de nivel.",
-        "niveles": {
-            "1": 10,
-            "2": 15,
-            "3": 20,
-            "4": 25,
-            "5": 30,
-            "6": 60,
-            "7": 70,
-            "8": 80,
-            "9": 90,
-            "10": 100,
-            "11": 110
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Overhaul (Precipicio Maldito)",
+        "rol":  "Villano",
+        "clase":  "Tanque",
+        "habilidad":  "Rechazo PU",
+        "descripcion":  "Al activar PU/PC, cualquier oponente lanzado recibe daño.",
+        "subir_nivel":  "El daño aumenta al subir de nivel.",
+        "niveles":  {
+                        "1":  10,
+                        "2":  15,
+                        "3":  20,
+                        "4":  25,
+                        "5":  30,
+                        "6":  60,
+                        "7":  70,
+                        "8":  80,
+                        "9":  90,
+                        "10":  100,
+                        "11":  110
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Twice",
-        "rol": "Villano",
-        "clase": "Velocista",
-        "habilidad": "Duplicación de Cartas",
-        "descripcion": "Durante un tiempo determinado tras el inicio de la batalla, aumenta el número de Cartas de Subida de Nivel que sueltan los oponentes al caer.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 60,
-            "2": 90,
-            "3": 120,
-            "4": 150,
-            "5": 180,
-            "6": 370,
-            "7": 490,
-            "8": 610,
-            "9": 730,
-            "10": 850,
-            "11": 1200
-        },
-        "sub_efectos": {
-            "1": 99
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Twice",
+        "rol":  "Villano",
+        "clase":  "Velocista",
+        "habilidad":  "Duplicación de Cartas",
+        "descripcion":  "Durante un tiempo determinado tras el inicio de la batalla, aumenta el número de Cartas de Subida de Nivel que sueltan los oponentes al caer.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  60,
+                        "2":  90,
+                        "3":  120,
+                        "4":  150,
+                        "5":  180,
+                        "6":  370,
+                        "7":  490,
+                        "8":  610,
+                        "9":  730,
+                        "10":  850,
+                        "11":  1200
+                    },
+        "sub_efectos":  {
+                            "1":  99
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Mr. Compress",
-        "rol": "Villano",
-        "clase": "Apoyo",
-        "habilidad": "Magia de Compresión",
-        "descripcion": "Aumenta el número de Bebidas de Soporte que puedes llevar.",
-        "subir_nivel": "Sube de nivel para aumentar aún más.",
-        "niveles": {
-            "1": 2,
-            "2": 3,
-            "3": 4,
-            "4": 5,
-            "5": 6,
-            "6": 10,
-            "7": 11,
-            "8": 12,
-            "9": 13,
-            "10": 14,
-            "11": 15
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Mr. Compress",
+        "rol":  "Villano",
+        "clase":  "Apoyo",
+        "habilidad":  "Magia de Compresión",
+        "descripcion":  "Aumenta el número de Bebidas de Soporte que puedes llevar.",
+        "subir_nivel":  "Sube de nivel para aumentar aún más.",
+        "niveles":  {
+                        "1":  2,
+                        "2":  3,
+                        "3":  4,
+                        "4":  5,
+                        "5":  6,
+                        "6":  10,
+                        "7":  11,
+                        "8":  12,
+                        "9":  13,
+                        "10":  14,
+                        "11":  15
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Hawks",
-        "rol": "Héroe",
-        "clase": "Velocista",
-        "habilidad": "Percepción",
-        "descripcion": "Te permite ver la ubicación de los oponentes que golpeas con ataques cuerpo a cuerpo durante un tiempo determinado.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 5,
-            "2": 6,
-            "3": 7,
-            "4": 8,
-            "5": 9,
-            "6": 10,
-            "7": 11,
-            "8": 12,
-            "9": 13,
-            "10": 14,
-            "11": 15
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Hawks",
+        "rol":  "Héroe",
+        "clase":  "Velocista",
+        "habilidad":  "Percepción",
+        "descripcion":  "Te permite ver la ubicación de los oponentes que golpeas con ataques cuerpo a cuerpo durante un tiempo determinado.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  5,
+                        "2":  6,
+                        "3":  7,
+                        "4":  8,
+                        "5":  9,
+                        "6":  10,
+                        "7":  11,
+                        "8":  12,
+                        "9":  13,
+                        "10":  14,
+                        "11":  15
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Hawks (Viento Cortante)",
-        "rol": "Héroe",
-        "clase": "Daño",
-        "habilidad": "Viento Extra",
-        "descripcion": "Cuando el Nivel de tu Habilidad Peculiar aumenta, se llena tu Medidor PU/PC.",
-        "subir_nivel": "Sube de nivel para reducir el tiempo de activación.",
-        "niveles": {
-            "1": 90,
-            "2": 85,
-            "3": 80,
-            "4": 75,
-            "5": 70,
-            "6": 40,
-            "7": 35,
-            "8": 30,
-            "9": 25,
-            "10": 15,
-            "11": 9
-        },
-        "sub_efectos": {
-            "1": 0.9
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Hawks (Viento Cortante)",
+        "rol":  "Héroe",
+        "clase":  "Daño",
+        "habilidad":  "Viento Extra",
+        "descripcion":  "Cuando el Nivel de tu Habilidad Peculiar aumenta, se llena tu Medidor PU/PC.",
+        "subir_nivel":  "Sube de nivel para reducir el tiempo de activación.",
+        "niveles":  {
+                        "1":  90,
+                        "2":  85,
+                        "3":  80,
+                        "4":  75,
+                        "5":  70,
+                        "6":  40,
+                        "7":  35,
+                        "8":  30,
+                        "9":  25,
+                        "10":  15,
+                        "11":  9
+                    },
+        "sub_efectos":  {
+                            "1":  0.9
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Itsuka Kendo",
-        "rol": "Héroe",
-        "clase": "Tanque",
-        "habilidad": "Disposición Fraterna",
-        "descripcion": "Aumenta tu Defensa durante un tiempo determinado tras aterrizar un ataque cuerpo a cuerpo en un oponente.",
-        "subir_nivel": "Sube de nivel para reducir el tiempo de activación.",
-        "niveles": {
-            "1": 60,
-            "2": 55,
-            "3": 50,
-            "4": 45,
-            "5": 40,
-            "6": 25,
-            "7": 22,
-            "8": 19,
-            "9": 16,
-            "10": 13,
-            "11": 10
-        },
-        "sub_efectos": {
-            "1": 0.7,
-            "2": 10
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Itsuka Kendo",
+        "rol":  "Héroe",
+        "clase":  "Tanque",
+        "habilidad":  "Disposición Fraterna",
+        "descripcion":  "Aumenta tu Defensa durante un tiempo determinado tras aterrizar un ataque cuerpo a cuerpo en un oponente.",
+        "subir_nivel":  "Sube de nivel para reducir el tiempo de activación.",
+        "niveles":  {
+                        "1":  60,
+                        "2":  55,
+                        "3":  50,
+                        "4":  45,
+                        "5":  40,
+                        "6":  25,
+                        "7":  22,
+                        "8":  19,
+                        "9":  16,
+                        "10":  13,
+                        "11":  10
+                    },
+        "sub_efectos":  {
+                            "1":  0.7,
+                            "2":  10
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Itsuka Kendo (Golpe de Palma Doble)",
-        "rol": "Héroe",
-        "clase": "Daño",
-        "habilidad": "Puño de Hierro",
-        "descripcion": "Aterrizar un ataque cuerpo a cuerpo impulsa el Poder de Ataque por un corto tiempo.",
-        "subir_nivel": "Sube de nivel para reducir el tiempo de activación.",
-        "niveles": {
-            "1": 60,
-            "2": 55,
-            "3": 50,
-            "4": 45,
-            "5": 40,
-            "6": 25,
-            "7": 22,
-            "8": 19,
-            "9": 16,
-            "10": 13,
-            "11": 10
-        },
-        "sub_efectos": {
-            "1": 1.05,
-            "2": 10
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Itsuka Kendo (Golpe de Palma Doble)",
+        "rol":  "Héroe",
+        "clase":  "Daño",
+        "habilidad":  "Puño de Hierro",
+        "descripcion":  "Aterrizar un ataque cuerpo a cuerpo impulsa el Poder de Ataque por un corto tiempo.",
+        "subir_nivel":  "Sube de nivel para reducir el tiempo de activación.",
+        "niveles":  {
+                        "1":  60,
+                        "2":  55,
+                        "3":  50,
+                        "4":  45,
+                        "5":  40,
+                        "6":  25,
+                        "7":  22,
+                        "8":  19,
+                        "9":  16,
+                        "10":  13,
+                        "11":  10
+                    },
+        "sub_efectos":  {
+                            "1":  1.05,
+                            "2":  10
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Mt. Lady",
-        "rol": "Héroe",
-        "clase": "Tanque",
-        "habilidad": "Asalto de Venganza",
-        "descripcion": "Aumenta tu Defensa durante un tiempo determinado si tu Guardia se rompe.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 5,
-            "2": 5.5,
-            "3": 6,
-            "4": 6.5,
-            "5": 7,
-            "6": 14,
-            "7": 15,
-            "8": 16,
-            "9": 17,
-            "10": 18,
-            "11": 20
-        },
-        "sub_efectos": {
-            "1": 0.8
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Mt. Lady",
+        "rol":  "Héroe",
+        "clase":  "Tanque",
+        "habilidad":  "Asalto de Venganza",
+        "descripcion":  "Aumenta tu Defensa durante un tiempo determinado si tu Guardia se rompe.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  5,
+                        "2":  5.5,
+                        "3":  6,
+                        "4":  6.5,
+                        "5":  7,
+                        "6":  14,
+                        "7":  15,
+                        "8":  16,
+                        "9":  17,
+                        "10":  18,
+                        "11":  20
+                    },
+        "sub_efectos":  {
+                            "1":  0.8
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Cementoss",
-        "rol": "Héroe",
-        "clase": "Apoyo",
-        "habilidad": "Apoyo de Venganza",
-        "descripcion": "Restaura el HP de los aliados en un área a tu alrededor durante un tiempo determinado si tu Guardia se rompe.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 3,
-            "2": 3.5,
-            "3": 4,
-            "4": 4.5,
-            "5": 5,
-            "6": 10,
-            "7": 11,
-            "8": 12,
-            "9": 13,
-            "10": 14,
-            "11": 15
-        },
-        "sub_efectos": {
-            "1": 7
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Cementoss",
+        "rol":  "Héroe",
+        "clase":  "Apoyo",
+        "habilidad":  "Apoyo de Venganza",
+        "descripcion":  "Restaura el HP de los aliados en un área a tu alrededor durante un tiempo determinado si tu Guardia se rompe.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  3,
+                        "2":  3.5,
+                        "3":  4,
+                        "4":  4.5,
+                        "5":  5,
+                        "6":  10,
+                        "7":  11,
+                        "8":  12,
+                        "9":  13,
+                        "10":  14,
+                        "11":  15
+                    },
+        "sub_efectos":  {
+                            "1":  7
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Ibara Shiozaki",
-        "rol": "Héroe",
-        "clase": "Apoyo",
-        "habilidad": "Protección Divina",
-        "descripcion": "Durante un tiempo determinado tras el inicio de la batalla, reduce el tiempo que tarda en abrirse una Caja de Objetos (Grande).",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 60,
-            "2": 90,
-            "3": 120,
-            "4": 150,
-            "5": 180,
-            "6": 370,
-            "7": 490,
-            "8": 610,
-            "9": 730,
-            "10": 850,
-            "11": 1200
-        },
-        "sub_efectos": {
-            "1": 0.2
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Ibara Shiozaki",
+        "rol":  "Héroe",
+        "clase":  "Apoyo",
+        "habilidad":  "Protección Divina",
+        "descripcion":  "Durante un tiempo determinado tras el inicio de la batalla, reduce el tiempo que tarda en abrirse una Caja de Objetos (Grande).",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  60,
+                        "2":  90,
+                        "3":  120,
+                        "4":  150,
+                        "5":  180,
+                        "6":  370,
+                        "7":  490,
+                        "8":  610,
+                        "9":  730,
+                        "10":  850,
+                        "11":  1200
+                    },
+        "sub_efectos":  {
+                            "1":  0.2
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Kurogiri",
-        "rol": "Villano",
-        "clase": "Apoyo",
-        "habilidad": "Curación de Distorsión",
-        "descripcion": "Durante un tiempo determinado tras el inicio de la batalla, usar Objetos de Recuperación de HP también restaura un poco el HP de tus aliados.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 60,
-            "2": 90,
-            "3": 120,
-            "4": 150,
-            "5": 180,
-            "6": 370,
-            "7": 490,
-            "8": 610,
-            "9": 730,
-            "10": 850,
-            "11": 1200
-        },
-        "sub_efectos": {
-            "1": 25,
-            "2": 80
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Kurogiri",
+        "rol":  "Villano",
+        "clase":  "Apoyo",
+        "habilidad":  "Curación de Distorsión",
+        "descripcion":  "Durante un tiempo determinado tras el inicio de la batalla, usar Objetos de Recuperación de HP también restaura un poco el HP de tus aliados.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  60,
+                        "2":  90,
+                        "3":  120,
+                        "4":  150,
+                        "5":  180,
+                        "6":  370,
+                        "7":  490,
+                        "8":  610,
+                        "9":  730,
+                        "10":  850,
+                        "11":  1200
+                    },
+        "sub_efectos":  {
+                            "1":  25,
+                            "2":  80
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Neito Monoma",
-        "rol": "Héroe",
-        "clase": "Técnico",
-        "habilidad": "Reparador",
-        "descripcion": "Potencia los efectos de la Habilidad de Tuning en la misma columna que el slot equipado.",
-        "subir_nivel": "Sube de nivel para aumentar el efecto.",
-        "niveles": {
-            "1": 1.1,
-            "2": 1.2,
-            "3": 1.3,
-            "4": 1.4,
-            "5": 1.5,
-            "6": 1.6,
-            "7": 1.7,
-            "8": 1.8,
-            "9": 1.9,
-            "10": 2,
-            "11": 2.1
-        },
-        "sub_efectos": {
-            "1": 1
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Neito Monoma",
+        "rol":  "Héroe",
+        "clase":  "Técnico",
+        "habilidad":  "Fixer",
+        "descripcion":  "Potencia los efectos de la Habilidad de Tuning en la misma columna que el slot equipado.",
+        "subir_nivel":  "Sube de nivel para aumentar el efecto.",
+        "niveles":  {
+                        "1":  1.1,
+                        "2":  1.2,
+                        "3":  1.3,
+                        "4":  1.4,
+                        "5":  1.5,
+                        "6":  1.6,
+                        "7":  1.7,
+                        "8":  1.8,
+                        "9":  1.9,
+                        "10":  2,
+                        "11":  2.1
+                    },
+        "sub_efectos":  {
+                            "1":  1
+                        },
+        "tipo_valor":  "multiplicador"
     },
     {
-        "personaje": "Hitoshi Shinso",
-        "rol": "Héroe",
-        "clase": "Daño",
-        "habilidad": "Golpe de Trance",
-        "descripcion": "Aterrizar un ataque cuerpo a cuerpo pone al enemigo en estado de lavado de cerebro durante un tiempo determinado.",
-        "subir_nivel": "Sube de nivel para reducir el tiempo de activación.",
-        "niveles": {
-            "1": 60,
-            "2": 55,
-            "3": 50,
-            "4": 45,
-            "5": 40,
-            "6": 25,
-            "7": 22,
-            "8": 19,
-            "9": 16,
-            "10": 13,
-            "11": 10
-        },
-        "sub_efectos": {
-            "1": 6
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Hitoshi Shinso",
+        "rol":  "Héroe",
+        "clase":  "Daño",
+        "habilidad":  "Golpe de Trance",
+        "descripcion":  "Aterrizar un ataque cuerpo a cuerpo pone al enemigo en estado de lavado de cerebro durante un tiempo determinado.",
+        "subir_nivel":  "Sube de nivel para reducir el tiempo de activación.",
+        "niveles":  {
+                        "1":  60,
+                        "2":  55,
+                        "3":  50,
+                        "4":  45,
+                        "5":  40,
+                        "6":  25,
+                        "7":  22,
+                        "8":  19,
+                        "9":  16,
+                        "10":  13,
+                        "11":  10
+                    },
+        "sub_efectos":  {
+                            "1":  6
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Present Mic",
-        "rol": "Héroe",
-        "clase": "Daño",
-        "habilidad": "Voz PU Atronadora",
-        "descripcion": "Aturde a los oponentes a tu alrededor con un sonido estruendoso cuando usas tu PU/PC.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 4,
-            "2": 4.5,
-            "3": 5,
-            "4": 5.5,
-            "5": 6,
-            "6": 9,
-            "7": 9.5,
-            "8": 10,
-            "9": 10.5,
-            "10": 11,
-            "11": 12
-        },
-        "sub_efectos": {
-            "1": 1.5
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Present Mic",
+        "rol":  "Héroe",
+        "clase":  "Daño",
+        "habilidad":  "Voz PU Atronadora",
+        "descripcion":  "Aturde a los oponentes a tu alrededor con un sonido estruendoso cuando usas tu PU/PC.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  4,
+                        "2":  4.5,
+                        "3":  5,
+                        "4":  5.5,
+                        "5":  6,
+                        "6":  9,
+                        "7":  9.5,
+                        "8":  10,
+                        "9":  10.5,
+                        "10":  11,
+                        "11":  12
+                    },
+        "sub_efectos":  {
+                            "1":  1.5
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Lady Nagant",
-        "rol": "Villano",
-        "clase": "Daño",
-        "habilidad": "Recarga Rápida",
-        "descripcion": "Derritar a un oponente con la Habilidad Peculiar α acelera su recarga por un tiempo limitado.",
-        "subir_nivel": "Sube de nivel para aumentar el tiempo del efecto.",
-        "niveles": {
-            "1": 2,
-            "2": 2.5,
-            "3": 3,
-            "4": 3.5,
-            "5": 4,
-            "6": 7,
-            "7": 7.5,
-            "8": 8,
-            "9": 8.5,
-            "10": 9,
-            "11": 10
-        },
-        "sub_efectos": {
-            "1": 10
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Lady Nagant",
+        "rol":  "Villano",
+        "clase":  "Daño",
+        "habilidad":  "Recarga Rápida",
+        "descripcion":  "Derritar a un oponente con la Habilidad Peculiar α acelera su recarga por un tiempo limitado.",
+        "subir_nivel":  "Sube de nivel para aumentar el tiempo del efecto.",
+        "niveles":  {
+                        "1":  2,
+                        "2":  2.5,
+                        "3":  3,
+                        "4":  3.5,
+                        "5":  4,
+                        "6":  7,
+                        "7":  7.5,
+                        "8":  8,
+                        "9":  8.5,
+                        "10":  9,
+                        "11":  10
+                    },
+        "sub_efectos":  {
+                            "1":  10
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "All Might Acorazado",
-        "rol": "Héroe",
-        "clase": "Técnico",
-        "habilidad": "Fundamento de la Paz",
-        "descripcion": "Rescata o amenaza ciudadanos, o rescata aliados para subir de nivel tus Habilidades Peculiares.",
-        "subir_nivel": "Sube de nivel para reducir la activación del efecto.",
-        "niveles": {
-            "1": 300,
-            "2": 290,
-            "3": 280,
-            "4": 270,
-            "5": 260,
-            "6": 200,
-            "7": 180,
-            "8": 160,
-            "9": 140,
-            "10": 120,
-            "11": 100
-        },
-        "sub_efectos": {},
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "All Might Acorazado",
+        "rol":  "Héroe",
+        "clase":  "Técnico",
+        "habilidad":  "Fundamento de la Paz",
+        "descripcion":  "Rescata o amenaza ciudadanos, o rescata aliados para subir de nivel tus Habilidades Peculiares.",
+        "subir_nivel":  "Sube de nivel para reducir la activación del efecto.",
+        "niveles":  {
+                        "1":  300,
+                        "2":  290,
+                        "3":  280,
+                        "4":  270,
+                        "5":  260,
+                        "6":  200,
+                        "7":  180,
+                        "8":  160,
+                        "9":  140,
+                        "10":  120,
+                        "11":  100
+                    },
+        "sub_efectos":  {
+
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "All For One (Edad Juvenil)",
-        "rol": "Villano",
-        "clase": "Tanque",
-        "habilidad": "Liberación del Factor Peculiar",
-        "descripcion": "Romper la Guardia de un oponente aumenta la Velocidad de Recarga por un tiempo limitado.",
-        "subir_nivel": "Sube de nivel para reducir el tiempo de activación.",
-        "niveles": {
-            "1": 120,
-            "2": 110,
-            "3": 100,
-            "4": 90,
-            "5": 80,
-            "6": 60,
-            "7": 55,
-            "8": 50,
-            "9": 45,
-            "10": 40,
-            "11": 35
-        },
-        "sub_efectos": {
-            "1": 10,
-            "2": 2
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "All For One (Edad Juvenil)",
+        "rol":  "Villano",
+        "clase":  "Tanque",
+        "habilidad":  "Liberación del Factor Peculiar",
+        "descripcion":  "Romper la Guardia de un oponente aumenta la Velocidad de Recarga por un tiempo limitado.",
+        "subir_nivel":  "Sube de nivel para reducir el tiempo de activación.",
+        "niveles":  {
+                        "1":  120,
+                        "2":  110,
+                        "3":  100,
+                        "4":  90,
+                        "5":  80,
+                        "6":  60,
+                        "7":  55,
+                        "8":  50,
+                        "9":  45,
+                        "10":  40,
+                        "11":  35
+                    },
+        "sub_efectos":  {
+                            "1":  10,
+                            "2":  2
+                        },
+        "tipo_valor":  "tiempo_frames"
     },
     {
-        "personaje": "Izuku Midoriya OFA",
-        "rol": "Héroe",
-        "clase": "Velocista",
-        "habilidad": "Aceleración",
-        "descripcion": "Aterrizar un ataque cuerpo a cuerpo aumenta la Velocidad de Movimiento y la Velocidad de Ataque por un tiempo limitado.",
-        "subir_nivel": "Sube de nivel para reducir el tiempo de activación.",
-        "niveles": {
-            "1": 240,
-            "2": 220,
-            "3": 200,
-            "4": 180,
-            "5": 160,
-            "6": 120,
-            "7": 100,
-            "8": 80,
-            "9": 60,
-            "10": 40,
-            "11": 20
-        },
-        "sub_efectos": {
-            "1": 30,
-            "2": 1.2
-        },
-        "tipo_valor": "tiempo_frames"
+        "personaje":  "Izuku Midoriya OFA",
+        "rol":  "Héroe",
+        "clase":  "Velocista",
+        "habilidad":  "Aceleración",
+        "descripcion":  "Aterrizar un ataque cuerpo a cuerpo aumenta la Velocidad de Movimiento y la Velocidad de Ataque por un tiempo limitado.",
+        "subir_nivel":  "Sube de nivel para reducir el tiempo de activación.",
+        "niveles":  {
+                        "1":  240,
+                        "2":  220,
+                        "3":  200,
+                        "4":  180,
+                        "5":  160,
+                        "6":  120,
+                        "7":  100,
+                        "8":  80,
+                        "9":  60,
+                        "10":  40,
+                        "11":  20
+                    },
+        "sub_efectos":  {
+                            "1":  30,
+                            "2":  1.2
+                        },
+        "tipo_valor":  "tiempo_frames"
     }
 ]
