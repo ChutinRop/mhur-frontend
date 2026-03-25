@@ -1304,5 +1304,34 @@
                 "tipo_valor": "porcentaje"
             }
         ]
+    },
+    {
+        "personaje": "Star and Stripe",
+        "rol": "Héroe",
+        "clase": "Daño",
+        "habilidades": [
+            {
+                "habilidad": "Poder de ataque cuerpo a cuerpo de Estrella y Rayas +",
+                "descripcion": "Aumenta el daño infligido en los ataques cuerpo a cuerpo.",
+                "niveles": {
+                    "1": "+1.0%",
+                    "2": "+1.5%",
+                    "3": "+2.0%",
+                    "4": "+2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            },
+            {
+                "habilidad": "Defensa de PV+",
+                "descripcion": "Disminuye el daño recibido a los PV",
+                "niveles": {
+                    "1": "-1.0%",
+                    "2": "-1.5%",
+                    "3": "-2.0%",
+                    "4": "-2.5%"
+                },
+                "tipo_valor": "porcentaje"
+            }
+        ]
     }
 ]

@@ -65,6 +65,7 @@ const characterImages = {
   'Hitoshi Shinso|Héroe|Daño|especial':                             '/assets/Images/Tunning Especial/Hitoshi Shinso Agresor (Especial).png',
   'Present Mic|Héroe|Daño|especial':                                '/assets/Images/Tunning Especial/Present Mic Agresor (Especial).png',
   'Lady Nagant|Villano|Daño|especial':                              '/assets/Images/Tunning Especial/Lady Nagant agresor (Especial).png',
+  'Star and Stripe|Héroe|Daño|especial':                          '/assets/Images/Tunning Especial/Starn And Stripe  (Especial).png',
 
   // ────────────────────────────────────────────────────────────────────────────
   // TUNNINGS NORMALES
@@ -125,6 +126,7 @@ const characterImages = {
   'Hitoshi Shinso|Héroe|Daño|normal':                               '/assets/Images/Tunning Normal/Hitoshi Shinso Agresor (Normal).png',
   'Present Mic|Héroe|Daño|normal':                                  '/assets/Images/Tunning Normal/Present Mic Agresor (Normal).png',
   'Lady Nagant|Villano|Daño|normal':                                '/assets/Images/Tunning Normal/Lady Nagant Agresor (Normal).png',
+  'Star and Stripe|Héroe|Daño|normal':                            '/assets/Images/Tunning Normal/Star and Stripe.png',
 };
 
 /**

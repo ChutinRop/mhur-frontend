@@ -1,4 +1,4 @@
-.toast-container {
+.toast-container-v2 {
   position: fixed;
   bottom: 2rem;
   left: 50%;
@@ -7,23 +7,61 @@
   pointer-events: none;
 }
 
-.toast-content {
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
+.toast-content-v2 {
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  min-height: 64px;
+  min-width: 320px;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-  background: rgba(15, 15, 25, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 1.25rem;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+  background: rgba(20, 20, 30, 0.98);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   animation: toastIn 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
+.toast-logo-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.25rem;
+}
+
+.toast-custom-logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.toast-content-v2:hover .toast-custom-logo {
+  transform: scale(1.1);
+}
+
+.toast-status-dot {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1.5px solid #111;
+  z-index: 3;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.toast-status-dot.success { background-color: #10b981; }
+.toast-status-dot.error { background-color: #ef4444; }
+.toast-status-dot.info { background-color: var(--color-tecnico); }
+
 .toast-icon {
-  font-size: 1.25rem;
-  flex-shrink: 0;
+  display: none;
 }
 
 .toast-message {
@@ -33,9 +71,9 @@
   text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-.toast-container.success { color: #10b981; }
-.toast-container.error { color: #ef4444; }
-.toast-container.info { color: var(--color-tecnico); }
+.toast-container-v2.success { color: #10b981; }
+.toast-container-v2.error { color: #ef4444; }
+.toast-container-v2.info { color: var(--color-tecnico); }
 
 @keyframes toastIn {
   from {
