@@ -1,6 +1,7 @@
 // Deploy Build: v1.0.2 - Full Sync
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Analytics } from "@vercel/analytics/react"
 import { FiUser, FiDatabase, FiEdit, FiGlobe, FiLogOut, FiAlertTriangle, FiLifeBuoy, FiGift } from 'react-icons/fi';
 import { FaTwitch, FaYoutube, FaTiktok, FaDiscord } from 'react-icons/fa';
 import clsx from 'clsx';
@@ -235,6 +236,7 @@ function App() {
           </footer>
           
           <Toast />
+          <Analytics />
 
           {/* ── Botón Flotante de Reporte ── */}
           <button 
