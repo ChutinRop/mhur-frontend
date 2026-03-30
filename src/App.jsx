@@ -102,10 +102,11 @@ function Navigation({ handleLogout }) {
             ) : (
               <button 
                 className="login-btn glass-panel discord-btn" 
-                onClick={handleDiscordLogin}
-                style={{ backgroundColor: '#5865F2', borderColor: '#5865F2' }}
+                disabled
+                style={{ backgroundColor: '#333', borderColor: '#222', color: '#888', cursor: 'not-allowed' }}
+                title="Conexión en pausa temporal por seguridad. Inténtalo de nuevo en 30 minutos."
               >
-                <FaDiscord /> Conectar con Discord
+                <FaDiscord /> Mantenimiento...
               </button>
             )}
           </div>
