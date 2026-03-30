@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useRef, useEffect, useMemo, useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { FiShare2 } from 'react-icons/fi';
 import CharacterSelector from '../components/CharacterSelector';
 import TunerSlotsGrid from '../components/TunerSlotsGrid';
@@ -9,13 +9,17 @@ import { showToast } from '../components/UIFeedback/Toast';
 import CustomModal from '../components/UIFeedback/CustomModal';
 import { generateTags } from '../utils/tagGenerator';
 import normalesData from '../data/tunnings_normales.json';
+import { AuthContext } from '../context/AuthContext';
 
 export default function TunerCreator() {
+  const { user, token } = useContext(AuthContext);
+
   const [selectedCharacter, setSelectedCharacter] = useState(() => {
     const saved = localStorage.getItem('mhur_creator_character');
     return saved ? JSON.parse(saved) : null;
   });
   const location = useLocation();
+  const navigate = useNavigate();
   
   // Tuner Grid States
   const [activeSlotIndex, setActiveSlotIndex] = useState(null);
@@ -45,7 +49,10 @@ export default function TunerCreator() {
     if (selectedStyle) localStorage.setItem('mhur_creator_style', selectedStyle);
   }, [selectedCharacter, characterBuild, slotLevels, selectedStyle]);
 
-  // Handle imported build from Community page
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [editBuildId, setEditBuildId] = useState(null);
+
+  // Handle imported build from Community page or Profile page
   useEffect(() => {
     if (location.state && location.state.importedBuild) {
       console.log("Loading imported build:", location.state.importedBuild);
@@ -54,9 +61,16 @@ export default function TunerCreator() {
       setCharacterBuild(characterBuild);
       setSlotLevels(slotLevels);
       
+      if (location.state.isEditMode) {
+        setIsEditMode(true);
+        setEditBuildId(location.state.editBuildId);
+        showToast("Modo Edición Activado", "info");
+      } else {
+        showToast("Build importada correctamente", "success");
+      }
+
       // Clear state so it doesn't re-import on refresh/navigation
       window.history.replaceState({}, document.title);
-      showToast("Build importada correctamente", "success");
     }
   }, [location.state]);
 
@@ -236,13 +250,12 @@ export default function TunerCreator() {
       return;
     }
 
-    const creatorName = localStorage.getItem('mhur_username');
-    if (!creatorName) {
+    if (!user) {
       setModalConfig({
         isOpen: true,
         type: 'alert',
         title: 'Identificación Necesaria',
-        message: "Por favor, identifícate primero en el botón 'Identificarse' del menú superior para poder publicar.",
+        message: "Por favor, conéctate con Discord en el menú superior para poder publicar tu build.",
         onConfirm: () => {}
       });
       return;
@@ -251,8 +264,10 @@ export default function TunerCreator() {
     setModalConfig({
       isOpen: true,
       type: 'confirm',
-      title: 'Publicar Tuning',
-      message: `¿Estás seguro de que deseas publicar el tuning de ${selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo}? Otros jugadores podrán verlo e importarlo.`,
+      title: isEditMode ? 'Guardar Cambios' : 'Publicar Tuning',
+      message: isEditMode 
+        ? `¿Seguro que deseas sobrescribir los cambios para tu build de ${selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo}?` 
+        : `¿Estás seguro de que deseas publicar el tuning de ${selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo}? Otros jugadores podrán verlo e importarlo.`,
       onConfirm: async () => {
         const buildData = {
           characterName: selectedCharacter.personaje,
@@ -274,30 +289,64 @@ export default function TunerCreator() {
           tags.push(`Traje:${outfitName}`);
         }
 
-        try {
-          showToast("Publicando build...", "info");
-          const response = await fetch('https://mhur-backend.onrender.com/api/builds', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
+          try {
+          showToast(isEditMode ? "Guardando cambios..." : "Publicando build...", "info");
+          
+          const headers = { 'Content-Type': 'application/json' };
+          if (token) {
+            headers['Authorization'] = `Bearer ${token}`;
+          }
+
+          const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+          const endpoint = isEditMode ? `${API_URL}/api/builds/${editBuildId}` : `${API_URL}/api/builds`;
+          const method = isEditMode ? 'PUT' : 'POST';
+
+          const response = await fetch(endpoint, {
+            method: method,
+            headers,
             body: JSON.stringify({
               character_name: buildData.characterName,
-              creator_name: creatorName,
+              creator_name: user?.username || 'Anónimo',
               build_data: buildData,
               tags: tags
             }),
           });
 
           if (response.ok) {
-            showToast(`¡Build de ${buildData.characterName} publicada exitosamente!`, "success");
+            showToast(isEditMode ? "Cambios guardados con éxito" : `¡Build de ${buildData.characterName} publicada exitosamente!`, "success");
+            
+            if (isEditMode) {
+               setIsEditMode(false);
+               setEditBuildId(null);
+            }
+
             setModalConfig({
               isOpen: true,
               type: 'success',
-              title: '¡Publicado!',
-              message: `Tu tuning de ${buildData.characterName} ya está disponible en la sección de Builds Públicas.`,
-              onConfirm: () => {}
+              title: isEditMode ? '¡Cambios Aplicados!' : '¡Publicado!',
+              message: isEditMode
+                ? `Los cambios para la build de ${buildData.characterName} se guardaron sin crear una build nueva.`
+                : `Tu tuning de ${buildData.characterName} ya está disponible en la sección de Builds Públicas.`,
+              onConfirm: () => {
+                 // Limpiar todo el estado para que no queden datos viejos en pantalla ni en localStorage
+                 setSelectedCharacter(null);
+                 setCharacterBuild({});
+                 setSlotLevels({});
+                 setActiveSlotIndex(null);
+                 setActiveSlotData(null);
+                 setSelectedStyle(null);
+                 setIsEditMode(false);
+                 setEditBuildId(null);
+                 localStorage.removeItem('mhur_creator_character');
+                 localStorage.removeItem('mhur_creator_build');
+                 localStorage.removeItem('mhur_creator_levels');
+                 localStorage.removeItem('mhur_creator_style');
+                 
+                 // Redirigir al usuario
+                 navigate(isEditMode ? '/profile' : '/community');
+              }
             });
+
           } else {
             const errorData = await response.json();
             if (response.status === 409) {
@@ -332,6 +381,8 @@ export default function TunerCreator() {
         setActiveSlotIndex(null);
         setActiveSlotData(null);
         setIsTuningModalOpen(false);
+        setIsEditMode(false);
+        setEditBuildId(null);
         localStorage.removeItem('mhur_creator_character');
         localStorage.removeItem('mhur_creator_build');
         localStorage.removeItem('mhur_creator_levels');
@@ -416,11 +467,12 @@ export default function TunerCreator() {
                 EXPORTAR
               </button>
               <button 
-                className="action-btn publish-btn" 
-                title="Publicar Build en la Nube" 
+                className={`action-btn publish-btn ${isEditMode ? 'edit-mode-active' : ''}`} 
+                title={isEditMode ? "Guardar cambios en la build actual" : "Publicar Build en la Nube"} 
                 onClick={handlePublishBuild}
+                style={isEditMode ? { backgroundColor: '#5865F2' } : {}}
               >
-                <FiShare2 /> PUBLICAR
+                <FiShare2 /> {isEditMode ? 'GUARDAR' : 'PUBLICAR'}
               </button>
             </div>
             <h2 className="summary-title">Resumen</h2>

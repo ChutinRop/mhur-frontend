@@ -299,6 +299,7 @@ body,
 .header-right {
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 
 .user-status {
@@ -312,9 +313,37 @@ body,
   color: var(--text-muted);
 }
 
+.user-profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem 0.25rem 0.25rem;
+  border-radius: 20px;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.user-profile-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.user-profile-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .user-name {
   color: var(--text-primary);
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 0.95rem;
 }
 
 .logout-btn {

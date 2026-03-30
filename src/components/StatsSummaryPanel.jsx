@@ -20,6 +20,17 @@ function formatTimeDisplay(totalSecs) {
   return `${secs} s`;
 }
 
+// ─── Helper: Convert string values ending in "s" to minutes if > 60s ───
+function formatStringSeconds(val) {
+  if (typeof val === 'string' && val.trim().toLowerCase().endsWith('s')) {
+    const num = parseFloat(val);
+    if (!isNaN(num) && num >= 60) {
+      return formatTimeDisplay(num);
+    }
+  }
+  return val;
+}
+
 // ─── Helper: Determine the SUB-TYPE of a skill name (α, β, γ, or "generic") ───
 function getSubType(name) {
   if (name.includes('α')) return 'α';
@@ -348,7 +359,7 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
                               ? formatTimeDisplay(s.value)
                               : s.tipo === 'multiplicador'
                                 ? `x${s.value.toFixed(1)}`
-                                : s.value
+                                : formatStringSeconds(s.value)
                             }
                           </span>
                         </>

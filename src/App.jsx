@@ -12,11 +12,23 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import Toast, { showToast } from './components/UIFeedback/Toast';
 import CustomModal from './components/UIFeedback/CustomModal';
 import ReportModal from './components/UIFeedback/ReportModal';
+import { AuthProvider, AuthContext } from './context/AuthContext';
+import { useContext } from 'react';
+import AuthCallback from './pages/AuthCallback';
+import Profile from './pages/Profile';
 import './App.css';
 
-function Navigation({ username, handleLogout, handleSetName }) {
+function Navigation({ handleLogout }) {
   const location = useLocation();
-  const [modalConfig, setModalConfig] = useState({ isOpen: false, type: 'alert', title: '', message: '', onConfirm: () => {}, defaultValue: username });
+  const { user } = useContext(AuthContext);
+  const [modalConfig, setModalConfig] = useState({ isOpen: false, type: 'alert', title: '', message: '', onConfirm: () => {}, defaultValue: '' });
+
+  const handleDiscordLogin = () => {
+    const DISCORD_CLIENT_ID = import.meta.env.VITE_DISCORD_CLIENT_ID || '1355403297126154331'; // TODO: Update with real Client ID
+    const REDIRECT_URI = import.meta.env.VITE_DISCORD_REDIRECT_URI || 'http://localhost:5173/auth/callback';
+    const DISCORD_LOGIN_URL = `https://discord.com/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&response_type=code&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=identify`;
+    window.location.href = DISCORD_LOGIN_URL;
+  };
 
   return (
     <>
@@ -38,7 +50,7 @@ function Navigation({ username, handleLogout, handleSetName }) {
 
             <div className="header-title-container">
               <h1 className="header-title">
-                MHUR Tunning <span className="header-subtitle">Chutunning</span>
+                MHUR Tunning
               </h1>
               <span className="header-author">
                 Hecho por ChutinRop
@@ -71,25 +83,29 @@ function Navigation({ username, handleLogout, handleSetName }) {
               <span>Apoyar</span>
             </a>
 
-            {username ? (
+            {user ? (
               <div className="user-status">
-                <span className="user-greeting">
-                  Hola, <strong className="user-name">{username}</strong>
-                </span>
+                <Link to="/profile" className="user-profile-btn" title="Ver mi Perfil">
+                  <img src={user.avatar} alt="Avatar" className="user-profile-avatar" />
+                  <span className="user-name">
+                    {user.username.length > 12 ? user.username.slice(0, 12) + '...' : user.username}
+                  </span>
+                </Link>
                 <button 
                   className="logout-btn glass-panel" 
                   onClick={handleLogout}
-                  title="Cambiar Nombre"
+                  title="Cerrar Sesión"
                 >
                   <FiLogOut />
                 </button>
               </div>
             ) : (
               <button 
-                className="login-btn glass-panel" 
-                onClick={handleSetName}
+                className="login-btn glass-panel discord-btn" 
+                onClick={handleDiscordLogin}
+                style={{ backgroundColor: '#5865F2', borderColor: '#5865F2' }}
               >
-                <FiUser /> Identificarse
+                <FaDiscord /> Conectar con Discord
               </button>
             )}
           </div>
@@ -99,8 +115,8 @@ function Navigation({ username, handleLogout, handleSetName }) {
   );
 }
 
-function App() {
-  const [username, setUsername] = useState(localStorage.getItem('mhur_username') || '');
+function MainApp() {
+  const { user, logout } = useContext(AuthContext);
   const [showReportModal, setShowReportModal] = useState(false);
   const [modalConfig, setModalConfig] = useState({ isOpen: false, type: 'alert', title: '', message: '', onConfirm: () => {}, defaultValue: '' });
 
@@ -113,37 +129,14 @@ function App() {
     }
   }, []);
 
-  const handleSetName = () => {
-    setModalConfig({
-      isOpen: true,
-      type: 'prompt',
-      title: 'Identificación de Tunner',
-      message: 'Introduce tu nombre para que tus builds sean reconocidas en la comunidad:',
-      defaultValue: username,
-      onConfirm: (name) => {
-        if (name && name.trim() !== "") {
-          const cleanName = name.trim();
-          setUsername(cleanName);
-          localStorage.setItem('mhur_username', cleanName);
-          window.dispatchEvent(new Event('storage'));
-          showToast(`¡Bienvenido, ${cleanName}!`, 'success');
-        } else {
-          showToast("El nombre no puede estar vacío", "error");
-        }
-      }
-    });
-  };
-
   const handleLogout = () => {
     setModalConfig({
       isOpen: true,
       type: 'confirm',
       title: 'Cerrar Sesión',
-      message: '¿Estás seguro de que quieres cerrar sesión o cambiar de nombre?',
+      message: '¿Estás seguro de que quieres cerrar la sesión de Discord?',
       onConfirm: () => {
-        setUsername('');
-        localStorage.removeItem('mhur_username');
-        window.dispatchEvent(new Event('storage'));
+        logout();
         showToast("Sesión cerrada correctamente", "info");
       }
     });
@@ -152,7 +145,7 @@ function App() {
   const submitReport = async (reportData) => {
     const formData = new FormData();
     formData.append('description', reportData.description);
-    formData.append('username', username || 'Usuario Anónimo');
+    formData.append('username', user ? user.username : 'Usuario Anónimo');
     
     if (reportData.image) {
       formData.append('image', reportData.image);
@@ -201,7 +194,7 @@ function App() {
           />
         </div>
 
-        <Navigation username={username} handleLogout={handleLogout} handleSetName={handleSetName} />
+        <Navigation handleLogout={handleLogout} />
 
         <div className="app-container">
           <Routes>
@@ -209,6 +202,8 @@ function App() {
             <Route path="/creator" element={<TunerCreator />} />
             <Route path="/community" element={<Community />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/auth/callback" element={<AuthCallback />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
 
           <footer className="footer">
@@ -250,6 +245,14 @@ function App() {
         </div>
       </div>
     </Router>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <MainApp />
+    </AuthProvider>
   );
 }
 
