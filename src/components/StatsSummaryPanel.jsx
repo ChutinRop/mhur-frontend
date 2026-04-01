@@ -47,7 +47,8 @@ function categorizeSkill(name) {
   if (name.includes('Defensa Cuerpo a Cuerpo')) return 'defensa_cac';
   if (name.includes('Poder de Ataque de Habilidad Peculiar')) return 'ataque_habilidad';
   if (name.includes('Poder de Ataque de HP')) return 'ataque_hp';
-  if (name.includes('Poder de Ataque Cuerpo a Cuerpo') || name.includes('Poder de Ataque de GP')) return 'ataque_cac';
+  if (name.includes('Poder de Ataque de GP')) return 'ataque_gp';
+  if (name.includes('Poder de Ataque Cuerpo a Cuerpo')) return 'ataque_cac';
   
   // HP specifics
   if (name.includes('HP Máximo en CAÍDO')) return 'hp_caido';
@@ -73,10 +74,11 @@ const STAT_GROUPS = [
     label: 'Poder de Ataque',
     icon: '🗡️',
     color: '#ff4444',
-    children: ['ataque_habilidad', 'ataque_cac', 'ataque_hp'],
+    children: ['ataque_habilidad', 'ataque_cac', 'ataque_gp', 'ataque_hp'],
     childLabels: {
       ataque_habilidad: 'Habilidad Peculiar',
-      ataque_cac: 'Cuerpo a Cuerpo / GP',
+      ataque_cac: 'Cuerpo a Cuerpo',
+      ataque_gp: 'Poder de GP',
       ataque_hp: 'HP Directo',
     }
   },
