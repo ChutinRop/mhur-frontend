@@ -12,6 +12,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
 import TermsOfService from './pages/TermsOfService';
+import FAQ from './pages/FAQ';
 import Toast, { showToast } from './components/UIFeedback/Toast';
 import CustomModal from './components/UIFeedback/CustomModal';
 import ReportModal from './components/UIFeedback/ReportModal';
@@ -283,6 +284,7 @@ function MainApp() {
               <Route path="/about" element={<AboutUs />} />
               <Route path="/contact" element={<ContactUs />} />
               <Route path="/terms" element={<TermsOfService />} />
+              <Route path="/faq" element={<FAQ />} />
               <Route path="/auth/callback" element={<AuthCallback />} />
               <Route path="/profile" element={<Profile />} />
             </Routes>
@@ -298,6 +300,7 @@ function MainApp() {
             <div className="footer-links" style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                <Link to="/about" className="footer-link">{t('footer_about')}</Link>
                <Link to="/contact" className="footer-link">{t('footer_contact')}</Link>
+               <Link to="/faq" className="footer-link">{t('footer_faq')}</Link>
                <Link to="/privacy" className="footer-link">{t('footer_privacy')}</Link>
                <Link to="/terms" className="footer-link">{t('footer_terms')}</Link>
             </div>

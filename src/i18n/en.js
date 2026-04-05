@@ -24,6 +24,7 @@ const en = {
   footer_about: 'About Us',
   footer_contact: 'Contact Us',
   footer_terms: 'Terms of Service',
+  footer_faq: 'FAQ',
   footer_disclaimer: 'MHUR Tunning is an unofficial fan tool. We are not affiliated with Bandai Namco Entertainment, Sony Interactive Entertainment, or K. Horikoshi. All characters, images, and trademarks are the property of their respective owners.',
 
   // ── CustomModal ────────────────────────────────────────────────────────────
@@ -112,7 +113,11 @@ const en = {
   char_btn_back: '← Back',
 
   // ── Database ──────────────────────────────────────────────────────────────
-  db_title: 'Tunnings',
+  db_title: 'Tunning Wiki - My Hero Ultra Rumble',
+  db_intro_title: 'Tunning Manual for the Community',
+  db_intro_p1: "Welcome to the MHUR Tunning Wiki! If you're new to My Hero Ultra Rumble, the tuning (power-up) system might seem complex. Our tool allows you to simulate every level of improvement without spending valuable in-game resources like tuning pieces or gold.",
+  db_intro_p2: 'Tunings are divided into **Special** and **Normal**. Special tunings often grant unique damage, defense, or mobility bonuses specific to each role, while normal tunings are general stat boosters.',
+  db_intro_p3: 'Pro Tip: Before applying a high-level tuning in-game, experiment here with different combinations to see how they affect your Max HP, Dash speed, or peculiar skill cooldowns.',
   db_tab_specials: (n) => `Special (${n})`,
   db_tab_normals: (n) => `Normal (${n})`,
   db_filter_search: 'Search ability...',
@@ -222,10 +227,32 @@ const en = {
   privacy_s5: 'By using our website, you hereby consent to our Privacy Policy and agree to its terms.',
 
   // ── About Us ──────────────────────────────────────────────────────────────
-  about_title: 'About MHUR Tunning',
-  about_p1: 'MHUR Tunning is a free tool designed for the My Hero Ultra Rumble community. Our mission is to provide a platform where players can experiment with different "tuning" (power-up) configurations without having to spend real in-game resources.',
-  about_p2: 'This "tuning calculator" not only allows you to create custom builds but also explains in detail what each tuning does and how it affects your character\'s stats, helping you optimize your playstyle.',
-  about_p3: 'The project is maintained by ChutinRop and is a personal effort for my community and the MHUR community.',
+  about_title: 'About the Project and ChutinRop',
+  about_intro: 'Hi, I’m ChutinRop. MHUR Tunning was born from my passion for My Hero Ultra Rumble and my desire to help the community optimize their characters without wasting resources.',
+  about_creator_title: '🎥 Content Creator',
+  about_creator_p: 'As a My Hero Ultra Rumble content creator, I spend hours analyzing the meta, testing characters, and sharing guides with my community. I understand how frustrating it is to spend materials on a tuning that doesn’t perform as expected.',
+  about_editor_title: '🎞️ Video Editing',
+  about_editor_p: 'Editing is another of my passions. I focus on creating high-quality visual content, from epic gameplay montages to detailed tutorials so we can all improve together.',
+  about_modder_title: '🛠️ MHUR Modding',
+  about_modder_p: "Game modding allows me to explore code and mechanics in ways that aren't visible to the naked eye. This technical experimentation fuels the data and accuracy of this calculator.",
+  about_dev_title: '💻 Web Development',
+  about_dev_p: 'MHUR Tunning is my way of merging web development with my love for gaming. This site is an ever-evolving tool created by a fan, for the fans.',
+  about_social_yt: 'Check my YouTube Channel',
+  about_social_twitch: 'Follow me on Twitch',
+
+  // ── FAQ ──────────────────────────────────────────────────────────────────
+  faq_title: 'Frequently Asked Questions (FAQ)',
+  faq_intro: 'Here you will find answers to the most common questions about the MHUR tuning system and how to use our calculator.',
+  faq_q1: 'What exactly is this calculator for?',
+  faq_a1: 'It is used to simulate the impact of "tunings" on your characters\' stats. The game consumes real resources to improve these attributes; with our tool, you can plan your ideal build before spending anything.',
+  faq_q2: 'Is the Wiki data official?',
+  faq_a2: 'MHUR Tunning is an unofficial fan tool. The data is based on thorough testing, code analysis, and technical experimentation (modding) to be as accurate as possible to the real game.',
+  faq_q3: 'How can I share my build with others?',
+  faq_a3: 'You have two ways: using the "Export" button to generate a local JSON file, or through the "Publish" button (you need to connect your Discord) to have it appear in the Public Builds section.',
+  faq_q4: 'Is this tool free?',
+  faq_a4: 'Yes, MHUR Tunning is and will always be free. It is maintained through community support and a personal effort so that all My Hero Ultra Rumble players have better tools.',
+  faq_q5: 'Will new characters and tunings be added?',
+  faq_a5: 'Yes! We update the database with every new season and patch of My Hero Ultra Rumble to maintain calculation accuracy.',
 
   // ── Contact Us ────────────────────────────────────────────────────────────
   contact_title: 'Contact Us',

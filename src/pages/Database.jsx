@@ -221,6 +221,35 @@ export default function Database() {
           </div>
         </div>
 
+        {/* ── Introduction Wiki Section ── */}
+        <div className="database-intro-section" style={{ 
+          marginBottom: '2rem', 
+          padding: '1.5rem', 
+          background: 'rgba(255,255,255,0.03)', 
+          borderRadius: '12px',
+          borderLeft: '4px solid var(--primary)'
+        }}>
+          <h3 style={{ marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <FiList style={{ color: 'var(--primary)' }} /> {t('db_intro_title')}
+          </h3>
+          <p style={{ fontSize: '0.95rem', lineHeight: '1.6', color: 'rgba(255,255,255,0.7)', marginBottom: '1rem' }}>
+            {t('db_intro_p1')}
+          </p>
+          <p style={{ fontSize: '0.95rem', lineHeight: '1.6', color: 'rgba(255,255,255,0.7)', marginBottom: '1rem' }}>
+            {t('db_intro_p2')}
+          </p>
+          <div style={{ 
+            background: 'rgba(234, 179, 8, 0.1)', 
+            padding: '1rem', 
+            borderRadius: '8px', 
+            border: '1px solid rgba(234, 179, 8, 0.2)',
+            color: '#eab308',
+            fontSize: '0.9rem'
+          }}>
+            <strong>Pro Tip:</strong> {t('db_intro_p3')}
+          </div>
+        </div>
+
         {tab === 'especiales' && (
           <>
             <FilterBar roles={E_ROLES} clases={E_CLASES} baseNames={E_BASE_NAMES}
