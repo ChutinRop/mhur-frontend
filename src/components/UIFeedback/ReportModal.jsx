@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { FiX, FiUploadCloud, FiAlertCircle, FiSend, FiImage } from 'react-icons/fi';
+import { useT } from '../../context/LanguageContext';
 import './ReportModal.css';
 
 export default function ReportModal({ isOpen, onClose, onSubmit }) {
@@ -9,18 +10,19 @@ export default function ReportModal({ isOpen, onClose, onSubmit }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
   const fileInputRef = useRef(null);
+  const { t } = useT();
 
   if (!isOpen) return null;
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      if (file.size > 5 * 1024 * 1024) { // 5MB limit
-        setError('La imagen es demasiado grande. El máximo es 5MB.');
+      if (file.size > 5 * 1024 * 1024) {
+        setError(t('report_error_size'));
         return;
       }
       if (!file.type.startsWith('image/')) {
-        setError('Por favor, selecciona un archivo de imagen válido.');
+        setError(t('report_error_type'));
         return;
       }
       setImage(file);
@@ -38,7 +40,7 @@ export default function ReportModal({ isOpen, onClose, onSubmit }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!description.trim()) {
-      setError('Por favor, describe el error antes de enviar.');
+      setError(t('report_error_empty'));
       return;
     }
     
@@ -51,7 +53,7 @@ export default function ReportModal({ isOpen, onClose, onSubmit }) {
       clearImage();
       onClose();
     } catch (err) {
-      setError(err.message || 'Error al enviar el reporte. Por favor, intenta de nuevo.');
+      setError(err.message || t('report_error_send'));
     } finally {
       setIsSubmitting(false);
     }
@@ -64,25 +66,25 @@ export default function ReportModal({ isOpen, onClose, onSubmit }) {
         
         <div className="report-header">
           <FiAlertCircle className="report-icon" />
-          <h2>Reportar un Error</h2>
-          <p>Ayúdanos a mejorar MHUR Tunning describiendo el problema que encontraste.</p>
+          <h2>{t('report_title')}</h2>
+          <p>{t('report_subtitle')}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="report-form">
           <div className="form-group">
-            <label htmlFor="description">Descripción del Error *</label>
+            <label htmlFor="description">{t('report_label_desc')}</label>
             <textarea
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="¿Qué estabas haciendo cuando ocurrió el error? ¿Qué esperabas que pasara?"
+              placeholder={t('report_placeholder')}
               rows="4"
               required
             />
           </div>
 
           <div className="form-group">
-            <label>Captura de Pantalla (Opcional)</label>
+            <label>{t('report_label_image')}</label>
             
             {!image ? (
               <div 
@@ -90,8 +92,8 @@ export default function ReportModal({ isOpen, onClose, onSubmit }) {
                 onClick={() => fileInputRef.current?.click()}
               >
                 <FiUploadCloud className="upload-icon" />
-                <span>Haz clic para subir una imagen</span>
-                <span className="upload-hint">Formatos soportados: JPG, PNG, WebP (Max 5MB)</span>
+                <span>{t('report_upload_click')}</span>
+                <span className="upload-hint">{t('report_upload_hint')}</span>
               </div>
             ) : (
               <div className="image-preview-container">
@@ -114,13 +116,13 @@ export default function ReportModal({ isOpen, onClose, onSubmit }) {
 
           <div className="report-actions">
             <button type="button" className="report-btn-secondary" onClick={onClose} disabled={isSubmitting}>
-              Cancelar
+              {t('report_btn_cancel')}
             </button>
             <button type="submit" className="report-btn-primary" disabled={isSubmitting || !description.trim()}>
               {isSubmitting ? (
                 <span className="loading-spinner"></span>
               ) : (
-                <><FiSend /> Enviar Reporte</>
+                <><FiSend /> {t('report_btn_send')}</>
               )}
             </button>
           </div>

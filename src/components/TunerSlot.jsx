@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { FiX } from 'react-icons/fi';
 import { getCharacterImage } from '../data/characterImages';
+import { useT } from '../context/LanguageContext';
+import { translateTuning } from '../utils/gameTranslation';
 import './TunerSlot.css';
 
 const getClassColor = (clase) => {
@@ -76,6 +78,17 @@ export default function TunerSlot({
   selectedTuning = null
 }) {
   const color = data ? getClassColor(data.clase) : '#444';
+  const { t, lang } = useT();
+
+  // Helper: translate and get the display name of a tuning
+  const getDisplayName = (tuning) => {
+    if (!tuning) return '';
+    const name = tuning.habilidad === 'Reparador' ? 'Fixer' : tuning.habilidad;
+    const fixed = name === 'Brazo Oscuro' ? 'Brazo Azabache' : name;
+    if (lang !== 'en') return fixed;
+    const translated = translateTuning({ ...tuning, habilidad: fixed }, lang);
+    return translated.habilidad;
+  };
 
   let maxLevel = 1;
   let tuningRole = '';
@@ -111,23 +124,14 @@ export default function TunerSlot({
           <div className="special-title-stack">
             {selectedTuning ? (
               Array.isArray(selectedTuning) ? (
-                selectedTuning.map((t, i) => {
-                  let text = t.habilidad === 'Reparador' ? 'Fixer' : t.habilidad;
-                  if (text === 'Brazo Oscuro') text = 'Brazo Azabache';
-                  return <MarqueeLine key={i} text={text} isHeader={true} />;
-                })
+                selectedTuning.map((tuning, i) => (
+                  <MarqueeLine key={i} text={getDisplayName(tuning)} isHeader={true} />
+                ))
               ) : (
-                <MarqueeLine 
-                  text={
-                    (selectedTuning.habilidad === 'Reparador' ? 'Fixer' : selectedTuning.habilidad) === 'Brazo Oscuro' 
-                    ? 'Brazo Azabache' 
-                    : (selectedTuning.habilidad === 'Reparador' ? 'Fixer' : selectedTuning.habilidad)
-                  } 
-                  isHeader={true} 
-                />
+                <MarqueeLine text={getDisplayName(selectedTuning)} isHeader={true} />
               )
             ) : (
-              <h4>Habilidad especial de Tuning</h4>
+              <h4>{t('slot_empty_special')}</h4>
             )}
           </div>
           <div className="special-badge" style={{ backgroundColor: color }}>
@@ -166,13 +170,13 @@ export default function TunerSlot({
                   disabled={level >= maxLevel}>+</button>
               </div>
             ) : (
-              <span style={{ opacity: 0.5, fontSize: '0.75rem' }}>Ranura vacía</span>
+              <span style={{ opacity: 0.5, fontSize: '0.75rem' }}>{t('slot_vacant')}</span>
             )}
             
             <span className="role-text-special">
               {tuningRole 
-                ? (tuningRole === 'Universal' ? 'UNIVERSAL' : (tuningRole === 'Héroe' ? 'HÉROES' : 'VILLANOS'))
-                : (heroOrVillain === 'Héroe' ? 'HÉROES' : (heroOrVillain === 'Villano' ? 'VILLANOS' : 'UNIVERSAL'))
+                ? (tuningRole === 'Universal' ? t('slot_role_universal') : (tuningRole === 'H\u00e9roe' ? t('slot_role_heroes') : t('slot_role_villains')))
+                : (heroOrVillain === 'H\u00e9roe' ? t('slot_role_heroes') : (heroOrVillain === 'Villano' ? t('slot_role_villains') : t('slot_role_universal')))
               }
             </span>
           </div>
@@ -204,22 +208,14 @@ export default function TunerSlot({
           <div className="slot-title-stack">
             {selectedTuning ? (
               Array.isArray(selectedTuning) ? (
-                selectedTuning.map((t, i) => {
-                  let text = t.habilidad === 'Reparador' ? 'Fixer' : t.habilidad;
-                  if (text === 'Brazo Oscuro') text = 'Brazo Azabache';
-                  return <MarqueeLine key={i} text={text} />;
-                })
+                selectedTuning.map((tuning, i) => (
+                  <MarqueeLine key={i} text={getDisplayName(tuning)} />
+                ))
               ) : (
-                <MarqueeLine 
-                  text={
-                    (selectedTuning.habilidad === 'Reparador' ? 'Fixer' : selectedTuning.habilidad) === 'Brazo Oscuro' 
-                    ? 'Brazo Azabache' 
-                    : (selectedTuning.habilidad === 'Reparador' ? 'Fixer' : selectedTuning.habilidad)
-                  } 
-                />
+                <MarqueeLine text={getDisplayName(selectedTuning)} />
               )
             ) : (
-              <div className="slot-title-placeholder">Sin configurar</div>
+              <div className="slot-title-placeholder">{t('slot_empty')}</div>
             )}
           </div>
           <div className="slot-level-band" style={{ backgroundColor: color }}>
@@ -238,8 +234,8 @@ export default function TunerSlot({
                 </span>
               )}
             </span>
-            {data?.rol === 'Héroe' && <span className="role-text">HÉROES</span>}
-            {data?.rol === 'Villano' && <span className="role-text">VILLANOS</span>}
+            {data?.rol === 'Héroe' && <span className="role-text">{t('slot_role_heroes')}</span>}
+            {data?.rol === 'Villano' && <span className="role-text">{t('slot_role_villains')}</span>}
           </div>
         </div>
         

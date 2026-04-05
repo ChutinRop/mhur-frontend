@@ -9,10 +9,14 @@ import { showToast } from '../components/UIFeedback/Toast';
 import CustomModal from '../components/UIFeedback/CustomModal';
 import { generateTags } from '../utils/tagGenerator';
 import normalesData from '../data/tunnings_normales.json';
+import trajesData from '../data/trajes_es.json';
 import { AuthContext } from '../context/AuthContext';
+import { useT } from '../context/LanguageContext';
+import { translateBattleStyleLabel, translateNombreCompleto } from '../utils/gameTranslation';
 
 export default function TunerCreator() {
   const { user, token } = useContext(AuthContext);
+  const { t, lang } = useT();
 
   const [selectedCharacter, setSelectedCharacter] = useState(() => {
     const saved = localStorage.getItem('mhur_creator_character');
@@ -21,13 +25,11 @@ export default function TunerCreator() {
   const location = useLocation();
   const navigate = useNavigate();
   
-  // Tuner Grid States
   const [activeSlotIndex, setActiveSlotIndex] = useState(null);
   const [activeSlotData, setActiveSlotData] = useState(null);
   const [isTuningModalOpen, setIsTuningModalOpen] = useState(false);
   const fileInputRef = useRef(null);
 
-  // The actual build: mapping of slotIndex -> tuningObject
   const [characterBuild, setCharacterBuild] = useState(() => {
     const saved = localStorage.getItem('mhur_creator_build');
     return saved ? JSON.parse(saved) : {};
@@ -41,7 +43,6 @@ export default function TunerCreator() {
   });
   const [modalConfig, setModalConfig] = useState({ isOpen: false, type: 'alert', title: '', message: '', onConfirm: () => {} });
 
-  // Auto-save to localStorage
   useEffect(() => {
     localStorage.setItem('mhur_creator_character', JSON.stringify(selectedCharacter));
     localStorage.setItem('mhur_creator_build', JSON.stringify(characterBuild));
@@ -52,10 +53,8 @@ export default function TunerCreator() {
   const [isEditMode, setIsEditMode] = useState(false);
   const [editBuildId, setEditBuildId] = useState(null);
 
-  // Handle imported build from Community page or Profile page
   useEffect(() => {
     if (location.state && location.state.importedBuild) {
-      console.log("Loading imported build:", location.state.importedBuild);
       const { selectedCharacter, characterBuild, slotLevels } = location.state.importedBuild;
       setSelectedCharacter(selectedCharacter);
       setCharacterBuild(characterBuild);
@@ -64,12 +63,11 @@ export default function TunerCreator() {
       if (location.state.isEditMode) {
         setIsEditMode(true);
         setEditBuildId(location.state.editBuildId);
-        showToast("Modo Edición Activado", "info");
+        showToast(t('creator_toast_edit_mode'), "info");
       } else {
-        showToast("Build importada correctamente", "success");
+        showToast(t('creator_toast_imported'), "success");
       }
 
-      // Clear state so it doesn't re-import on refresh/navigation
       window.history.replaceState({}, document.title);
     }
   }, [location.state]);
@@ -81,26 +79,14 @@ export default function TunerCreator() {
   };
 
   const handleSelectTuning = (tuning) => {
-    setCharacterBuild(prev => ({
-      ...prev,
-      [activeSlotIndex]: tuning
-    }));
-    setSlotLevels(prev => ({
-      ...prev,
-      [activeSlotIndex]: 1
-    }));
+    setCharacterBuild(prev => ({ ...prev, [activeSlotIndex]: tuning }));
+    setSlotLevels(prev => ({ ...prev, [activeSlotIndex]: 1 }));
   };
 
   const handleRemoveTuning = (e, index) => {
     e.stopPropagation();
-    setCharacterBuild(prev => ({
-      ...prev,
-      [index]: null
-    }));
-    setSlotLevels(prev => ({
-      ...prev,
-      [index]: 1
-    }));
+    setCharacterBuild(prev => ({ ...prev, [index]: null }));
+    setSlotLevels(prev => ({ ...prev, [index]: 1 }));
   };
 
   const handleLevelChange = (e, index, delta, maxLevel) => {
@@ -135,12 +121,12 @@ export default function TunerCreator() {
       updatedLevels[slotId] = maxLevel;
     });
     setSlotLevels(updatedLevels);
-    showToast("¡Tunnings mejorados al máximo!", "success");
+    showToast(t('creator_toast_max'), "success");
   };
 
   const handleCharacterChange = (newChar) => {
     setSelectedCharacter(newChar);
-    setSelectedStyle(newChar?.personaje || null); // Default to base style
+    setSelectedStyle(newChar?.personaje || null);
     setCharacterBuild({});
     setSlotLevels({});
     setActiveSlotIndex(null);
@@ -148,14 +134,31 @@ export default function TunerCreator() {
     setIsTuningModalOpen(false);
   };
 
-  // Get available styles for the current character
+  // Unique personaje names from trajesData (used to detect standalone characters)
+  const trajesPersonajes = useMemo(
+    () => new Set(trajesData.map(t => t.personaje)),
+    []
+  );
+
   const availableStyles = useMemo(() => {
     if (!selectedCharacter?.personaje) return [];
     const baseName = selectedCharacter.personaje;
+
+    // If the selected character has a STANDALONE variant in trajesData (e.g. "All For One"
+    // has "All For One (Youth age)" as its own separate character), then ANY normalesData
+    // entry with that parenthetical is a separate character, NOT a battle style.
+    const hasStandaloneVariant = [...trajesPersonajes].some(
+      p => p !== baseName && p.startsWith(`${baseName} (`)
+    );
+
     return normalesData
-      .filter(t => t.personaje === baseName || (t.personaje && t.personaje.startsWith(`${baseName} (`)))
+      .filter(t => {
+        if (t.personaje === baseName) return true;
+        if (!t.personaje?.startsWith(`${baseName} (`)) return false;
+        return !hasStandaloneVariant;
+      })
       .map(t => t.personaje);
-  }, [selectedCharacter]);
+  }, [selectedCharacter, trajesPersonajes]);
 
   const getStyleLabel = (name) => {
     if (!name) return "";
@@ -166,10 +169,9 @@ export default function TunerCreator() {
   const handleExportBuild = () => {
     if (!selectedCharacter) {
       setModalConfig({
-        isOpen: true,
-        type: 'alert',
-        title: 'Atención',
-        message: 'Selecciona un personaje primero para poder exportar la build.',
+        isOpen: true, type: 'alert',
+        title: t('creator_modal_no_char_title'),
+        message: t('creator_modal_no_char_export'),
         onConfirm: () => {}
       });
       return;
@@ -177,9 +179,7 @@ export default function TunerCreator() {
     const buildData = {
       characterName: selectedCharacter.personaje,
       styleName: selectedStyle || selectedCharacter.personaje,
-      selectedCharacter,
-      characterBuild,
-      slotLevels
+      selectedCharacter, characterBuild, slotLevels
     };
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(buildData, null, 2));
     const downloadAnchorNode = document.createElement('a');
@@ -188,7 +188,7 @@ export default function TunerCreator() {
     document.body.appendChild(downloadAnchorNode);
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
-    showToast("Build exportada localmente", "info");
+    showToast(t('creator_toast_export'), "info");
   };
 
   const handleImportBuild = (event) => {
@@ -202,12 +202,12 @@ export default function TunerCreator() {
           setSelectedCharacter(importedData.selectedCharacter);
           setCharacterBuild(importedData.characterBuild);
           setSlotLevels(importedData.slotLevels);
-          showToast("¡Build importada exitosamente!", "success");
+          showToast(t('creator_toast_import_ok'), "success");
         } else {
-          showToast("El archivo no tiene el formato correcto", "error");
+          showToast(t('creator_toast_import_err'), "error");
         }
       } catch (error) {
-        showToast("Error al leer el archivo JSON", "error");
+        showToast(t('creator_toast_import_json_err'), "error");
       }
     };
     reader.readAsText(file);
@@ -218,33 +218,29 @@ export default function TunerCreator() {
     const currentlyBlocked = localStorage.getItem('mhur_publish_blocked_until');
     if (currentlyBlocked && Date.now() < parseInt(currentlyBlocked)) {
       const timeLeft = Math.ceil((parseInt(currentlyBlocked) - Date.now()) / 1000);
-      showToast(`Límite alcanzado. Espera ${timeLeft} segundos antes de volver a publicar.`, "error");
+      showToast(t('creator_toast_spam', timeLeft), "error");
       return;
     }
 
     let attemptsStr = localStorage.getItem('mhur_publish_attempts');
     let attempts = attemptsStr ? JSON.parse(attemptsStr) : [];
-    
     const now = Date.now();
-    // Maintain a 30-second window to count 3 clicks
     attempts = attempts.filter(time => now - time < 30000);
     attempts.push(now);
     
     if (attempts.length >= 3) {
-      localStorage.setItem('mhur_publish_blocked_until', (now + 60000).toString()); // 1 minute block
+      localStorage.setItem('mhur_publish_blocked_until', (now + 60000).toString());
       localStorage.setItem('mhur_publish_attempts', JSON.stringify([]));
-      showToast("Límite de spam alcanzado. Publicaciones bloqueadas por 1 minuto.", "error");
+      showToast(t('creator_toast_spam_block'), "error");
       return;
     }
-    
     localStorage.setItem('mhur_publish_attempts', JSON.stringify(attempts));
 
     if (!selectedCharacter) {
       setModalConfig({
-        isOpen: true,
-        type: 'alert',
-        title: 'Atención',
-        message: 'Selecciona un personaje primero para poder publicar en la nube.',
+        isOpen: true, type: 'alert',
+        title: t('creator_modal_no_char_title'),
+        message: t('creator_modal_no_char_publish'),
         onConfirm: () => {}
       });
       return;
@@ -252,10 +248,9 @@ export default function TunerCreator() {
 
     if (!user) {
       setModalConfig({
-        isOpen: true,
-        type: 'alert',
-        title: 'Identificación Necesaria',
-        message: "Por favor, conéctate con Discord en el menú superior para poder publicar tu build.",
+        isOpen: true, type: 'alert',
+        title: t('creator_modal_no_login_title'),
+        message: t('creator_modal_no_login_msg'),
         onConfirm: () => {}
       });
       return;
@@ -264,17 +259,15 @@ export default function TunerCreator() {
     setModalConfig({
       isOpen: true,
       type: 'confirm',
-      title: isEditMode ? 'Guardar Cambios' : 'Publicar Tuning',
+      title: isEditMode ? t('creator_modal_save_title') : t('creator_modal_publish_title'),
       message: isEditMode 
-        ? `¿Seguro que deseas sobrescribir los cambios para tu build de ${selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo}?` 
-        : `¿Estás seguro de que deseas publicar el tuning de ${selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo}? Otros jugadores podrán verlo e importarlo.`,
+        ? t('creator_modal_save_msg', selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo)
+        : t('creator_modal_publish_msg', selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo),
       onConfirm: async () => {
         const buildData = {
           characterName: selectedCharacter.personaje,
           styleName: selectedStyle || selectedCharacter.personaje,
-          selectedCharacter,
-          characterBuild,
-          slotLevels
+          selectedCharacter, characterBuild, slotLevels
         };
 
         const tags = generateTags(characterBuild, slotLevels);
@@ -283,26 +276,21 @@ export default function TunerCreator() {
           tags.unshift(`BStyle:${battleStyleLabel}`);
         }
         
-        // Inject outfit name for backend compatibility
         const outfitName = selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo;
-        if (outfitName) {
-          tags.push(`Traje:${outfitName}`);
-        }
+        if (outfitName) tags.push(`Traje:${outfitName}`);
 
-          try {
-          showToast(isEditMode ? "Guardando cambios..." : "Publicando build...", "info");
+        try {
+          showToast(isEditMode ? t('creator_toast_saving') : t('creator_toast_publishing'), "info");
           
           const headers = { 'Content-Type': 'application/json' };
-          if (token) {
-            headers['Authorization'] = `Bearer ${token}`;
-          }
+          if (token) headers['Authorization'] = `Bearer ${token}`;
 
           const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
           const endpoint = isEditMode ? `${API_URL}/api/builds/${editBuildId}` : `${API_URL}/api/builds`;
           const method = isEditMode ? 'PUT' : 'POST';
 
           const response = await fetch(endpoint, {
-            method: method,
+            method,
             headers,
             body: JSON.stringify({
               character_name: buildData.characterName,
@@ -313,7 +301,7 @@ export default function TunerCreator() {
           });
 
           if (response.ok) {
-            showToast(isEditMode ? "Cambios guardados con éxito" : `¡Build de ${buildData.characterName} publicada exitosamente!`, "success");
+            showToast(isEditMode ? t('creator_toast_saved') : t('creator_toast_published', buildData.characterName), "success");
             
             if (isEditMode) {
                setIsEditMode(false);
@@ -323,12 +311,11 @@ export default function TunerCreator() {
             setModalConfig({
               isOpen: true,
               type: 'success',
-              title: isEditMode ? '¡Cambios Aplicados!' : '¡Publicado!',
+              title: isEditMode ? t('creator_modal_success_save_title') : t('creator_modal_success_publish_title'),
               message: isEditMode
-                ? `Los cambios para la build de ${buildData.characterName} se guardaron sin crear una build nueva.`
-                : `Tu tuning de ${buildData.characterName} ya está disponible en la sección de Builds Públicas.`,
+                ? t('creator_modal_success_save_msg', buildData.characterName)
+                : t('creator_modal_success_publish_msg', buildData.characterName),
               onConfirm: () => {
-                 // Limpiar todo el estado para que no queden datos viejos en pantalla ni en localStorage
                  setSelectedCharacter(null);
                  setCharacterBuild({});
                  setSlotLevels({});
@@ -341,8 +328,6 @@ export default function TunerCreator() {
                  localStorage.removeItem('mhur_creator_build');
                  localStorage.removeItem('mhur_creator_levels');
                  localStorage.removeItem('mhur_creator_style');
-                 
-                 // Redirigir al usuario
                  navigate(isEditMode ? '/profile' : '/community');
               }
             });
@@ -351,18 +336,17 @@ export default function TunerCreator() {
             const errorData = await response.json();
             if (response.status === 409) {
               setModalConfig({
-                isOpen: true,
-                type: 'alert',
-                title: 'Tuning ya publicado',
+                isOpen: true, type: 'alert',
+                title: t('creator_modal_duplicate_title'),
                 message: errorData.error,
                 onConfirm: () => {}
               });
             } else {
-              showToast(`Error: ${errorData.error || 'Fallo de publicación'}`, "error");
+              showToast(`Error: ${errorData.error || t('creator_toast_server_err')}`, "error");
             }
           }
         } catch (error) {
-          showToast("No se pudo conectar con el servidor", "error");
+          showToast(t('creator_toast_server_err'), "error");
         }
       }
     });
@@ -370,10 +354,9 @@ export default function TunerCreator() {
 
   const handleResetBuild = () => {
     setModalConfig({
-      isOpen: true,
-      type: 'confirm',
-      title: 'Eliminar Todo',
-      message: '¿Estás seguro de que quieres borrar el tuning actual? Se perderá todo el progreso.',
+      isOpen: true, type: 'confirm',
+      title: t('creator_modal_reset_title'),
+      message: t('creator_modal_reset_msg'),
       onConfirm: () => {
         setSelectedCharacter(null);
         setCharacterBuild({});
@@ -386,7 +369,7 @@ export default function TunerCreator() {
         localStorage.removeItem('mhur_creator_character');
         localStorage.removeItem('mhur_creator_build');
         localStorage.removeItem('mhur_creator_levels');
-        showToast("Progreso borrado correctamente", "info");
+        showToast(t('creator_toast_reset'), "info");
       }
     });
   };
@@ -400,22 +383,22 @@ export default function TunerCreator() {
 
       <div className="left-column">
         <section className="glass-panel" style={{ padding: '2rem', marginBottom: '2rem' }}>
-          <h2 style={{ marginBottom: '1.5rem' }}>Configuración de Personaje</h2>
+          <h2 style={{ marginBottom: '1.5rem' }}>{t('creator_char_config')}</h2>
           <CharacterSelector selectedChar={selectedCharacter} setSelectedChar={handleCharacterChange} />
         </section>
 
         {selectedCharacter?._entrada && (
           <section className="glass-panel" style={{ padding: '2rem', paddingBottom: '3rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-              <h2>Ranuras de Equipamiento</h2>
+              <h2>{t('creator_slots_title')}</h2>
               <button 
                 className="btn-rainbow-max" 
                 onClick={handleMaxAllLevels}
-                title="Mejorar todos los Tunnings equipados al nivel máximo"
-              >Max.</button>
+                title={t('creator_btn_max_title')}
+              >{t('creator_btn_max')}</button>
               <button 
                 className="action-btn" 
-                title="Eliminar progreso del personaje y tunnings" 
+                title={t('creator_btn_reset_title')}
                 onClick={handleResetBuild}
                 style={{ 
                   background: 'rgba(239, 68, 68, 0.1)', 
@@ -426,7 +409,7 @@ export default function TunerCreator() {
                   height: 'auto',
                   marginLeft: 'auto'
                 }}
-              >ELIMINAR TODO</button>
+              >{t('creator_btn_reset')}</button>
             </div>
             <TunerSlotsGrid 
               selectedChar={selectedCharacter}
@@ -447,56 +430,56 @@ export default function TunerCreator() {
             <div className="summary-actions">
               <button 
                 className="action-btn import-btn" 
-                title="Importar Build (Cargar archivo .json)" 
+                title={t('creator_btn_import_title')}
                 onClick={() => fileInputRef.current && fileInputRef.current.click()}
               >
-                IMPORTAR
+                {t('creator_btn_import')}
               </button>
               <input 
-                type="file" 
-                accept=".json" 
-                style={{ display: 'none' }} 
-                ref={fileInputRef}
-                onChange={handleImportBuild}
+                type="file" accept=".json" style={{ display: 'none' }} 
+                ref={fileInputRef} onChange={handleImportBuild}
               />
               <button 
                 className="action-btn export-btn" 
-                title="Guardar / Exportar Build Localmente" 
+                title={t('creator_btn_export_title')}
                 onClick={handleExportBuild}
               >
-                EXPORTAR
+                {t('creator_btn_export')}
               </button>
               <button 
                 className={`action-btn publish-btn ${isEditMode ? 'edit-mode-active' : ''}`} 
-                title={isEditMode ? "Guardar cambios en la build actual" : "Publicar Build en la Nube"} 
+                title={isEditMode ? t('creator_btn_save_title') : t('creator_btn_publish_title')}
                 onClick={handlePublishBuild}
                 style={isEditMode ? { backgroundColor: '#5865F2' } : {}}
               >
-                <FiShare2 /> {isEditMode ? 'GUARDAR' : 'PUBLICAR'}
+                <FiShare2 /> {isEditMode ? t('creator_btn_save') : t('creator_btn_publish')}
               </button>
             </div>
-            <h2 className="summary-title">Resumen</h2>
+            <h2 className="summary-title">{t('creator_summary')}</h2>
           </div>
           
           {selectedCharacter && (
             <div className="summary-character-info" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '4px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span className="char-label">Personaje:</span>
+                <span className="char-label">{t('creator_char_label')}</span>
                 <span className="char-name" style={{ color: 'var(--color-primary)', fontWeight: 'bold' }}>
                   {selectedCharacter.personaje}
                 </span>
               </div>
               
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', opacity: 0.8 }}>
-                <span className="char-label">Traje:</span>
+                <span className="char-label">{t('creator_outfit_label')}</span>
                 <span className="char-name">
-                  {selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo}
+                  {translateNombreCompleto(
+                    selectedCharacter._entrada?.nombre_completo || selectedCharacter.nombre_completo,
+                    lang
+                  )}
                 </span>
               </div>
               
               {availableStyles.length > 1 && (
                 <div className="battle-style-selector" style={{ marginTop: '0.5rem', width: '100%' }}>
-                  <span className="style-label">Estilo de Batalla:</span>
+                  <span className="style-label">{t('creator_style_label')}</span>
                   <div className="style-options">
                     {availableStyles.map(style => (
                       <button 
@@ -504,7 +487,7 @@ export default function TunerCreator() {
                         className={`style-opt-btn ${selectedStyle === style ? 'active' : ''}`}
                         onClick={() => setSelectedStyle(style)}
                       >
-                        {getStyleLabel(style)}
+                        {translateBattleStyleLabel(getStyleLabel(style), lang)}
                       </button>
                     ))}
                   </div>

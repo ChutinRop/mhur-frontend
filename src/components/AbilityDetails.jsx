@@ -1,11 +1,13 @@
 import React from 'react';
+import { useT } from '../context/LanguageContext';
 import './AbilityDetails.css';
 
 export default function AbilityDetails({ ability }) {
+  const { t } = useT();
   if (!ability) {
     return (
       <div className="ability-details-placeholder glass-panel">
-        <p>Selecciona una habilidad para ver sus detalles</p>
+        <p>{t('ability_select_placeholder')}</p>
       </div>
     );
   }
@@ -32,7 +34,7 @@ export default function AbilityDetails({ ability }) {
           <div className="levels-grid">
             {ability.levels.map((val, index) => (
               <div key={index} className="level-item">
-                <span className="level-label">Nivel {index + 1}:</span> {val}
+                <span className="level-label">{t('db_level', index + 1)}</span> {val}
               </div>
             ))}
           </div>

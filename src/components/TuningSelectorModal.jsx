@@ -1,13 +1,18 @@
-import React, { useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { FiX } from 'react-icons/fi';
+import { useT } from '../context/LanguageContext';
+import { translateTuning, translateClass, translateRole, translatePersonajeName } from '../utils/gameTranslation';
 import './TuningSelectorModal.css';
 
 import normalesData from '../data/tunnings_normales.json';
 import especialesData from '../data/tunnings_especiales.json';
+import trajesData from '../data/trajes_es.json';
 import { getAnyCharacterImage } from '../data/characterImages';
 
 const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, characterBuild, activeSlotIndex, onSelectTuning, selectedStyle }) => {
+  const { t, lang } = useT();
+
   if (!isOpen || !slotData || !characterData) return null;
 
   const tunings = useMemo(() => {
@@ -16,9 +21,6 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
 
     let availableTunings = [];
 
-    // Collect base character names (without variant suffix) already equipped in OTHER slots
-    // Only block exact same personaje to prevent true duplicates.
-    // Different characters that share a skill name are still allowed.
     const alreadyEquippedPersonajes = new Set();
     const activeKey = String(activeSlotIndex);
     if (characterBuild) {
@@ -41,18 +43,43 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
     }
 
     const getBaseName = (name) => name.split('(')[0].trim().toLowerCase();
-    const currentBaseName = getBaseName(characterData.personaje);
+    const currentPersonaje = characterData.personaje;
+    const currentBaseName = getBaseName(currentPersonaje);
+
+    // ── Standalone sibling detection ──────────────────────────────────────────
+    // If the current character AND another character share the same base name but
+    // BOTH exist as independent personajes in trajesData (e.g. "All For One" and
+    // "All For One (Youth age)"), they are DIFFERENT characters and should be able
+    // to equip each other's tunings.
+    const trajesPersonajesSet = new Set(trajesData.map(t => t.personaje));
+    const hasStandaloneSibling = [...trajesPersonajesSet].some(
+      p => p !== currentPersonaje && getBaseName(p) === currentBaseName
+    );
+
+    /**
+     * Returns true if the given tuning personaje belongs to the SAME character
+     * as the currently selected one (and should therefore be excluded).
+     */
+    const isSameCharacter = (tuningPersonaje) => {
+      const tuningBaseName = getBaseName(tuningPersonaje);
+      if (tuningBaseName !== currentBaseName) return false; // Different family
+      if (!hasStandaloneSibling) return true; // Standard: same base = same char
+      // Distinguish siblings by whether the name has a parenthetical variant:
+      // - (no variant) = base character (e.g. "All For One")
+      // - (with variant) = the other standalone character (e.g. "All For One (Youth age)")
+      return tuningPersonaje.includes('(') === currentPersonaje.includes('(');
+    };
 
     if (tipo === 'Especial') {
       availableTunings = filteredEspeciales.filter(t => 
         !alreadyEquippedPersonajes.has(t.personaje) && 
-        getBaseName(t.personaje) !== currentBaseName
+        !isSameCharacter(t.personaje)
       );
     } else {
       filteredNormales.forEach(normalMatch => {
         if (normalMatch.habilidades && 
-            !alreadyEquippedPersonajes.has(normalMatch.personaje) && 
-            getBaseName(normalMatch.personaje) !== currentBaseName) {
+            !alreadyEquippedPersonajes.has(normalMatch.personaje) &&
+            !isSameCharacter(normalMatch.personaje)) {
           normalMatch.habilidades.forEach(hab => {
             availableTunings.push({
               ...hab,
@@ -70,7 +97,6 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
     return availableTunings;
   }, [slotData, characterData, characterBuild, activeSlotIndex]);
 
-  // Group the tunings by character name so we can render one card per character
   const groupedTunings = useMemo(() => {
     const groups = {};
     tunings.forEach(t => {
@@ -89,7 +115,6 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
     return Object.values(groups);
   }, [tunings, slotData.tipo]);
 
-  // Helper to determine badge color based on role
   const getBadgeClass = (rol) => {
     if (rol === 'Héroe') return 'hero';
     if (rol === 'Villano') return 'villain';
@@ -97,7 +122,6 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
   };
 
   const handleSelect = (tuning) => {
-    // Determine the actual skill name property (habilidad usually)
     onSelectTuning(tuning);
     onClose();
   };
@@ -106,7 +130,7 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
     <div className="tuning-modal-overlay" onClick={onClose}>
       <div className="tuning-modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="tuning-modal-header">
-          <h3>Seleccionar Tuning {slotData.tipo}</h3>
+          <h3>{t('tuning_modal_title', slotData.tipo)}</h3>
           <button className="tuning-modal-close" onClick={onClose}>
             <FiX />
           </button>
@@ -115,7 +139,7 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
         <div className="tuning-modal-body">
           {groupedTunings.length === 0 ? (
             <div className="no-tunnings-message">
-              No se encontraron tunnings {slotData.tipo}s para este personaje.
+              {t('tuning_no_results', slotData.tipo)}
             </div>
           ) : (
             groupedTunings.map((group, groupIdx) => {
@@ -135,23 +159,23 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
 
                   <div className="tuning-card-info-group">
                     <div className="tuning-card-top-row">
-                      <div className="tuning-card-char">{group.personaje}</div>
+                      <div className="tuning-card-char">{translatePersonajeName(group.personaje, lang)}</div>
                       <div className="tuning-card-badges">
                         <span className={`tuning-badge ${getBadgeClass(group.rol)}`}>
-                          {group.rol}
+                          {translateRole(group.rol, lang)}
                         </span>
                         <span className="tuning-badge class-tag" style={{ borderBottom: `2px solid ${classColorHex}`}}>
-                          {group.clase}
+                          {translateClass(group.clase, lang)}
                         </span>
                       </div>
                     </div>
                     
-                    {/* Render each specific ability under this character */}
                     {group.habilidades.map((ability, abiIdx) => {
-                      const title = ability.habilidad || "Habilidad Desconocida";
-                      const desc = ability.descripcion || "";
-                      const subDesc = ability.subir_nivel || "Sube de nivel para aumentar el tiempo del efecto.";
-                      const levels = ability.niveles || {};
+                      const ta = translateTuning(ability, lang);
+                      const title   = ta.habilidad   || 'Unknown Ability';
+                      const desc    = ta.descripcion || '';
+                      const subDesc = ta.subir_nivel || '';
+                      const levels  = ability.niveles || {};
 
                       return (
                         <div 
@@ -170,7 +194,7 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
                           <div className="tuning-card-levels">
                             {Object.keys(levels).slice(0, 11).map((lvlKey) => (
                               <span key={lvlKey}>
-                                Nivel {lvlKey}: <strong>{levels[lvlKey]}</strong>
+                                {t('tuning_level', lvlKey)} <strong>{levels[lvlKey]}</strong>
                               </span>
                             ))}
                           </div>
@@ -196,14 +220,13 @@ const TuningSelectorModal = ({ isOpen, onClose, slotData, characterData, charact
   );
 };
 
-// Helper for generic class colors inside the modal
 function getClassColor(clase) {
   switch (clase) {
-    case 'Tanque': return '#ffff00'; // Yellowish
-    case 'Daño': return '#ff0000';   // Red
-    case 'Técnico': return '#a020f0'; // Purple
-    case 'Apoyo': return '#00ff00';  // Green
-    case 'Velocista': return '#00bfff'; // Blue
+    case 'Tanque': return '#ffff00';
+    case 'Daño': return '#ff0000';
+    case 'Técnico': return '#a020f0';
+    case 'Apoyo': return '#00ff00';
+    case 'Velocista': return '#00bfff';
     default: return '#ffffff';
   }
 }

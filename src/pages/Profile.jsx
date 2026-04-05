@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { useT } from '../context/LanguageContext';
 import { showToast } from '../components/UIFeedback/Toast';
 import { useNavigate } from 'react-router-dom';
 import TunerSlotsGrid from '../components/TunerSlotsGrid';
 import BuildCard from '../components/BuildCard';
 import CustomModal from '../components/UIFeedback/CustomModal';
-import '../pages/Community.css'; // Para reusar los estilos de las cartas
+import '../pages/Community.css';
 
 const Profile = () => {
   const { user, token, isLoading: authLoading } = useContext(AuthContext);
+  const { t } = useT();
   const navigate = useNavigate();
   
   const [claimedBuilds, setClaimedBuilds] = useState([]);
@@ -18,13 +20,11 @@ const Profile = () => {
   const [modalConfig, setModalConfig] = useState({ isOpen: false, type: 'alert', title: '', message: '', onConfirm: () => {} });
 
   useEffect(() => {
-    if (authLoading) return; // Esperar a que el Contexto lea el LocalStorage
-
+    if (authLoading) return;
     if (!user || !token) {
       navigate('/');
       return;
     }
-
     fetchProfileData();
   }, [user, token, authLoading, navigate]);
 
@@ -32,11 +32,8 @@ const Profile = () => {
     try {
       const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
       const res = await fetch(`${API_URL}/api/users/me/builds`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
+        headers: { 'Authorization': `Bearer ${token}` }
       });
-      
       if (res.ok) {
         const data = await res.json();
         setClaimedBuilds(data.claimed_builds || []);
@@ -44,7 +41,7 @@ const Profile = () => {
       }
     } catch (error) {
       console.error(error);
-      showToast('Error cargando el perfil', 'error');
+      showToast(t('profile_load_err'), 'error');
     } finally {
       setLoading(false);
     }
@@ -67,14 +64,14 @@ const Profile = () => {
       });
 
       if (res.ok) {
-        showToast('¡Builds reclamadas exitosamente!', 'success');
+        showToast(t('profile_claim_success'), 'success');
         fetchProfileData();
       } else {
         const data = await res.json();
-        showToast(data.error || 'Error al reclamar', 'error');
+        showToast(data.error || t('profile_conn_err'), 'error');
       }
     } catch (error) {
-      showToast('Error de conexión', 'error');
+      showToast(t('profile_conn_err'), 'error');
     } finally {
       setClaiming(false);
     }
@@ -84,27 +81,24 @@ const Profile = () => {
     setModalConfig({
       isOpen: true,
       type: 'confirm',
-      title: 'Borrar Build',
-      message: '¿Estás seguro de que deseas borrar esta build permanentemente? Esta acción no se puede deshacer.',
+      title: t('profile_delete_title'),
+      message: t('profile_delete_msg'),
       onConfirm: async () => {
         try {
           const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
           const res = await fetch(`${API_URL}/api/builds/${id}`, {
             method: 'DELETE',
-            headers: {
-              'Authorization': `Bearer ${token}`
-            }
+            headers: { 'Authorization': `Bearer ${token}` }
           });
-
           if (res.ok) {
-            showToast('Build borrada permanentemente', 'success');
+            showToast(t('profile_delete_success'), 'success');
             fetchProfileData();
           } else {
             const data = await res.json();
-            showToast(data.error || 'Error al borrar', 'error');
+            showToast(data.error || t('profile_conn_err'), 'error');
           }
         } catch (error) {
-          showToast('Error de conexión', 'error');
+          showToast(t('profile_conn_err'), 'error');
         }
       }
     });
@@ -120,7 +114,7 @@ const Profile = () => {
     });
   };
 
-  if (loading) return <div style={{color:'white', textAlign:'center', marginTop:'50px'}}>Cargando Perfil...</div>;
+  if (loading) return <div style={{color:'white', textAlign:'center', marginTop:'50px'}}>{t('profile_loading')}</div>;
 
   return (
     <div style={{ padding: '20px', color: 'white', maxWidth: '1000px', margin: '0 auto' }}>
@@ -133,31 +127,28 @@ const Profile = () => {
         <img src={user?.avatar} alt="Avatar" style={{width: 80, height: 80, borderRadius: '50%', border: '2px solid rgba(255,255,255,0.2)'}} />
         <div>
           <h1 style={{margin:0, fontSize: '2rem'}}>{user?.username}</h1>
-          <p style={{margin: '5px 0 0 0', opacity: 0.6}}>Perfil de Tuner de MHUR</p>
+          <p style={{margin: '5px 0 0 0', opacity: 0.6}}>{t('profile_subtitle')}</p>
         </div>
       </div>
 
       {unclaimedBuilds.length > 0 && (
         <div style={{ background: 'rgba(88, 101, 242, 0.1)', border: '1px solid #5865F2', padding: '20px', borderRadius: '12px', marginBottom: '40px' }}>
-          <h2 style={{color: '#5865F2', margin: '0 0 10px 0'}}>¡Atención! Encontramos builds antiguas</h2>
-          <p style={{margin: '0 0 20px 0'}}>
-            El sistema detectó <strong>{unclaimedBuilds.length} builds</strong> creadas bajo el nombre "{user?.username}" antes del sistema de Login con Discord. 
-            ¿Quieres asociarlas permanentemente a tu cuenta de Discord?
-          </p>
+          <h2 style={{color: '#5865F2', margin: '0 0 10px 0'}}>{t('profile_unclaimed_title')}</h2>
+          <p style={{margin: '0 0 20px 0'}} dangerouslySetInnerHTML={{ __html: t('profile_unclaimed_desc', unclaimedBuilds.length, user?.username) }} />
           <button 
             onClick={handleClaimAll} 
             disabled={claiming}
             className="action-btn publish-btn"
             style={{ backgroundColor: '#5865F2', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold' }}
           >
-            {claiming ? 'Reclamando...' : 'Reclamar mis builds'}
+            {claiming ? t('profile_claiming') : t('profile_claim_btn')}
           </button>
         </div>
       )}
 
-      <h2>Mis Builds Reclamadas ({claimedBuilds.length})</h2>
+      <h2>{t('profile_claimed_title', claimedBuilds.length)}</h2>
       {claimedBuilds.length === 0 ? (
-        <p style={{opacity: 0.5}}>No tienes builds creadas o reclamadas en tu cuenta.</p>
+        <p style={{opacity: 0.5}}>{t('profile_no_builds')}</p>
       ) : (
         <div className="builds-grid">
           {claimedBuilds.map(build => (

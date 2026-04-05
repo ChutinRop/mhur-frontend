@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { FiAlertCircle, FiCheckCircle, FiInfo, FiHelpCircle } from 'react-icons/fi';
+import { useT } from '../../context/LanguageContext';
 import './CustomModal.css';
 
 export default function CustomModal({ isOpen, onClose, title, message, type = 'alert', onConfirm, defaultValue = '' }) {
   const [inputValue, setInputValue] = useState(defaultValue);
+  const { t } = useT();
 
   useEffect(() => {
     if (isOpen) setInputValue(defaultValue);
@@ -55,10 +57,10 @@ export default function CustomModal({ isOpen, onClose, title, message, type = 'a
         </div>
         <div className="modal-footer">
           {(type === 'confirm' || type === 'prompt') && (
-            <button className="modal-btn secondary" onClick={onClose}>Cancelar</button>
+            <button className="modal-btn secondary" onClick={onClose}>{t('modal_cancel')}</button>
           )}
           <button className="modal-btn primary" onClick={handleConfirm}>
-            {type === 'confirm' ? 'Aceptar' : (type === 'prompt' ? 'Guardar' : 'Entendido')}
+            {type === 'confirm' ? t('modal_accept') : (type === 'prompt' ? t('modal_save') : t('modal_understood'))}
           </button>
         </div>
       </div>

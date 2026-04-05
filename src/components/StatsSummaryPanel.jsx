@@ -1,4 +1,6 @@
 import React, { useMemo, useState } from 'react';
+import { useT } from '../context/LanguageContext';
+import { translateTuning, translateRole } from '../utils/gameTranslation';
 import './StatsSummaryPanel.css';
 
 // ─── Helper: Parse a numeric value from a level string like "+2.5%" or "+15 altura" ───
@@ -67,90 +69,91 @@ function categorizeSkill(name) {
   return 'otros';
 }
 
-// ─── Group definition for rendering ───
+// ─── Group definition for rendering (labels resolved via i18n at render time) ───
 const STAT_GROUPS = [
   {
     key: 'ataque',
-    label: 'Poder de Ataque',
+    labelKey: 'stats_group_attack',
     icon: '🗡️',
     color: '#ff4444',
     children: ['ataque_habilidad', 'ataque_cac', 'ataque_gp', 'ataque_hp'],
-    childLabels: {
-      ataque_habilidad: 'Habilidad Peculiar',
-      ataque_cac: 'Cuerpo a Cuerpo',
-      ataque_gp: 'Poder de GP',
-      ataque_hp: 'HP Directo',
+    childLabelKeys: {
+      ataque_habilidad: 'stats_child_ataque_habilidad',
+      ataque_cac: 'stats_child_ataque_cac',
+      ataque_gp: 'stats_child_ataque_gp',
+      ataque_hp: 'stats_child_ataque_hp',
     }
   },
   {
     key: 'defensa',
-    label: 'Defensa',
+    labelKey: 'stats_group_defense',
     icon: '🛡️',
     color: '#4488ff',
     children: ['defensa_habilidad', 'defensa_hp', 'defensa_cac'],
-    childLabels: {
-      defensa_habilidad: 'Habilidad Peculiar',
-      defensa_hp: 'HP Directo',
-      defensa_cac: 'Cuerpo a Cuerpo',
+    childLabelKeys: {
+      defensa_habilidad: 'stats_child_defensa_habilidad',
+      defensa_hp: 'stats_child_defensa_hp',
+      defensa_cac: 'stats_child_defensa_cac',
     }
   },
   {
     key: 'recarga',
-    label: 'Recarga de Habilidad',
+    labelKey: 'stats_group_reload',
     icon: '🔄',
     color: '#aa55ff',
     children: ['recarga'],
-    childLabels: { recarga: 'Recarga' }
+    childLabelKeys: { recarga: 'stats_child_recarga' }
   },
   {
     key: 'velocidad',
-    label: 'Velocidad',
+    labelKey: 'stats_group_speed',
     icon: '💨',
     color: '#00d5ff',
     children: ['velocidad_dash', 'velocidad_desp', 'velocidad_mov', 'velocidad_rastreo'],
-    childLabels: {
-      velocidad_dash: 'Dash',
-      velocidad_desp: 'Desplazamiento por Pared',
-      velocidad_mov: 'Movimiento',
-      velocidad_rastreo: 'Rastreo en CAÍDO',
+    childLabelKeys: {
+      velocidad_dash: 'stats_child_vel_dash',
+      velocidad_desp: 'stats_child_vel_desp',
+      velocidad_mov: 'stats_child_vel_mov',
+      velocidad_rastreo: 'stats_child_vel_rastreo',
     }
   },
   {
     key: 'salto',
-    label: 'Altura de Salto',
+    labelKey: 'stats_group_jump',
     icon: '↕️',
     color: '#ffcc00',
     children: ['salto_frontal', 'salto_vertical', 'salto_muro'],
-    childLabels: {
-      salto_frontal: 'Frontal',
-      salto_vertical: 'Vertical',
-      salto_muro: 'De Muro',
+    childLabelKeys: {
+      salto_frontal: 'stats_child_salto_frontal',
+      salto_vertical: 'stats_child_salto_vertical',
+      salto_muro: 'stats_child_salto_muro',
     }
   },
   {
     key: 'hp',
-    label: 'HP Máximo / CAÍDO',
+    labelKey: 'stats_group_hp',
     icon: '💚',
     color: '#00ff88',
     children: ['hp_maximo', 'hp_caido'],
-    childLabels: {
-      hp_maximo: 'HP Máximo',
-      hp_caido: 'HP en CAÍDO',
+    childLabelKeys: {
+      hp_maximo: 'stats_child_hp_maximo',
+      hp_caido: 'stats_child_hp_caido',
     }
   },
   {
     key: 'gp',
-    label: 'GP Máximo',
+    labelKey: 'stats_group_gp',
     icon: '🔵',
     color: '#55aaff',
     children: ['gp_maximo'],
-    childLabels: { gp_maximo: 'GP Máximo' }
+    childLabelKeys: { gp_maximo: 'stats_child_gp_maximo' }
   },
 ];
 
 // ─── Main Component ───
 export default function StatsSummaryPanel({ characterBuild, slotLevels, specialTunings }) {
   const [expanded, setExpanded] = useState({});
+  const { t, lang } = useT();
 
   const toggle = (key) => setExpanded(prev => ({ ...prev, [key]: !prev[key] }));
 
@@ -271,13 +274,13 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
     <div className="stats-panel">
       {!hasAnyStats ? (
         <div className="stats-empty">
-          <span>Equipa Tunnings para ver el resumen de estadísticas.</span>
+          <span>{t('stats_empty')}</span>
         </div>
       ) : (
         <>
           <div className="stats-hint">
             <span className="hint-icon">💡</span>
-            <span className="hint-text">Presiona las flechas para más información detallada</span>
+            <span className="hint-text">{t('stats_hint')}</span>
           </div>
           {/* ── NORMAL STAT GROUPS ── */}
           {STAT_GROUPS.map(group => {
@@ -297,7 +300,7 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
             // Count sub-items
             const subItems = [];
             childCats.forEach(catKey => {
-              const catLabel = group.childLabels[catKey];
+              const catLabel = t(group.childLabelKeys[catKey]);
               Object.entries(aggregated.normal[catKey]).forEach(([subType, data]) => {
                 subItems.push({ label: `${catLabel}${subType !== 'general' ? ' ' + subType : ''}`, ...data });
               });
@@ -313,7 +316,7 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
                   onClick={hasChildren ? () => toggle(group.key) : undefined}
                 >
                   <span className="stat-icon">{group.icon}</span>
-                  <span className="stat-label">{group.label}</span>
+                  <span className="stat-label">{t(group.labelKey)}</span>
                   <span className="stat-total" style={{ color: groupTotal < 0 ? '#55ff88' : group.color }}>
                     {formatVal(groupTotal, groupUnit)}
                   </span>
@@ -341,36 +344,38 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
           {/* ── SPECIAL TUNNING SECTION ── */}
           {aggregated.specials.length > 0 && (
             <div className="stat-specials-section">
-              <div className="stat-specials-title">⭐ Tunnings Especiales</div>
-              {aggregated.specials.map((s, i) => (
-                <div className="stat-special-item" key={i}>
-                  <div className="stat-special-name">
-                    {s.habilidad}
-                    {s.rol && <span className="stat-special-role">({s.rol === 'Universal' ? 'Universal' : (s.rol === 'Héroe' ? 'Héroe' : 'Villano')})</span>}
+              <div className="stat-specials-title">{t('stats_specials_title')}</div>
+              {aggregated.specials.map((s, i) => {
+                const ts = translateTuning(s, lang);
+                return (
+                  <div className="stat-special-item" key={i}>
+                    <div className="stat-special-name">
+                      {ts.habilidad}
+                      {s.rol && <span className="stat-special-role">({translateRole(s.rol, lang)})</span>}
+                    </div>
+                    <div className="stat-special-detail">
+                      {(() => {
+                        const label = getSpecialLabel(s.subir_nivel, s.tipo);
+                        const isTime = s.tipo === 'tiempo_frames' && !['Restauración', 'Carga', 'Daño', 'Efecto'].includes(label);
+                        return (
+                          <>
+                            <span className="detail-label">{label}:</span>{' '}
+                            <span className="detail-value">
+                              {isTime
+                                ? formatTimeDisplay(s.value)
+                                : s.tipo === 'multiplicador'
+                                  ? `x${s.value.toFixed(1)}`
+                                  : formatStringSeconds(s.value)
+                              }
+                            </span>
+                          </>
+                        );
+                      })()}
+                    </div>
+                    <div className="stat-special-desc">{ts.descripcion}</div>
                   </div>
-                  <div className="stat-special-detail">
-                    {(() => {
-                      const label = getSpecialLabel(s.subir_nivel, s.tipo);
-                      const isTime = s.tipo === 'tiempo_frames' && !['Restauración', 'Carga', 'Daño', 'Efecto'].includes(label);
-                      
-                      return (
-                        <>
-                          <span className="detail-label">{label}:</span>{' '}
-                          <span className="detail-value">
-                            {isTime
-                              ? formatTimeDisplay(s.value)
-                              : s.tipo === 'multiplicador'
-                                ? `x${s.value.toFixed(1)}`
-                                : formatStringSeconds(s.value)
-                            }
-                          </span>
-                        </>
-                      );
-                    })()}
-                  </div>
-                  <div className="stat-special-desc">{s.descripcion}</div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </>

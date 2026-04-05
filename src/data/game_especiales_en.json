@@ -1,0 +1,282 @@
+{
+  "Poder de ataque cuerpo a cuerpo de Estrella y Rayas +": {
+    "habilidad": "Star and Stripe: Melee Attack Power+",
+    "descripcion": "Increases damage dealt with Melee Attacks.",
+    "subir_nivel": null
+  },
+  "Defensa de PV+": {
+    "habilidad": "HP Defense+",
+    "descripcion": "Reduces HP damage received.",
+    "subir_nivel": null
+  },
+  "Rescate Civil Veloz": {
+    "habilidad": "Swift Civil Rescue",
+    "descripcion": "For a set time after battle starts, reduces the time needed to rescue/threaten a civilian.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Localizador de Kota": {
+    "habilidad": "Kota Locator",
+    "descripcion": "Shows Kota's location on the Stage and Map.",
+    "subir_nivel": "Level up to reduce activation time."
+  },
+  "Carga PU Aplastante": {
+    "habilidad": "Crushing Blast Rush",
+    "descripcion": "Fills your PU/PC Meter when you down an opponent.",
+    "subir_nivel": "Level up to increase charge amount."
+  },
+  "Turbo PU": {
+    "habilidad": "Turbo Rush",
+    "descripcion": "When you down an opponent, fills your PU/PC Meter and allows wall-running for a set time.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Rapidez de Venganza": {
+    "habilidad": "Revenge Rush",
+    "descripcion": "When your Guard breaks, increases Movement Speed and allows wall-running for a set time.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Salto Espacial": {
+    "habilidad": "Cosmic Jump",
+    "descripcion": "For a set time after battle starts, vertical jumps are enhanced.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Resistir Calor": {
+    "habilidad": "Heat Resistance",
+    "descripcion": "Immediately cancels all burn effects.",
+    "subir_nivel": "Level up to reduce activation time."
+  },
+  "Resistir Frío": {
+    "habilidad": "Cold Resistance",
+    "descripcion": "Immediately cancels all freeze effects.",
+    "subir_nivel": "Level up to reduce activation time."
+  },
+  "Corredor de Muros": {
+    "habilidad": "Wall Runner",
+    "descripcion": "Allows wall-running for a set time after battle starts.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Camuflaje": {
+    "habilidad": "Camouflage",
+    "descripcion": "Turns you invisible for a set time when an ally falls.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Resistir Descarga": {
+    "habilidad": "Shock Resistance",
+    "descripcion": "Immediately cancels all stun effects.",
+    "subir_nivel": "Level up to reduce activation time."
+  },
+  "Electrificación": {
+    "habilidad": "Electrification",
+    "descripcion": "Electrifies enemies for a set time when you break their Guard.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Indestructible": {
+    "habilidad": "Unbreakable",
+    "descripcion": "When you down an opponent, allows you to resist knockback from enemy attacks for a set time.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Fuerza de Voluntad": {
+    "habilidad": "Iron Will",
+    "descripcion": "Leaves you at 1 HP after receiving a fatal hit.",
+    "subir_nivel": "Level up to reduce activation time."
+  },
+  "Análisis de Campo": {
+    "habilidad": "Field Analysis",
+    "descripcion": "Shows the location of the next Safe Zone.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Brazo Azabache": {
+    "habilidad": "Jet-Black Wing",
+    "descripcion": "Finishing Attacks restore HP, and knockback from enemy attacks is prevented while attacking.",
+    "subir_nivel": "Level up to increase restoration amount."
+  },
+  "Símbolo de Paz": {
+    "habilidad": "Symbol of Peace",
+    "descripcion": "Increases your PU/PC Meter at the start of battle.",
+    "subir_nivel": "Level up to increase charge amount."
+  },
+  "Forma Muscular": {
+    "habilidad": "Muscle Form",
+    "descripcion": "Activating PU/PC restores HP and grants knockback resistance while active.",
+    "subir_nivel": "Level up to increase restoration amount."
+  },
+  "Reabastecimiento Veloz": {
+    "habilidad": "Swift Resupply",
+    "descripcion": "For a set time after battle starts, reduces the time needed to use GP Recovery Items.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Golpe de Venganza": {
+    "habilidad": "Revenge Strike",
+    "descripcion": "Increases your Attack Power for a set time when your Guard breaks.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Fragilización": {
+    "habilidad": "Weakening",
+    "descripcion": "Inflicts DEF DOWN on opponents hit with melee attacks for a set time.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Hiper Regeneración": {
+    "habilidad": "Hyper Regeneration",
+    "descripcion": "Breaking an opponent's Guard gradually restores GP and HP for a limited time.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Impulso de Recarga de Ataque Especial": {
+    "habilidad": "Special Attack Reload Boost",
+    "descripcion": "Increases your Special Action Reload Speed for a set time after downing an opponent.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Técnica de Venganza": {
+    "habilidad": "Revenge Technique",
+    "descripcion": "Increases your Reload Speed for a set time when your Guard breaks.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Auto-Revive Veloz": {
+    "habilidad": "Swift Self-Revival",
+    "descripcion": "Reduces your recovery time from DOWNED state.",
+    "subir_nivel": "Level up to reduce even further."
+  },
+  "Vampiro de HP": {
+    "habilidad": "HP Vampire",
+    "descripcion": "Restores your HP when you down an opponent.",
+    "subir_nivel": "Level up to increase restoration amount."
+  },
+  "Vampiro de GP": {
+    "habilidad": "GP Vampire",
+    "descripcion": "Restores your GP when you down an opponent.",
+    "subir_nivel": "Level up to increase restoration amount."
+  },
+  "PU Potenciado": {
+    "habilidad": "Empowered Blast",
+    "descripcion": "Increases Attack Power of your PU/PC attack, but reduces its duration.",
+    "subir_nivel": "Level up to increase PU/PC active duration."
+  },
+  "Quemadura Total": {
+    "habilidad": "Total Burn",
+    "descripcion": "Increases PU/PC active duration.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Cuasi-Permeación": {
+    "habilidad": "Near-Permeability",
+    "descripcion": "Makes you invincible for a set time after battle starts. Effect ends if you attempt to attack.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Permeación Crítica": {
+    "habilidad": "Critical Permeation",
+    "descripcion": "Gain temporary invincibility when your Guard breaks. Effect ends if you attempt to attack.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Salto Espiral": {
+    "habilidad": "Spiral Jump",
+    "descripcion": "Grants you Nejire Hado's jump for a set time after battle starts.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Fortuna Retorcida": {
+    "habilidad": "Twisted Luck",
+    "descripcion": "When using a Team Recovery Item, there is a chance the item will not be consumed.",
+    "subir_nivel": "Activation chance increases upon leveling up."
+  },
+  "Manifestación de Habilidad": {
+    "habilidad": "Ability Manifestation",
+    "descripcion": "Increases active duration of abilities when using a Quirk Card.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Revivir Reforzado": {
+    "habilidad": "Reinforced Revival",
+    "descripcion": "Restores GP of allies you revive.",
+    "subir_nivel": "Level up to increase restoration amount."
+  },
+  "Rechazo PU": {
+    "habilidad": "PU Repulsion",
+    "descripcion": "When activating PU/PC, any launched opponent takes damage.",
+    "subir_nivel": "Damage increases upon leveling up."
+  },
+  "Duplicación de Cartas": {
+    "habilidad": "Card Duplication",
+    "descripcion": "For a set time after battle starts, increases Level-Up Cards dropped by downed opponents.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Magia de Compresión": {
+    "habilidad": "Compression Magic",
+    "descripcion": "Increases the number of Support Drinks you can carry.",
+    "subir_nivel": "Level up to increase even further."
+  },
+  "Percepción": {
+    "habilidad": "Perception",
+    "descripcion": "Allows you to see the location of opponents hit by your melee attacks for a set time.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Viento Extra": {
+    "habilidad": "Extra Wind",
+    "descripcion": "When your Quirk Level increases, your PU/PC Meter fills.",
+    "subir_nivel": "Level up to reduce activation time."
+  },
+  "Disposición Fraterna": {
+    "habilidad": "Fraternal Disposition",
+    "descripcion": "Increases your Defense for a set time after landing a melee attack on an opponent.",
+    "subir_nivel": "Level up to reduce activation time."
+  },
+  "Puño de Hierro": {
+    "habilidad": "Iron Fist",
+    "descripcion": "Landing a melee attack boosts Attack Power for a short time.",
+    "subir_nivel": "Level up to reduce activation time."
+  },
+  "Asalto de Venganza": {
+    "habilidad": "Revenge Assault",
+    "descripcion": "Increases your Defense for a set time when your Guard breaks.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Apoyo de Venganza": {
+    "habilidad": "Revenge Support",
+    "descripcion": "Restores HP of nearby allies for a set time when your Guard breaks.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Protección Divina": {
+    "habilidad": "Divine Protection",
+    "descripcion": "For a set time after battle starts, reduces the time to open a Large Item Box.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Curación de Distorsión": {
+    "habilidad": "Warp Healing",
+    "descripcion": "For a set time after battle starts, using HP Recovery Items also restores a bit of HP for nearby allies.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Fixer": {
+    "habilidad": "Fixer",
+    "descripcion": "Boosts the effects of the Tuning Ability in the same column as the equipped slot.",
+    "subir_nivel": "Level up to increase the effect."
+  },
+  "Golpe de Trance": {
+    "habilidad": "Trance Strike",
+    "descripcion": "Landing a melee attack puts the enemy in a brainwashed state for a set time.",
+    "subir_nivel": "Level up to reduce activation time."
+  },
+  "Voz PU Atronadora": {
+    "habilidad": "Thunderous PU Voice",
+    "descripcion": "Stuns nearby opponents with a thunderous sound when using your PU/PC.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Recarga Rápida": {
+    "habilidad": "Quick Reload",
+    "descripcion": "Downing an opponent with Quirk α accelerates its reload for a limited time.",
+    "subir_nivel": "Level up to increase effect duration."
+  },
+  "Fundamento de la Paz": {
+    "habilidad": "Foundations of Peace",
+    "descripcion": "Rescue or threaten civilians, or rescue allies to level up your Quirks.",
+    "subir_nivel": "Level up to reduce the activation requirement."
+  },
+  "Liberación del Factor Peculiar": {
+    "habilidad": "Quirk Factor Release",
+    "descripcion": "Breaking an opponent's Guard increases Reload Speed for a limited time.",
+    "subir_nivel": "Level up to reduce activation time."
+  },
+  "Aceleración": {
+    "habilidad": "Acceleration",
+    "descripcion": "Landing a melee attack increases Movement Speed and Attack Speed for a limited time.",
+    "subir_nivel": "Level up to reduce activation time."
+  },
+  "Reducción de área de la Estrella y la Raya": {
+    "habilidad": "Star and Stripe: Area Reduction",
+    "descripcion": "Reduces damage received outside the Safe Area for a set time after battle starts.",
+    "subir_nivel": "Level up to increase effect duration."
+  }
+}

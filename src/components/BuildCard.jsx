@@ -2,6 +2,8 @@ import React from 'react';
 import { FiDownload, FiUser, FiCalendar, FiTrendingUp, FiEdit, FiTrash2 } from 'react-icons/fi';
 import { getAnyCharacterImage, getCharacterImage } from '../data/characterImages';
 import trajesData from '../data/trajes_es.json';
+import { useT } from '../context/LanguageContext';
+import { translateNombreCompleto, translateTag, translateBattleStyleLabel } from '../utils/gameTranslation';
 
 export const getClassColor = (clase) => {
   switch (clase) {
@@ -15,10 +17,11 @@ export const getClassColor = (clase) => {
 };
 
 export default function BuildCard({ build, onImport, onEdit, onDelete, showActions = true }) {
+  const { t, lang } = useT();
+
   // 1. Intentar obtener imagen de la build guardada
   let costumeImg = build.build_data?.selectedCharacter?.imagen_url || null;
   
-  // Función helper para match relacional (Ej: "Traje Miss Con - Combate" == "Miss Con Costume (Combate)")
   const normalizeOutfitName = (name) => {
     if (!name) return '';
     return name.toLowerCase()
@@ -26,38 +29,33 @@ export default function BuildCard({ build, onImport, onEdit, onDelete, showActio
       .replace(/\s+/g, '');
   };
 
-  // 2. Fallback: Si no tiene imagen correcta (build antigua o mismatch), buscarla en trajesData
+  // 2. Fallback: buscarla en trajesData
   const outfitTag = build.tags?.find(t => t.startsWith('Traje:'))?.replace('Traje:', '');
   const outfitName = outfitTag || build.build_data?.selectedCharacter?.nombre_completo;
   
   if (outfitName) {
      const normalizedSearch = normalizeOutfitName(outfitName);
      
-     // Primero buscar match exacto de normalización
-     let found = trajesData.find(t => 
-         t.personaje === build.character_name && 
-         normalizeOutfitName(t.nombre_completo) === normalizedSearch
+     let found = trajesData.find(tr => 
+         tr.personaje === build.character_name && 
+         normalizeOutfitName(tr.nombre_completo) === normalizedSearch
      );
      
-     // Si no hay match completo, intentamos buscar si al menos el nombre del traje base coincide
      if (!found) {
          const baseOutfitName = outfitName.split(' - ')[0];
          const normalizedBase = normalizeOutfitName(baseOutfitName);
-         found = trajesData.find(t => 
-             t.personaje === build.character_name && 
-             normalizeOutfitName(t.traje).includes(normalizedBase) && 
-             (t.variante === 'Por Defecto' || !t.variante)
+         found = trajesData.find(tr => 
+             tr.personaje === build.character_name && 
+             normalizeOutfitName(tr.traje).includes(normalizedBase) && 
+             (tr.variante === 'Por Defecto' || !tr.variante)
          );
      }
      
-     // Fallback final: el primero del personaje
      if (!found) {
-        found = trajesData.find(t => t.personaje === build.character_name);
+        found = trajesData.find(tr => tr.personaje === build.character_name);
      }
 
      if (found) {
-        // En caso de que la URL que venía de la DB no coincida con nuestro JSON maestro,
-        // siempre forzamos el de nuestro JSON para evitar imágenes erróneas cacheadas de versiones previas.
         costumeImg = found.imagen_url;
      }
   }
@@ -67,7 +65,6 @@ export default function BuildCard({ build, onImport, onEdit, onDelete, showActio
     ? getAnyCharacterImage(targetCharName, 'normal')
     : null;
 
-  // Tunings Especiales
   const leftSpecial = build.build_data?.characterBuild?.['left-special'];
   const rightSpecial = build.build_data?.characterBuild?.['right-special'];
 
@@ -118,7 +115,12 @@ export default function BuildCard({ build, onImport, onEdit, onDelete, showActio
               )}
             </div>
             <div className="build-card-outfit-name">
-              {build.tags?.find(t => t.startsWith('Traje:'))?.replace('Traje:', '') || build.build_data?.selectedCharacter?.nombre_completo || build.character_name}
+              {translateNombreCompleto(
+                build.tags?.find(tag => tag.startsWith('Traje:'))?.replace('Traje:', '') ||
+                build.build_data?.selectedCharacter?.nombre_completo ||
+                build.character_name,
+                lang
+              )}
             </div>
           </div>
         </div>
@@ -139,12 +141,16 @@ export default function BuildCard({ build, onImport, onEdit, onDelete, showActio
       <div className="build-card-tags">
         {(build.build_data?.styleName && getStyleLabel(build.build_data.styleName, build.character_name) !== "BASE" || (build.tags && build.tags.some(t => t.startsWith('BStyle:')))) && (
           <span className="style-tag-badge">
-            ⚔️ {build.tags?.find(t => t.startsWith('BStyle:'))?.replace('BStyle:', '') || getStyleLabel(build.build_data?.styleName, build.character_name)}
+            ⚔️ {translateBattleStyleLabel(
+              build.tags?.find(t => t.startsWith('BStyle:'))?.replace('BStyle:', '') ||
+              getStyleLabel(build.build_data?.styleName, build.character_name),
+              lang
+            )}
           </span>
         )}
         {build.tags && build.tags.filter(tag => !tag.startsWith('BStyle:') && !tag.startsWith('Traje:')).slice(0, 4).map((tag, i) => (
           <span key={i} className={`tag-badge ${tag === 'Berserker' ? 'berserker' : 'normal'}`}>
-            {tag}
+            {translateTag(tag, lang)}
           </span>
         ))}
       </div>
@@ -163,19 +169,19 @@ export default function BuildCard({ build, onImport, onEdit, onDelete, showActio
           <div className="build-card-actions" style={{ display: 'flex', gap: '8px' }}>
             {onImport && (
               <button className="import-btn-community" onClick={() => onImport(build._id)}>
-                <FiDownload size={16} /> Importar
+                <FiDownload size={16} /> {t('card_import')}
               </button>
             )}
             
             {onEdit && (
               <button className="edit-btn-profile" onClick={() => onEdit(build)} style={{ background: 'rgba(88, 101, 242, 0.2)', color: '#5865F2', border: '1px solid rgba(88, 101, 242, 0.4)', padding: '6px 14px', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px', flex: 1, justifyContent: 'center' }}>
-                <FiEdit size={14} /> Editar
+                <FiEdit size={14} /> {t('card_edit')}
               </button>
             )}
             
             {onDelete && (
               <button className="delete-btn-profile" onClick={() => onDelete(build._id)} style={{ background: 'rgba(255,0,0,0.2)', color: '#ff6b6b', border: '1px solid rgba(255,0,0,0.4)', padding: '6px 14px', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px', flex: 1, justifyContent: 'center' }}>
-                <FiTrash2 size={14} /> Borrar
+                <FiTrash2 size={14} /> {t('card_delete')}
               </button>
             )}
           </div>

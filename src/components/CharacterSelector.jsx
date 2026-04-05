@@ -3,14 +3,16 @@ import { createPortal } from 'react-dom';
 import { FiX, FiCheck } from 'react-icons/fi';
 import trajesData from '../data/trajes_es.json';
 import { getAnyCharacterImage } from '../data/characterImages';
+import { useT } from '../context/LanguageContext';
+import { translateTraje, translateVariante } from '../utils/gameTranslation';
 import './CharacterSelector.css';
 
 export default function CharacterSelector({ selectedChar, setSelectedChar }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalStep, setModalStep] = useState('character'); // 'character' | 'costume'
+  const [modalStep, setModalStep] = useState('character');
   const [tempCharName, setTempCharName] = useState(null);
+  const { t, lang } = useT();
 
-  // Lista única de personajes
   const personajes = useMemo(() => [...new Set(trajesData.map(t => t.personaje))], []);
 
   const openCharacterModal = () => {
@@ -40,12 +42,15 @@ export default function CharacterSelector({ selectedChar, setSelectedChar }) {
     setIsModalOpen(false);
   };
 
-  // Datos para la vista de Trajes (agrupados por 'traje')
   const trajesAgrupados = useMemo(() => {
     if (!tempCharName) return {};
     const entries = trajesData.filter(t => t.personaje === tempCharName);
     const map = {};
+    const seen = new Set(); // deduplicate by traje+variante
     for (const e of entries) {
+      const key = `${e.traje}::${e.variante}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
       if (!map[e.traje]) map[e.traje] = [];
       map[e.traje].push(e);
     }
@@ -58,10 +63,9 @@ export default function CharacterSelector({ selectedChar, setSelectedChar }) {
 
   return (
     <div className="character-selector-container">
-      {/* ── Main View (Button or Selected Card) ── */}
       {!selectedChar ? (
         <button className="btn-primary" onClick={openCharacterModal}>
-          Seleccionar Personaje
+          {t('char_btn_select')}
         </button>
       ) : (
         <div className="selected-char-card">
@@ -74,25 +78,24 @@ export default function CharacterSelector({ selectedChar, setSelectedChar }) {
           <div className="selected-char-info">
             <h3 className="selected-char-name">{selectedChar.personaje}</h3>
             <div className="selected-char-details">
-              <strong>Estilo:</strong> {selectedChar.traje} <br />
-              <strong>Traje:</strong> {selectedChar.variante}
+              <strong>{t('char_style_label')}</strong> {translateTraje(selectedChar.traje, lang)} <br />
+              <strong>{t('char_outfit_label')}</strong> {translateVariante(selectedChar.variante, lang)}
             </div>
             <div className="change-buttons">
-              <button className="btn-secondary" onClick={openCharacterModal}>Cambiar Personaje</button>
-              <button className="btn-secondary" onClick={() => openCostumeModal(selectedChar.personaje)}>Cambiar Traje</button>
+              <button className="btn-secondary" onClick={openCharacterModal}>{t('char_btn_change_char')}</button>
+              <button className="btn-secondary" onClick={() => openCostumeModal(selectedChar.personaje)}>{t('char_btn_change_outfit')}</button>
             </div>
           </div>
         </div>
       )}
 
-      {/* ── Modal Overlay via Portal ── */}
       {isModalOpen && createPortal(
         <div className="char-modal-overlay" onClick={() => setIsModalOpen(false)}>
           <div className="char-modal-content" onClick={e => e.stopPropagation()}>
             
             <div className="modal-header">
               <h3>
-                {modalStep === 'character' ? 'Selecciona un Personaje' : `Selecciona un Traje: ${tempCharName}`}
+                {modalStep === 'character' ? t('char_modal_select_char') : t('char_modal_select_outfit', tempCharName)}
               </h3>
               <button className="close-btn" onClick={() => setIsModalOpen(false)}>
                 <FiX />
@@ -100,7 +103,6 @@ export default function CharacterSelector({ selectedChar, setSelectedChar }) {
             </div>
 
             <div className="modal-body">
-              {/* STAGE 1: Character Grid */}
               {modalStep === 'character' && (
                 <div className="char-grid">
                   {personajes.map(p => {
@@ -119,20 +121,18 @@ export default function CharacterSelector({ selectedChar, setSelectedChar }) {
                 </div>
               )}
 
-              {/* STAGE 2: Costume Grid by Style */}
               {modalStep === 'costume' && (
                 <div>
-                  {/* Option to go back to character selection */}
                   {!selectedChar && (
                     <button className="btn-secondary" style={{ marginBottom: '1.5rem' }} onClick={openCharacterModal}>
-                      &larr; Volver
+                      {t('char_btn_back')}
                     </button>
                   )}
 
                   {Object.entries(trajesAgrupados).map(([estilo, variantes]) => (
                     <div key={estilo} className="costume-section">
                       <div className="costume-section-header">
-                        {estilo}
+                        {translateTraje(estilo, lang)}
                       </div>
                       
                       <div className="costume-grid">
@@ -161,7 +161,7 @@ export default function CharacterSelector({ selectedChar, setSelectedChar }) {
                                   </div>
                                 )}
                               </div>
-                              <span className="costume-name">{v.variante}</span>
+                              <span className="costume-name">{translateVariante(v.variante, lang)}</span>
                             </button>
                           );
                         })}

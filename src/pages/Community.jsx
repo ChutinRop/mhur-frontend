@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import { useT } from '../context/LanguageContext';
 import { FiDownload, FiUser, FiCalendar, FiSearch, FiTrendingUp } from 'react-icons/fi';
 import { showToast } from '../components/UIFeedback/Toast';
 import CustomModal from '../components/UIFeedback/CustomModal';
@@ -16,35 +17,33 @@ export default function Community() {
   const [modalConfig, setModalConfig] = useState({ isOpen: false, type: 'alert', title: '', message: '', onConfirm: () => {} });
   const navigate = useNavigate();
   const { token } = useContext(AuthContext);
+  const { t } = useT();
 
   useEffect(() => {
     const API_URL = import.meta.env.VITE_API_URL || 'https://mhur-backend.onrender.com';
     fetch(`${API_URL}/api/builds`)
       .then(res => res.json())
       .then(data => {
-        // Ordenar por popularidad (importaciones DESC) por defecto
         const sorted = data.sort((a,b) => (b.imports || 0) - (a.imports || 0));
         setBuilds(sorted);
         setLoading(false);
       })
       .catch(err => {
         console.error("Error fetching builds:", err);
-        showToast("Error al cargar builds de la comunidad", "error");
+        showToast(t('community_load_err'), "error");
         setLoading(false);
       });
   }, []);
 
-  // Reiniciar paginación al buscar
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm]);
 
   const handleImportBuild = async (buildId) => {
-    // ... logic remains same, but using detailedBuild
     const currentlyBlocked = localStorage.getItem('mhur_import_blocked_until');
     if (currentlyBlocked && Date.now() < parseInt(currentlyBlocked)) {
       const timeLeft = Math.ceil((parseInt(currentlyBlocked) - Date.now()) / 1000);
-      showToast(`Servidor saturado. Espera ${timeLeft} segundos.`, "error");
+      showToast(t('community_spam', timeLeft), "error");
       return;
     }
 
@@ -57,14 +56,14 @@ export default function Community() {
     if (attempts.length >= 4) {
       localStorage.setItem('mhur_import_blocked_until', (now + 60000).toString());
       localStorage.setItem('mhur_import_attempts', JSON.stringify([]));
-      showToast("Límite de spam alcanzado. Botón bloqueado por 1 minuto.", "error");
+      showToast(t('community_spam_block'), "error");
       return;
     }
     
     localStorage.setItem('mhur_import_attempts', JSON.stringify(attempts));
 
     try {
-      showToast("Cargando build...", "info");
+      showToast(t('community_loading_build'), "info");
       const API_URL = import.meta.env.VITE_API_URL || 'https://mhur-backend.onrender.com';
       
       const headers = {};
@@ -77,7 +76,7 @@ export default function Community() {
       const detailedBuild = await resp.json();
       navigate('/creator', { state: { importedBuild: detailedBuild.build_data } });
     } catch (error) {
-       showToast("No se pudo cargar la build", "error");
+       showToast(t('community_load_build_err'), "error");
     }
   };
 
@@ -89,28 +88,19 @@ export default function Community() {
     return charMatch || tagMatch || creatorMatch;
   });
 
-  // Lógica de visualización
   const isSearching = searchTerm.trim().length > 0;
-  
-  // Top 10 solo si no estamos buscando específicamente
   const popularBuilds = !isSearching ? filteredBuilds.slice(0, 10) : [];
-  // El resto de la lista (o todos si buscamos)
   const mainListSource = !isSearching ? filteredBuilds.slice(10) : filteredBuilds;
   
-  // Lógica de Paginación Numérica
   const totalPages = Math.ceil(mainListSource.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const displayedBuilds = mainListSource.slice(startIndex, endIndex);
 
-  // Generador de botones de paginación limitados (para no mostrar 50 botones a la vez)
   const getPaginationGroup = () => {
     let start = Math.max(currentPage - 2, 1);
     let end = Math.min(start + 4, totalPages);
-    
-    if (end - start < 4) {
-      start = Math.max(end - 4, 1);
-    }
+    if (end - start < 4) start = Math.max(end - 4, 1);
     return Array.from({ length: (end - start) + 1 }, (_, idx) => start + idx);
   };
 
@@ -125,10 +115,10 @@ export default function Community() {
         <div className="community-header-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem' }}>
           <div>
             <h2 style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <FiTrendingUp style={{ color: '#10b981' }} /> Comunidad de Tunnings
+              <FiTrendingUp style={{ color: '#10b981' }} /> {t('community_title')}
             </h2>
             <p style={{ marginTop: '0.5rem', color: 'var(--text-muted)' }}>
-              Explora las configuraciones más populares de la comunidad.
+              {t('community_subtitle')}
             </p>
           </div>
           
@@ -136,7 +126,7 @@ export default function Community() {
             <FiSearch style={{ color: 'var(--text-muted)' }} />
             <input 
               type="text" 
-              placeholder="Buscar personaje, etiqueta o creador..." 
+              placeholder={t('community_search')} 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="community-search-input"
@@ -146,11 +136,10 @@ export default function Community() {
       </section>
 
       {loading ? (
-        <div className="loading-container" style={{ textAlign: 'center', padding: '3rem' }}>Cargando builds populares...</div>
+        <div className="loading-container" style={{ textAlign: 'center', padding: '3rem' }}>{t('community_loading')}</div>
       ) : (
         <div className="community-scroll-area">
           
-          {/* SECCIÓN 1: POPULARES (Solo si no hay búsqueda activa) */}
           {!isSearching && popularBuilds.length > 0 && currentPage === 1 && (
             <div className="popular-section-container" style={{ marginBottom: '3rem' }}>
                <h3 className="section-title-label" style={{ 
@@ -161,7 +150,7 @@ export default function Community() {
                  fontSize: '1.4rem',
                  color: '#10b981'
                }}>
-                 🔥 Top 10 Populares
+                 {t('community_top10')}
                </h3>
                <div className="builds-grid">
                   {popularBuilds.map(build => (
@@ -171,7 +160,6 @@ export default function Community() {
             </div>
           )}
 
-          {/* SECCIÓN 2: LISTADO GENERAL O RESULTADOS */}
           <div className="all-builds-section">
             <h3 className="section-title-label" style={{ 
               marginBottom: '1.5rem', 
@@ -181,12 +169,12 @@ export default function Community() {
               alignItems: 'center',
               gap: '0.6rem'
             }}>
-              {isSearching ? `Resultados para "${searchTerm}"` : '✨ Explorar Recientes'}
+              {isSearching ? t('community_results', searchTerm) : t('community_recent')}
             </h3>
             
             {displayedBuilds.length === 0 ? (
               <p style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-muted)' }}>
-                No se encontraron resultados para esta búsqueda.
+                {t('community_no_results')}
               </p>
             ) : (
               <>
@@ -196,7 +184,6 @@ export default function Community() {
                   ))}
                 </div>
                 
-                {/* Paginación */}
                 {totalPages > 1 && (
                   <div className="pagination-container">
                     <button 
@@ -204,7 +191,7 @@ export default function Community() {
                       disabled={currentPage === 1}
                       onClick={() => setCurrentPage(prev => prev - 1)}
                     >
-                      &laquo; Ant
+                      {t('community_prev')}
                     </button>
                     
                     {getPaginationGroup().map(page => (
@@ -222,7 +209,7 @@ export default function Community() {
                       disabled={currentPage === totalPages}
                       onClick={() => setCurrentPage(prev => prev + 1)}
                     >
-                      Sig &raquo;
+                      {t('community_next')}
                     </button>
                   </div>
                 )}
@@ -234,5 +221,3 @@ export default function Community() {
     </main>
   );
 }
-
-
