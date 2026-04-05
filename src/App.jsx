@@ -9,6 +9,9 @@ import TunerCreator from './pages/TunerCreator';
 import Database from './pages/Database';
 import Community from './pages/Community';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import AboutUs from './pages/AboutUs';
+import ContactUs from './pages/ContactUs';
+import TermsOfService from './pages/TermsOfService';
 import Toast, { showToast } from './components/UIFeedback/Toast';
 import CustomModal from './components/UIFeedback/CustomModal';
 import ReportModal from './components/UIFeedback/ReportModal';
@@ -272,14 +275,17 @@ function MainApp() {
         <Navigation handleLogout={handleLogout} setShowReportModal={setShowReportModal} />
 
         <div className="app-container">
-          <Routes>
-            <Route path="/" element={<Database />} />
-            <Route path="/creator" element={<TunerCreator />} />
-            <Route path="/community" element={<Community />} />
-            <Route path="/privacy" element={<PrivacyPolicy />} />
-            <Route path="/auth/callback" element={<AuthCallback />} />
-            <Route path="/profile" element={<Profile />} />
-          </Routes>
+            <Routes>
+              <Route path="/" element={<Database />} />
+              <Route path="/creator" element={<TunerCreator />} />
+              <Route path="/community" element={<Community />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/contact" element={<ContactUs />} />
+              <Route path="/terms" element={<TermsOfService />} />
+              <Route path="/auth/callback" element={<AuthCallback />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
 
           <footer className="footer">
             <div className="footer-socials">
@@ -289,8 +295,11 @@ function MainApp() {
               <a href="https://discord.com/invite/JdnGVhBtn4" target="_blank" rel="noreferrer" className="social-link discord"><FaDiscord /></a>
             </div>
             
-            <div className="footer-links">
+            <div className="footer-links" style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+               <Link to="/about" className="footer-link">{t('footer_about')}</Link>
+               <Link to="/contact" className="footer-link">{t('footer_contact')}</Link>
                <Link to="/privacy" className="footer-link">{t('footer_privacy')}</Link>
+               <Link to="/terms" className="footer-link">{t('footer_terms')}</Link>
             </div>
             <p className="footer-copyright">{t('footer_copyright')}</p>
             <p className="footer-disclaimer" style={{ 

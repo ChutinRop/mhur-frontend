@@ -21,6 +21,9 @@ const en = {
   // ── Footer ─────────────────────────────────────────────────────────────────
   footer_copyright: '© 2026 MHUR Tunning - Made by ChutinRop. All rights reserved.',
   footer_privacy: 'Privacy Policy',
+  footer_about: 'About Us',
+  footer_contact: 'Contact Us',
+  footer_terms: 'Terms of Service',
   footer_disclaimer: 'MHUR Tunning is an unofficial fan tool. We are not affiliated with Bandai Namco Entertainment, Sony Interactive Entertainment, or K. Horikoshi. All characters, images, and trademarks are the property of their respective owners.',
 
   // ── CustomModal ────────────────────────────────────────────────────────────
@@ -217,6 +220,32 @@ const en = {
   privacy_s4: 'Third-party ad servers or ad networks use technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on MHUR Tunning. They automatically receive your IP address when this occurs.',
   privacy_s5_title: '5. Consent',
   privacy_s5: 'By using our website, you hereby consent to our Privacy Policy and agree to its terms.',
+
+  // ── About Us ──────────────────────────────────────────────────────────────
+  about_title: 'About MHUR Tunning',
+  about_p1: 'MHUR Tunning is a free tool designed for the My Hero Ultra Rumble community. Our mission is to provide a platform where players can experiment with different "tuning" (power-up) configurations without having to spend real in-game resources.',
+  about_p2: 'This "tuning calculator" not only allows you to create custom builds but also explains in detail what each tuning does and how it affects your character\'s stats, helping you optimize your playstyle.',
+  about_p3: 'The project is maintained by ChutinRop and is a personal effort for my community and the MHUR community.',
+
+  // ── Contact Us ────────────────────────────────────────────────────────────
+  contact_title: 'Contact Us',
+  contact_p1: 'Do you have questions, suggestions, or found a bug? We\'d love to hear from you.',
+  contact_email_label: 'Email:',
+  contact_email_val: 'shootingrob13@gmail.com',
+  contact_socials_title: 'Social Media:',
+  contact_socials_desc: 'You can also contact us through our official social media on Twitch, Discord, or YouTube.',
+
+  // ── Terms of Service ──────────────────────────────────────────────────────
+  terms_title: 'Terms of Service',
+  terms_updated: 'Last updated: April 5, 2026',
+  terms_s1_title: '1. Acceptance of Terms',
+  terms_s1: 'By accessing MHUR Tunning, you agree to comply with these terms of service and all applicable laws and regulations.',
+  terms_s2_title: '2. Use of the Tool',
+  terms_s2: 'MHUR Tunning is a simulation tool. Data and "tunnings" are based on available game information, but may vary according to official Marvel Rivals updates.',
+  terms_s3_title: '3. Intellectual Property',
+  terms_s3: 'All game content, images, and character names are the property of their respective owners. MHUR Tunning is a non-profit fan site.',
+  terms_s4_title: '4. Limitation of Liability',
+  terms_s4: 'We are not responsible for any data loss or misuse of the information provided in this tool.',
 };
 
 export default en;
