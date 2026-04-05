@@ -93,7 +93,7 @@
 
 .slot-title-line {
   display: inline-block;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 900;
   color: #000; 
   text-transform: uppercase;
@@ -219,7 +219,7 @@
 
 .special-header h4 {
   margin: 0;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 900;
   overflow: hidden;
   text-overflow: ellipsis;

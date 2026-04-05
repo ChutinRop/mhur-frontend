@@ -810,22 +810,22 @@
         "descripcion": "Al usar un Objeto de Recuperación de equipo, hay una probabilidad de que el objeto no se consuma.",
         "subir_nivel": "La probabilidad de activación aumenta al subir de nivel.",
         "niveles": {
-            "1": 5,
-            "2": 10,
-            "3": 15,
-            "4": 20,
-            "5": 25,
-            "6": 30,
-            "7": 35,
-            "8": 40,
-            "9": 45,
-            "10": 50,
-            "11": 55
+            "1": "5.0%",
+            "2": "10.0%",
+            "3": "15.0%",
+            "4": "20.0%",
+            "5": "25.0%",
+            "6": "30.0%",
+            "7": "35.0%",
+            "8": "40.0%",
+            "9": "45.0%",
+            "10": "50.0%",
+            "11": "55.0%"
         },
         "sub_efectos": {
             "1": 1
         },
-        "tipo_valor": "tiempo_frames"
+        "tipo_valor": "porcentaje"
     },
     {
         "personaje": "Tamaki Amajiki",
