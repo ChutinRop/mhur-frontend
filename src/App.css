@@ -40,7 +40,7 @@ body,
   margin: 0;
 }
 
-/* ── Hero Banner Full Width ── */
+/* â”€â”€ Hero Banner Full Width â”€â”€ */
 .app-hero-banner-full {
   width: 100%;
   position: relative;
@@ -60,9 +60,10 @@ body,
   display: block;
 }
 
-/* ── Battle Style Selector (TunerCreator) ── */
+/* â”€â”€ Battle Style Selector (TunerCreator) â”€â”€ */
 .battle-style-selector {
-  width: 100%; /* Force it to take the full width so it wraps under character name */
+  width: 100%;
+  /* Force it to take the full width so it wraps under character name */
   margin-top: 0.75rem;
   padding: 0.8rem;
   background: rgba(255, 255, 255, 0.05);
@@ -104,15 +105,17 @@ body,
 }
 
 .style-opt-btn.active {
-  background: #ffcc00; /* MHUR Theme Gold */
+  background: #ffcc00;
+  /* MHUR Theme Gold */
   color: #000;
   border-color: #ffcc00;
   box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
 }
 
-/* ── Tuning Selector Modal Highlights ── */
+/* â”€â”€ Tuning Selector Modal Highlights â”€â”€ */
 .tuning-card.matching-style {
-  background: rgba(255, 204, 0, 0.08); /* Subtle gold background */
+  background: rgba(255, 204, 0, 0.08);
+  /* Subtle gold background */
   border-right: 2px solid rgba(255, 204, 0, 0.3);
   box-shadow: 0 0 15px rgba(255, 204, 0, 0.1);
 }
@@ -145,7 +148,7 @@ body,
   }
 }
 
-/* ── Header ── */
+/* â”€â”€ Header â”€â”€ */
 .header {
   padding: 0.65rem 2.5rem !important;
   display: flex;
@@ -160,7 +163,7 @@ body,
   position: relative;
 }
 
-/* Zone 1 ─ Logo + title (left-anchored) */
+/* Zone 1 â”€ Logo + title (left-anchored) */
 .header-left {
   display: flex;
   align-items: center;
@@ -211,15 +214,17 @@ body,
   white-space: nowrap;
 }
 
-/* Zone 2 ─ Nav links (centered) */
+/* Zone 2 â”€ Nav links (centered) */
 .header-nav {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  flex: 0 0 auto; /* Keep center static, let sides adapt */
+  flex: 0 0 auto;
+  /* Keep center static, let sides adapt */
   margin: 0;
-  max-width: 50%; /* Prevent overlapping sides */
+  max-width: none;
+  /* min-width en header-left/right actúa como límite */
 }
 
 .nav-link {
@@ -251,7 +256,7 @@ body,
   box-shadow: 0 0 15px rgba(59, 130, 246, 0.15);
 }
 
-/* Zone 3 ─ Action buttons (right-anchored) */
+/* Zone 3 â”€ Action buttons (right-anchored) */
 .header-right {
   display: flex;
   align-items: center;
@@ -335,7 +340,7 @@ body,
   font-weight: 600;
 }
 
-/* ── Report Button (Navbar) ── */
+/* â”€â”€ Report Button (Navbar) â”€â”€ */
 .report-btn {
   display: flex;
   align-items: center;
@@ -363,7 +368,7 @@ body,
   font-size: 1.1rem;
 }
 
-/* ── Support Button (Ko-fi) ── */
+/* â”€â”€ Support Button (Ko-fi) â”€â”€ */
 .support-btn {
   display: flex;
   align-items: center;
@@ -392,7 +397,7 @@ body,
   font-size: 1.1rem;
 }
 
-/* ── Language Dropdown ── */
+/* â”€â”€ Language Dropdown â”€â”€ */
 .lang-dropdown-wrapper {
   position: relative;
   display: inline-block;
@@ -460,7 +465,7 @@ body,
   opacity: 0.8;
 }
 
-/* ── Dropdown panel ── */
+/* â”€â”€ Dropdown panel â”€â”€ */
 .lang-dropdown-menu {
   position: absolute;
   top: calc(100% + 6px);
@@ -471,13 +476,20 @@ body,
   border-radius: 10px;
   overflow: hidden;
   z-index: 2000;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255,255,255,0.04) inset;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
   animation: langMenuIn 0.18s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes langMenuIn {
-  from { opacity: 0; transform: translateY(-8px) scale(0.97); }
-  to   { opacity: 1; transform: translateY(0)   scale(1);    }
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* Thin gold line at top */
@@ -560,6 +572,7 @@ body,
 }
 
 @media (max-width: 768px) {
+
   .report-btn,
   .support-btn {
     padding: 0.6rem !important;
@@ -576,7 +589,7 @@ body,
   }
 }
 
-/* ── Layout ── */
+/* â”€â”€ Layout â”€â”€ */
 .main-content {
   display: grid;
   grid-template-columns: 1fr;
@@ -608,7 +621,7 @@ body,
   margin-bottom: 1.5rem;
 }
 
-/* ── Mobile Overrides ── */
+/* â”€â”€ Mobile Overrides â”€â”€ */
 @media (max-width: 768px) {
   .app-container {
     padding: 1rem;
@@ -695,7 +708,7 @@ body,
   }
 }
 
-/* ── Summary Header (TunerCreator) ── */
+/* â”€â”€ Summary Header (TunerCreator) â”€â”€ */
 .summary-header {
   margin-bottom: 1.5rem;
   display: flex;
@@ -781,7 +794,8 @@ body,
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  flex-wrap: wrap; /* Allow wrapping so style selector goes below */
+  flex-wrap: wrap;
+  /* Allow wrapping so style selector goes below */
   gap: 8px;
   background: rgba(176, 38, 255, 0.1);
   padding: 0.5rem 0.75rem;
@@ -806,7 +820,7 @@ body,
   }
 }
 
-/* ── Footer ── */
+/* â”€â”€ Footer â”€â”€ */
 .footer {
   padding: 2rem 1rem;
   text-align: center;
@@ -880,4 +894,167 @@ body,
 
 .social-link.discord:hover {
   color: #5865f2;
+}
+
+
+/* ============================================================
+   MHUR TUNNING — NAVBAR RESPONSIVE FIX — VERSIÓN FINAL
+   ============================================================ */
+
+/* ── 1525px: header-right baja a su propia fila ─────────── */
+@media (max-width: 1525px) {
+  .header {
+    flex-wrap: wrap;
+    padding: 0.75rem 2rem !important;
+    gap: 0.5rem;
+    min-height: unset;
+    align-items: center;
+  }
+
+  .header-left {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: center;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--surface-border);
+    gap: 0.6rem;
+    flex: unset;
+  }
+
+  .report-btn span, .support-btn span { display: inline; }
+  .report-btn, .support-btn {
+    padding: 0.55rem 1rem !important;
+    width: auto; height: auto;
+    border-radius: var(--radius-sm) !important;
+    font-size: 0.85rem;
+    margin-right: 0;
+  }
+  .lang-trigger-label { display: inline; }
+  .lang-chevron { display: inline-block; }
+  .user-name { display: inline; }
+  .user-status { flex-shrink: 0; }
+}
+
+/* ── 900px: nav links bajan a 3 columnas ───────────────── */
+@media (max-width: 900px) {
+  .header {
+    padding: 0.85rem 1.25rem !important;
+    gap: 0.65rem;
+  }
+
+  .header-left {
+    flex-wrap: wrap;
+    width: 100%;
+    flex: unset;
+  }
+
+  .header-logo { height: 52px; }
+  .header-title { font-size: 1.3rem !important; }
+
+  .header-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.45rem;
+    width: 100%;
+    flex: unset;
+    order: 3;
+    max-width: 100%;
+  }
+
+  .nav-link {
+    justify-content: center;
+    font-size: 0.82rem;
+    padding: 0.5rem 0.4rem;
+    white-space: nowrap;
+  }
+}
+
+/* ── 768px: mobile — todo centrado ─────────────────────── */
+@media (max-width: 768px) {
+  .header {
+    padding: 0.85rem 1rem !important;
+    gap: 0.65rem;
+    align-items: center;
+    flex-wrap: nowrap !important; /* FIX: Evita que la columna se desborde hacia la derecha */
+  }
+
+  .header-left {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    width: 100%;
+    flex: unset;
+  }
+
+  .header-logo { height: 48px; }
+  .header-title-container { align-items: center; text-align: center; }
+  .header-title { font-size: 1.2rem !important; }
+  .header-author { text-align: center; }
+
+  .header-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.45rem;
+    width: 100%;
+    order: unset;
+    max-width: 100%;
+    flex: unset;
+  }
+
+  .header-nav .nav-link:nth-child(3) {
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+
+  .nav-link {
+    justify-content: center;
+    font-size: 0.78rem;
+    padding: 0.45rem 0.35rem;
+    gap: 0.3rem;
+  }
+
+  .header-right {
+    gap: 0.5rem;
+    justify-content: center;
+    flex-basis: auto; /* FIX: Restaura la altura automática */
+    width: 100%;
+    flex-wrap: wrap; /* FIX: Permite que los botones bajen si no caben */
+    padding-top: 0.5rem;
+  }
+
+  /* FIX MÓVIL: Evitar que los estilos anteriores oculten el texto/botones */
+  .report-btn span, .support-btn span { 
+    display: inline; 
+  }
+  
+  .report-btn, .support-btn {
+    padding: 0.5rem 0.85rem !important;
+    font-size: 0.8rem;
+    width: auto !important;
+    height: auto !important;
+    border-radius: var(--radius-sm) !important;
+  }
+}
+
+/* ── 400px: mobile muy pequeño ─────────────────────────── */
+@media (max-width: 400px) {
+  .header { padding: 0.75rem !important; }
+  .header-title { font-size: 1.1rem !important; }
+  .header-logo { height: 40px; }
+  .nav-link { font-size: 0.72rem; padding: 0.45rem 0.2rem; }
+
+  .report-btn span, .support-btn span { display: none; }
+  .report-btn, .support-btn {
+    padding: 0.5rem !important;
+    width: 36px !important; 
+    height: 36px !important;
+    border-radius: 50% !important;
+    justify-content: center;
+  }
 }
