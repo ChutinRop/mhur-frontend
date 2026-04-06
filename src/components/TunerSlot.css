@@ -331,57 +331,64 @@
 }
 @media (max-width: 480px) {
   .tuner-slot-container {
-    height: 80px;
-    margin-bottom: 12px;
+    height: 75px; 
+    margin-bottom: 10px;
   }
   .slot-shadow-1 {
-    top: 3px;
-    left: 3px;
-    border-width: 3px;
+    top: 2px;
+    left: 2px;
+    border-width: 2px;
+  }
+  .slot-shadow-2 {
+    top: 5px;
+    left: 5px;
   }
   .slot-main {
-    border-width: 4px;
+    border-width: 3px;
   }
   .slot-title-stack {
-    margin-left: 10px;
-    margin-right: 50px;
+    margin-left: 8px;
+    margin-right: 42px;
   }
   .slot-title-line {
-    font-size: 0.85rem;
-  }
-  .slot-title-placeholder {
-    font-size: 1rem;
-  }
-  .slot-number-unlocked {
-    font-size: 2.2rem;
-    left: 10px;
-  }
-  .slot-level-band {
-    padding-left: 10px;
-    padding-right: 55px;
-    font-size: 0.7rem;
-    height: 28px;
-  }
-  .role-text {
-    font-size: 0.7rem;
-  }
-  .class-hexagon {
-    width: 68px;
-    height: 80px;
-  }
-  .special-header h4 {
-    font-size: 0.8rem;
-  }
-  .special-badge {
-    width: 40px;
-    height: 40px;
-  }
-  .special-footer {
     font-size: 0.75rem;
   }
+  .slot-title-placeholder {
+    font-size: 0.9rem;
+  }
+  .slot-number-unlocked {
+    font-size: 2rem;
+    left: 8px;
+  }
+  .slot-level-band {
+    padding-left: 8px;
+    padding-right: 48px;
+    font-size: 0.65rem;
+    height: 24px;
+  }
+  .role-text {
+    font-size: 0.6rem;
+  }
+  .class-hexagon {
+    width: 60px;
+    height: 75px;
+    right: -2px;
+    top: -2px;
+  }
+  .special-header h4 {
+    font-size: 0.75rem;
+  }
+  .special-badge {
+    width: 36px;
+    height: 36px;
+  }
+  .special-footer {
+    padding: 3px 10px;
+    font-size: 0.7rem;
+  }
   .lvl-btn {
-    width: 18px;
-    height: 18px;
-    font-size: 12px;
+    width: 16px;
+    height: 16px;
+    font-size: 11px;
   }
 }

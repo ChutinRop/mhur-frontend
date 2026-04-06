@@ -624,8 +624,8 @@ body,
 /* â”€â”€ Mobile Overrides â”€â”€ */
 @media (max-width: 768px) {
   .app-container {
-    padding: 1rem;
-    gap: 1.5rem;
+    padding: 0.4rem; /* Further reduced from 0.5rem for ultra-mobile */
+    gap: 0.75rem;
   }
 
   .beta-banner {
@@ -813,10 +813,32 @@ body,
   .summary-actions {
     justify-content: center;
     flex-wrap: wrap;
+    gap: 0.5rem;
   }
 
   .summary-title {
     font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .summary-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .action-btn {
+    width: 100% !important;
+    padding: 0.6rem;
+    font-size: 0.8rem;
+    justify-content: center;
+  }
+
+  .summary-title {
+    margin-top: 0.5rem;
+    font-size: 1.5rem !important;
   }
 }
 
