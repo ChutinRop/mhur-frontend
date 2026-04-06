@@ -1,6 +1,6 @@
 const en = {
   // ── Navigation & Header ────────────────────────────────────────────────────
-  nav_tunnings: 'Tunnings',
+  nav_tunnings: 'Tuning',
   nav_creator: 'Build Creator',
   nav_community: 'Public Builds',
   nav_login: 'Login with Discord',
@@ -19,13 +19,13 @@ const en = {
   mobile_warning: "📱 If the page looks off on mobile, enable 'Desktop Mode' for the best experience.",
 
   // ── Footer ─────────────────────────────────────────────────────────────────
-  footer_copyright: '© 2026 MHUR Tunning - Made by ChutinRop. All rights reserved.',
+  footer_copyright: '© 2026 MHUR Tuning - Made by ChutinRop. All rights reserved.',
   footer_privacy: 'Privacy Policy',
   footer_about: 'About Us',
   footer_contact: 'Contact Us',
   footer_terms: 'Terms of Service',
   footer_faq: 'FAQ',
-  footer_disclaimer: 'MHUR Tunning is an unofficial fan tool. We are not affiliated with Bandai Namco Entertainment, Sony Interactive Entertainment, or K. Horikoshi. All characters, images, and trademarks are the property of their respective owners.',
+  footer_disclaimer: 'MHUR Tuning is an unofficial fan tool. We are not affiliated with Bandai Namco Entertainment, Sony Interactive Entertainment, or K. Horikoshi. All characters, images, and trademarks are the property of their respective owners.',
 
   // ── CustomModal ────────────────────────────────────────────────────────────
   modal_cancel: 'Cancel',
@@ -35,7 +35,7 @@ const en = {
 
   // ── ReportModal ────────────────────────────────────────────────────────────
   report_title: 'Report a Bug',
-  report_subtitle: 'Help us improve MHUR Tunning by describing the issue you encountered.',
+  report_subtitle: 'Help us improve MHUR Tuning by describing the issue you encountered.',
   report_label_desc: 'Bug Description *',
   report_placeholder: 'What were you doing when the error occurred? What did you expect to happen?',
   report_label_image: 'Screenshot (Optional)',
@@ -54,9 +54,9 @@ const en = {
   creator_char_config: 'Character Configuration',
   creator_slots_title: 'Equipment Slots',
   creator_btn_max: 'Max.',
-  creator_btn_max_title: 'Upgrade all equipped Tunnings to maximum level',
+  creator_btn_max_title: 'Upgrade all equipped Tuning to maximum level',
   creator_btn_reset: 'CLEAR ALL',
-  creator_btn_reset_title: 'Delete character and tunning progress',
+  creator_btn_reset_title: 'Delete character and tuning progress',
   creator_btn_import: 'IMPORT',
   creator_btn_import_title: 'Import Build (Load .json file)',
   creator_btn_export: 'EXPORT',
@@ -69,7 +69,7 @@ const en = {
   creator_char_label: 'Character:',
   creator_outfit_label: 'Outfit:',
   creator_style_label: 'Battle Style:',
-  creator_toast_max: 'All Tunnings upgraded to max!',
+  creator_toast_max: 'All Tunings upgraded to max!',
   creator_toast_import_ok: 'Build imported successfully!',
   creator_toast_import_err: 'The file does not have the correct format',
   creator_toast_import_json_err: 'Error reading the JSON file',
@@ -113,11 +113,11 @@ const en = {
   char_btn_back: '← Back',
 
   // ── Database ──────────────────────────────────────────────────────────────
-  db_title: 'Tunning Wiki - My Hero Ultra Rumble',
-  db_intro_title: 'Tunning Manual for the Community',
-  db_intro_p1: "Welcome to the MHUR Tunning Wiki! If you're new to My Hero Ultra Rumble, the tuning (power-up) system might seem complex. Our tool allows you to simulate every level of improvement without spending valuable in-game resources like tuning pieces or gold.",
+  db_title: 'Tuning Wiki - My Hero Ultra Rumble',
+  db_intro_title: 'Tuning Manual for the Community',
+  db_intro_p1: "Welcome to the MHUR Tuning Wiki! If you're new to My Hero Ultra Rumble, the tuning (power-up) system might seem complex. Our tool allows you to simulate every level of improvement without spending valuable in-game resources like tuning pieces or gold.",
   db_intro_p2: 'Tunings are divided into **Special** and **Normal**. Special tunings often grant unique damage, defense, or mobility bonuses specific to each role, while normal tunings are general stat boosters.',
-  db_intro_p3: 'Pro Tip: Before applying a high-level tuning in-game, experiment here with different combinations to see how they affect your Max HP, Dash speed, or peculiar skill cooldowns.',
+  db_intro_p3: 'Pro Tip: Before applying a high-level tuning in-game, experiment here with different combinations to see how they affect your Max HP, Dash speed, or Quirk Skill cooldowns.',
   db_tab_specials: (n) => `Special (${n})`,
   db_tab_normals: (n) => `Normal (${n})`,
   db_filter_search: 'Search ability...',
@@ -129,7 +129,7 @@ const en = {
   db_level: (n) => `Level ${n}:`,
 
   // ── Community ─────────────────────────────────────────────────────────────
-  community_title: 'Tunning Community',
+  community_title: 'Tuning Community',
   community_subtitle: 'Explore the most popular community configurations.',
   community_search: 'Search character, tag or creator...',
   community_loading: 'Loading popular builds...',
@@ -168,19 +168,21 @@ const en = {
 
   // ── TuningSelectorModal ───────────────────────────────────────────────────
   tuning_modal_title: (tipo) => `Select ${tipo} Tuning`,
-  tuning_no_results: (tipo) => `No ${tipo} tunnings found for this character.`,
+  tuning_no_results: (tipo) => `No ${tipo} tunings found for this character.`,
   tuning_level: (n) => `Level ${n}:`,
 
   // ── StatsSummaryPanel ─────────────────────────────────────────────────────
-  stats_empty: 'Equip Tunnings to see the stats summary.',
+  stats_empty: 'Equip Tunings to see the stats summary.',
   stats_hint: 'Click the arrows for more detailed information',
-  stats_specials_title: '⭐ Special Tunnings',
+  stats_specials_title: '⭐ Special Tunings',
   stats_group_attack: 'Attack Power',
   stats_group_defense: 'Defense',
   stats_group_reload: 'Ability Reload',
   stats_group_speed: 'Speed',
   stats_group_jump: 'Jump Height',
-  stats_group_hp: 'Max HP / DOWNED',
+  stats_group_hp: 'Health & Vitality',
+  stats_group_hp_maximo: 'Max HP',
+  stats_group_hp_caido: 'DOWNED HP',
   stats_group_gp: 'Max GP',
   stats_child_ataque_habilidad: 'Quirk',
   stats_child_ataque_cac: 'Melee',
@@ -214,21 +216,21 @@ const en = {
   privacy_title: 'Privacy Policy',
 
   privacy_updated: 'Last updated: March 14, 2026',
-  privacy_intro: 'At <strong>MHUR Tunning</strong>, accessible from mhur-frontend.vercel.app, one of our main priorities is the privacy of our visitors. This document contains the types of information we collect and how we use it.',
+  privacy_intro: 'At <strong>MHUR Tuning</strong>, accessible from mhur-frontend.vercel.app, one of our main priorities is the privacy of our visitors. This document contains the types of information we collect and how we use it.',
   privacy_s1_title: '1. Log Files',
-  privacy_s1: 'MHUR Tunning follows a standard procedure of using log files. These files log visitors when they visit websites. The information collected includes Internet Protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks.',
+  privacy_s1: 'MHUR Tuning follows a standard procedure of using log files. These files log visitors when they visit websites. The information collected includes Internet Protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks.',
   privacy_s2_title: '2. Cookies and Web Beacons',
-  privacy_s2: 'Like any other website, MHUR Tunning uses "cookies". These cookies are used to store information including visitors\' preferences and the pages on the website that the visitor accessed or visited.',
+  privacy_s2: 'Like any other website, MHUR Tuning uses "cookies". These cookies are used to store information including visitors\' preferences and the pages on the website that the visitor accessed or visited.',
   privacy_s3_title: '3. Google DoubleClick DART Cookie',
   privacy_s3: 'Google is one of the third-party vendors on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to other sites on the internet.',
   privacy_s4_title: '4. Our Advertising Policies',
-  privacy_s4: 'Third-party ad servers or ad networks use technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on MHUR Tunning. They automatically receive your IP address when this occurs.',
+  privacy_s4: 'Third-party ad servers or ad networks use technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on MHUR Tuning. They automatically receive your IP address when this occurs.',
   privacy_s5_title: '5. Consent',
   privacy_s5: 'By using our website, you hereby consent to our Privacy Policy and agree to its terms.',
 
   // ── About Us ──────────────────────────────────────────────────────────────
   about_title: 'About the Project and ChutinRop',
-  about_intro: 'Hi, I’m ChutinRop. MHUR Tunning was born from my passion for My Hero Ultra Rumble and my desire to help the community optimize their characters without wasting resources.',
+  about_intro: 'Hi, I’m ChutinRop. MHUR Tuning was born from my passion for My Hero Ultra Rumble and my desire to help the community optimize their characters without wasting resources.',
   about_creator_title: '🎥 Content Creator',
   about_creator_p: 'As a My Hero Ultra Rumble content creator, I spend hours analyzing the meta, testing characters, and sharing guides with my community. I understand how frustrating it is to spend materials on a tuning that doesn’t perform as expected.',
   about_editor_title: '🎞️ Video Editing',
@@ -236,7 +238,7 @@ const en = {
   about_modder_title: '🛠️ MHUR Modding',
   about_modder_p: "Game modding allows me to explore code and mechanics in ways that aren't visible to the naked eye. This technical experimentation fuels the data and accuracy of this calculator.",
   about_dev_title: '💻 Web Development',
-  about_dev_p: 'MHUR Tunning is my way of merging web development with my love for gaming. This site is an ever-evolving tool created by a fan, for the fans.',
+  about_dev_p: 'MHUR Tuning is my way of merging web development with my love for gaming. This site is an ever-evolving tool created by a fan, for the fans.',
   about_social_yt: 'Check my YouTube Channel',
   about_social_twitch: 'Follow me on Twitch',
 
@@ -246,11 +248,11 @@ const en = {
   faq_q1: 'What exactly is this calculator for?',
   faq_a1: 'It is used to simulate the impact of "tunings" on your characters\' stats. The game consumes real resources to improve these attributes; with our tool, you can plan your ideal build before spending anything.',
   faq_q2: 'Is the Wiki data official?',
-  faq_a2: 'MHUR Tunning is an unofficial fan tool. The data is based on thorough testing, code analysis, and technical experimentation (modding) to be as accurate as possible to the real game.',
+  faq_a2: 'MHUR Tuning is an unofficial fan tool. The data is based on thorough testing, code analysis, and technical experimentation (modding) to be as accurate as possible to the real game.',
   faq_q3: 'How can I share my build with others?',
   faq_a3: 'You have two ways: using the "Export" button to generate a local JSON file, or through the "Publish" button (you need to connect your Discord) to have it appear in the Public Builds section.',
   faq_q4: 'Is this tool free?',
-  faq_a4: 'Yes, MHUR Tunning is and will always be free. It is maintained through community support and a personal effort so that all My Hero Ultra Rumble players have better tools.',
+  faq_a4: 'Yes, MHUR Tuning is and will always be free. It is maintained through community support and a personal effort so that all My Hero Ultra Rumble players have better tools.',
   faq_q5: 'Will new characters and tunings be added?',
   faq_a5: 'Yes! We update the database with every new season and patch of My Hero Ultra Rumble to maintain calculation accuracy.',
 
@@ -266,11 +268,11 @@ const en = {
   terms_title: 'Terms of Service',
   terms_updated: 'Last updated: April 5, 2026',
   terms_s1_title: '1. Acceptance of Terms',
-  terms_s1: 'By accessing MHUR Tunning, you agree to comply with these terms of service and all applicable laws and regulations.',
+  terms_s1: 'By accessing MHUR Tuning, you agree to comply with these terms of service and all applicable laws and regulations.',
   terms_s2_title: '2. Use of the Tool',
-  terms_s2: 'MHUR Tunning is a simulation tool. Data and "tunnings" are based on available game information, but may vary according to official Marvel Rivals updates.',
+  terms_s2: 'MHUR Tuning is a simulation tool. Data and "tunings" are based on available game information, but may vary according to official Marvel Rivals updates.',
   terms_s3_title: '3. Intellectual Property',
-  terms_s3: 'All game content, images, and character names are the property of their respective owners. MHUR Tunning is a non-profit fan site.',
+  terms_s3: 'All game content, images, and character names are the property of their respective owners. MHUR Tuning is a non-profit fan site.',
   terms_s4_title: '4. Limitation of Liability',
   terms_s4: 'We are not responsible for any data loss or misuse of the information provided in this tool.',
 };

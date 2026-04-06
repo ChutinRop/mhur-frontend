@@ -130,13 +130,22 @@ const STAT_GROUPS = [
     }
   },
   {
-    key: 'hp',
-    labelKey: 'stats_group_hp',
+    key: 'hp_maximo',
+    labelKey: 'stats_group_hp_maximo',
     icon: '💚',
     color: '#00ff88',
-    children: ['hp_maximo', 'hp_caido'],
+    children: ['hp_maximo'],
     childLabelKeys: {
       hp_maximo: 'stats_child_hp_maximo',
+    }
+  },
+  {
+    key: 'hp_caido',
+    labelKey: 'stats_group_hp_caido',
+    icon: '🩸',
+    color: '#ff4444',
+    children: ['hp_caido'],
+    childLabelKeys: {
       hp_caido: 'stats_child_hp_caido',
     }
   },
@@ -244,7 +253,7 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
         const numVal = parseNumeric(levelVal) * colMultiplier;
         
         let unit = 'unidades';
-        if (catKey === 'recarga' || catKey.startsWith('velocidad')) {
+        if (catKey === 'recarga' || catKey.startsWith('velocidad') || catKey.startsWith('ataque') || catKey.startsWith('defensa')) {
           unit = '%';
         }
 

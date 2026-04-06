@@ -6,6 +6,7 @@
  */
 
 import especialesEN from '../data/game_especiales_en.json';
+import normalesEN from '../data/game_normales_en.json';
 
 // ── Class & Role display maps ──────────────────────────────────────────────
 export const CLASS_EN = {
@@ -108,57 +109,6 @@ const VARIANTE_EN = {
 };
 
 
-// ── Pattern rules for NORMAL tuning habilidad names ───────────────────────
-// Applied in order — more specific patterns first
-const HABILIDAD_RULES = [
-  ['Poder de Ataque de Habilidad Peculiar', 'Quirk Attack Power'],
-  ['Poder de Ataque de GP',                 'GP Attack Power'],
-  ['Poder de Ataque de HP',                 'HP Attack Power'],
-  ['Poder de Ataque Cuerpo a Cuerpo',       'Melee Attack Power'],
-  ['Defensa de Habilidad Peculiar',         'Quirk Defense'],
-  ['Defensa de HP',                         'HP Defense'],
-  ['Defensa Cuerpo a Cuerpo',               'Melee Defense'],
-  ['HP Máximo en CAÍDO',                    'DOWNED Max HP'],
-  ['HP Máximo',                             'Max HP'],
-  ['GP Máximo',                             'Max GP'],
-  ['Recarga de Habilidad Peculiar',         'Quirk Reload'],
-  ['Recarga de Acción Especial',            'Special Action Reload'],
-  ['Recarga de PU/PC',                      'PU/PC Gauge Reload'],
-  ['Velocidad de Dash',                     'Dash Speed'],
-  ['Velocidad de Desplazamiento por Pared', 'Wall Slide Speed'],
-  ['Velocidad de Movimiento',               'Movement Speed'],
-  ['Velocidad de Rastreo en CAÍDO',         'DOWNED Tracking Speed'],
-  ['Velocidad de Carrera',                  'Running Speed'],
-  ['Altura de Salto Frontal',               'Forward Jump Height'],
-  ['Altura de Salto Vertical',              'Vertical Jump Height'],
-  ['Altura de Salto de Muro',               'Wall Jump Height'],
-];
-
-// ── Pattern rules for NORMAL tuning descripcion ───────────────────────────
-const DESC_RULES = [
-  ['Aumenta el daño infligido con la Habilidad Peculiar',    'Increases damage dealt with Quirk'],
-  ['Reduce el daño recibido de la Habilidad Peculiar',       'Reduces damage received from Quirk'],
-  ['Reduce el daño recibido de Ataques Cuerpo a Cuerpo.',    'Reduces damage received from Melee Attacks.'],
-  ['Reduce el daño recibido al HP.',                         'Reduces direct HP damage received.'],
-  ['Aumenta el daño infligido con Ataques Cuerpo a Cuerpo.','Increases damage dealt with Melee Attacks.'],
-  ['Aumenta el daño infligido al HP.',                       'Increases direct HP damage dealt.'],
-  ['Aumenta el daño infligido al GP.',                       'Increases GP damage dealt.'],
-  ['Aumenta tu HP cuando estás en estado CAÍDO.',            'Increases your HP while in DOWNED state.'],
-  ['Aumenta tu GP Máximo.',                                  'Increases your Max GP.'],
-  ['Aumenta tu HP Máximo.',                                  'Increases your Max HP.'],
-  ['Aumenta tu velocidad de Dash.',                          'Increases your Dash speed.'],
-  ['Aumenta tu velocidad de Desplazamiento por Pared.',      'Increases your Wall Slide speed.'],
-  ['Aumenta tu velocidad de Movimiento.',                    'Increases your Movement speed.'],
-  ['Aumenta tu velocidad de Rastreo en CAÍDO.',              'Increases DOWNED Tracking speed.'],
-  ['Aumenta tu velocidad de Carrera.',                       'Increases your Running speed.'],
-  ['Aumenta tu altura de Salto Frontal.',                    'Increases your Forward Jump height.'],
-  ['Aumenta tu altura de Salto Vertical.',                   'Increases your Vertical Jump height.'],
-  ['Aumenta tu altura de Salto de Muro.',                    'Increases your Wall Jump height.'],
-  ['Aumenta la velocidad de recarga de la Habilidad Peculiar', 'Increases reload speed of Quirk'],
-  ['Aumenta la velocidad de recarga de la Acción Especial.', 'Increases reload speed of the Special Action.'],
-  ['Aumenta la velocidad de llenado del Medidor PU/PC.',     'Increases PU/PC Gauge fill speed.'],
-];
-
 // ── Level value suffix translation ("+5 altura" → "+5 in.") ──────────────
 const LEVEL_VALUE_RULES = [
   [' altura', ' in.'],
@@ -221,12 +171,17 @@ export function translateTuning(tuning, lang) {
     };
   }
 
-  // 2. Pattern-based translation for normal tunings
-  return {
-    ...tuning,
-    habilidad:   applyRules(tuning.habilidad,   HABILIDAD_RULES),
-    descripcion: applyRules(tuning.descripcion, DESC_RULES),
-  };
+  // 2. Try normal tuning lookup (exact name match)
+  const nor = normalesEN[tuning.habilidad];
+  if (nor) {
+    return {
+      ...tuning,
+      habilidad:   nor.habilidad,
+      descripcion: nor.descripcion,
+    };
+  }
+
+  return tuning;
 }
 
 /**

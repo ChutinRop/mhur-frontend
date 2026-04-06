@@ -1,0 +1,114 @@
+{
+  "Altura de Salto Frontal+": {
+    "habilidad": "Forward Jump HT+",
+    "descripcion": "Increases the character's jump height when pressing a movement input."
+  },
+  "Altura de Salto Vertical+": {
+    "habilidad": "Vertical Jump HT+",
+    "descripcion": "Increases the character's jump height when not pressing a movement input."
+  },
+  "Altura de Salto de Muro+": {
+    "habilidad": "Wall Jump HT+",
+    "descripcion": "Increases the character's jump height when they are jumping off a wall."
+  },
+  "Defensa Cuerpo a Cuerpo+": {
+    "habilidad": "Melee Defense+",
+    "descripcion": "Reduces the damage taken by enemy Basic Melee Attacks."
+  },
+  "Defensa de HP+": {
+    "habilidad": "HP Defense+",
+    "descripcion": "Reduces the damage your HP receives."
+  },
+  "Defensa de Habilidad Peculiar α+": {
+    "habilidad": "Quirk Skill α Defense+",
+    "descripcion": "Reduces the damage taken by enemy Alpha Quirk Skills."
+  },
+  "Defensa de Habilidad Peculiar β+": {
+    "habilidad": "Quirk Skill β Defense+",
+    "descripcion": "Reduces the damage taken by enemy Beta Quirk Skills."
+  },
+  "Defensa de Habilidad Peculiar γ+": {
+    "habilidad": "Quirk Skill γ Defense+",
+    "descripcion": "Reduces the damage taken by enemy Gamma Quirk Skills."
+  },
+  "Defensa de PV+": {
+    "habilidad": "HP Defense+",
+    "descripcion": "Reduces the damage your HP receives."
+  },
+  "GP Máximo+": {
+    "habilidad": "Max GP+",
+    "descripcion": "Increases your Max GP."
+  },
+  "HP Máximo en CAÍDO+": {
+    "habilidad": "Max DOWN HP+",
+    "descripcion": "Increases your Max DOWN HP."
+  },
+  "HP Máximo+": {
+    "habilidad": "Max HP+",
+    "descripcion": "Increases your Max HP."
+  },
+  "Poder de Ataque Cuerpo a Cuerpo+": {
+    "habilidad": "Melee Attack Power+",
+    "descripcion": "Increases the damage of your Basic Melee Attacks."
+  },
+  "Poder de Ataque de GP+": {
+    "habilidad": "GP Attack Power+",
+    "descripcion": "Increases the damage you deal to an enemy's GP. This effect also boosts Special Action damage."
+  },
+  "Poder de Ataque de HP+": {
+    "habilidad": "HP Attack Power+",
+    "descripcion": "Increases the damage you deal to an enemy's HP. This effect also boosts Special Action damage."
+  },
+  "Poder de Ataque de Habilidad Peculiar α+": {
+    "habilidad": "Quirk Skill α Attack Power+",
+    "descripcion": "Increases the damage of your Alpha Skill."
+  },
+  "Poder de Ataque de Habilidad Peculiar β+": {
+    "habilidad": "Quirk Skill β Attack Power+",
+    "descripcion": "Increases the damage of your Beta Skill."
+  },
+  "Poder de Ataque de Habilidad Peculiar γ+": {
+    "habilidad": "Quirk Skill γ Attack Power+",
+    "descripcion": "Increases the damage of your Gamma Skill."
+  },
+  "Poder de ataque cuerpo a cuerpo de Estrella y Rayas +": {
+    "habilidad": "Star and Stripe: Melee Attack Power+",
+    "descripcion": "Reduces damage received."
+  },
+  "Recarga de Acción Especial+": {
+    "habilidad": "Special Action Reload+",
+    "descripcion": "Increases the reload speed of your Special Action."
+  },
+  "Recarga de Habilidad Peculiar α+": {
+    "habilidad": "Quirk Skill α Reload+",
+    "descripcion": "Increases the reload speed of your Alpha Skill."
+  },
+  "Recarga de Habilidad Peculiar β+": {
+    "habilidad": "Quirk Skill β Reload+",
+    "descripcion": "Increases the reload speed of your Beta Skill."
+  },
+  "Recarga de Habilidad Peculiar γ+": {
+    "habilidad": "Quirk Skill γ Reload+",
+    "descripcion": "Increases the reload speed of your Gamma Skill."
+  },
+  "Recarga de PU/PC+": {
+    "habilidad": "PU/PC Reload+",
+    "descripcion": "Increases PU/PC Gauge filling speed."
+  },
+  "Velocidad de Carrera+": {
+    "habilidad": "Run Speed+",
+    "descripcion": "**This effect is bugged and does not work.** Increases the character's Running Speed."
+  },
+  "Velocidad de Dash+": {
+    "habilidad": "Dash Speed+",
+    "descripcion": "**This effect is bugged and does not work.** Increases the character's Running Speed."
+  },
+  "Velocidad de Desplazamiento por Pared+": {
+    "habilidad": "Wall Shuffle Speed+",
+    "descripcion": "Increases the character's climbing speed."
+  },
+  "Velocidad de Rastreo en CAÍDO+": {
+    "habilidad": "Downed Crawl Speed+",
+    "descripcion": "Increases the speed at which the character crawls when DOWNd."
+  }
+}

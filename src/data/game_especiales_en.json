@@ -10,18 +10,18 @@
     "subir_nivel": null
   },
   "Rescate Civil Veloz": {
-    "habilidad": "Swift Civil Rescue",
-    "descripcion": "For a set time after battle starts, reduces the time needed to rescue/threaten a civilian.",
-    "subir_nivel": "Level up to increase effect duration."
+    "habilidad": "Speedy Civilian Rescue",
+    "descripcion": "For a set amount of time after the battle starts, shortens the time required to rescue/threaten a civilian.",
+    "subir_nivel": "Level up to increase effect time."
   },
   "Localizador de Kota": {
-    "habilidad": "Kota Locator",
-    "descripcion": "Shows Kota's location on the Stage and Map.",
+    "habilidad": "Kota Finder",
+    "descripcion": "Gambling Tuning. You have a small chance to find Kota if it wasn't already taken. Huge value, but it will rarely work in ranked.",
     "subir_nivel": "Level up to reduce activation time."
   },
   "Carga PU Aplastante": {
-    "habilidad": "Crushing Blast Rush",
-    "descripcion": "Fills your PU/PC Meter when you down an opponent.",
+    "habilidad": "Crushing PU charge",
+    "descripcion": "Dealing a K.O. grants you up to 20% of your PU gauge. This tune allows you to activate your PU significantly faster and, potentially, use it multiple times in a single match.",
     "subir_nivel": "Level up to increase charge amount."
   },
   "Turbo PU": {
@@ -51,7 +51,7 @@
   },
   "Corredor de Muros": {
     "habilidad": "Wall Runner",
-    "descripcion": "Allows wall-running for a set time after battle starts.",
+    "descripcion": "Incredibly strong tune that gives you an ability to run up walls. This is a real saving grace for all non-mobility characters, but still works fine for pretty much everyone in the game.",
     "subir_nivel": "Level up to increase effect duration."
   },
   "Camuflaje": {
@@ -110,8 +110,8 @@
     "subir_nivel": "Level up to increase effect duration."
   },
   "Fragilización": {
-    "habilidad": "Weakening",
-    "descripcion": "Inflicts DEF DOWN on opponents hit with melee attacks for a set time.",
+    "habilidad": "Embrittlement",
+    "descripcion": "The duration time on lower levels is stil enough to take value from the tuning and the absence of the cooldown makes it even better choice for non-PUR costumes.",
     "subir_nivel": "Level up to increase effect duration."
   },
   "Hiper Regeneración": {
@@ -161,12 +161,12 @@
   },
   "Permeación Crítica": {
     "habilidad": "Critical Permeation",
-    "descripcion": "Gain temporary invincibility when your Guard breaks. Effect ends if you attempt to attack.",
+    "descripcion": "This special tune skill provides you with 7 seconds of safety from enemies’ attacks when your shields break. In this state, you can still sprint and drink heals, but any quirk or special action you use will cancel this state early.",
     "subir_nivel": "Level up to increase effect duration."
   },
   "Salto Espiral": {
-    "habilidad": "Spiral Jump",
-    "descripcion": "Grants you Nejire Hado's jump for a set time after battle starts.",
+    "habilidad": "Space Hop",
+    "descripcion": "This Special Tuning Skill increases your jump height significantly, allowing you to occupy highgrounds easier and catch your opponents by surprise. It may be used in a combination with wall runner, but usually people choose Space Hop over Wall Runner, if their character can benefit from air time effectively and vice versa.",
     "subir_nivel": "Level up to increase effect duration."
   },
   "Fortuna Retorcida": {
@@ -191,12 +191,12 @@
   },
   "Duplicación de Cartas": {
     "habilidad": "Card Duplication",
-    "descripcion": "For a set time after battle starts, increases Level-Up Cards dropped by downed opponents.",
+    "descripcion": "At the start of the match, double the amount of ability cards you receive from the enemies you downed. This tune helps to build your levels faster, and works especially good  for players who love early aggression.",
     "subir_nivel": "Level up to increase effect duration."
   },
   "Magia de Compresión": {
     "habilidad": "Compression Magic",
-    "descripcion": "Increases the number of Support Drinks you can carry.",
+    "descripcion": "Compression magic is not a good tuning overall, but on non-PUR costumes it has so little competition that it becomes remotely viable. Having a cople of free inventory slots may come in a clutch.",
     "subir_nivel": "Level up to increase even further."
   },
   "Percepción": {
@@ -206,7 +206,7 @@
   },
   "Viento Extra": {
     "habilidad": "Extra Wind",
-    "descripcion": "When your Quirk Level increases, your PU/PC Meter fills.",
+    "descripcion": "Even though you are going to have a substential cooldown lastng for about half a minute, you will still be able to recieve from approximatemy 30-50% PU Charge essentially for free.",
     "subir_nivel": "Level up to reduce activation time."
   },
   "Disposición Fraterna": {
@@ -231,7 +231,7 @@
   },
   "Protección Divina": {
     "habilidad": "Divine Protection",
-    "descripcion": "For a set time after battle starts, reduces the time to open a Large Item Box.",
+    "descripcion": "Significantly faster airdrop opening may be huge since a lot of large boxes are essentially uncontested. It helps extracting res cards in late game and significantly boosts your team economy.",
     "subir_nivel": "Level up to increase effect duration."
   },
   "Curación de Distorsión": {
@@ -266,12 +266,12 @@
   },
   "Liberación del Factor Peculiar": {
     "habilidad": "Quirk Factor Release",
-    "descripcion": "Breaking an opponent's Guard increases Reload Speed for a limited time.",
+    "descripcion": "This special tuning increases the reload speed of all your abilities significantly, when you break the guard of your opponent. Since the duration of the effect is fixed, it's still relatively good, even with bigger cooldown.",
     "subir_nivel": "Level up to reduce activation time."
   },
   "Aceleración": {
-    "habilidad": "Acceleration",
-    "descripcion": "Landing a melee attack increases Movement Speed and Attack Speed for a limited time.",
+    "habilidad": "High-Speed Replenishment",
+    "descripcion": "At the start of the match reduces time to consume GP potions for 30%. This effect also applies to team GP drinks, but not Full Support Drinks.",
     "subir_nivel": "Level up to reduce activation time."
   },
   "Reducción de área de la Estrella y la Raya": {
