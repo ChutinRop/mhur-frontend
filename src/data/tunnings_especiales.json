@@ -1377,7 +1377,8 @@
     },
     "sub_efectos": {
       "1": 1
-    }
+    },
+    "tipo_valor": "tiempo_frames"
   },
   {
     "personaje": "Katsuki Bakugo (Cluster)",
