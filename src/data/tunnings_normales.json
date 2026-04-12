@@ -1343,21 +1343,23 @@
         "habilidad": "Poder de Ataque de HP+",
         "descripcion": "Aumenta el daño infligido a los PV.",
         "niveles": {
-          "1": 1.01,
-          "2": 1.015,
-          "3": 1.02,
-          "4": 1.025
-        }
+          "1": "+1.0%",
+          "2": "+1.5%",
+          "3": "+2.0%",
+          "4": "+2.5%"
+        },
+        "tipo_valor": "porcentaje"
       },
       {
         "habilidad": "Velocidad de Movimiento en CAÍDO+",
         "descripcion": "Aumenta tu velocidad de movimiento estando DERRIBADO.",
         "niveles": {
-          "1": 1.01,
-          "2": 1.02,
-          "3": 1.03,
-          "4": 1.04
-        }
+          "1": "+1.0%",
+          "2": "+2.0%",
+          "3": "+3.0%",
+          "4": "+4.0%"
+        },
+        "tipo_valor": "porcentaje"
       }
     ]
   },
@@ -1370,21 +1372,23 @@
         "habilidad": "Recarga de PU/PC+",
         "descripcion": "Aumenta la velocidad de llenado del medidor PU/PC.",
         "niveles": {
-          "1": 1.01,
-          "2": 1.015,
-          "3": 1.02,
-          "4": 1.025
-        }
+          "1": "+1.0%",
+          "2": "+1.5%",
+          "3": "+2.0%",
+          "4": "+2.5%"
+        },
+        "tipo_valor": "porcentaje"
       },
       {
-        "habilidad": "Poder de Ataque de Habilidad Peculiar Γ+",
+        "habilidad": "Poder de Ataque de Habilidad Peculiar γ+",
         "descripcion": "Aumenta el daño infligido por la Habilidad de Don γ.",
         "niveles": {
-          "1": 1.01,
-          "2": 1.015,
-          "3": 1.02,
-          "4": 1.025
-        }
+          "1": "+1.0%",
+          "2": "+1.5%",
+          "3": "+2.0%",
+          "4": "+2.5%"
+        },
+        "tipo_valor": "porcentaje"
       }
     ]
   }

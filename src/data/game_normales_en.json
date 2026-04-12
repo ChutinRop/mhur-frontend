@@ -69,7 +69,7 @@
   },
   "Poder de Ataque de Habilidad Peculiar γ+": {
     "habilidad": "Quirk Skill γ Attack Power+",
-    "descripcion": "Increases the damage of your Gamma Skill."
+    "descripcion": "Increases damage dealt for Quirk Skill γ"
   },
   "Poder de ataque cuerpo a cuerpo de Estrella y Rayas +": {
     "habilidad": "Star and Stripe: Melee Attack Power+",
@@ -114,9 +114,5 @@
   "Velocidad de Movimiento en CAÍDO+": {
     "habilidad": "Downed Crawl Speed+",
     "descripcion": "Increases your Movement speed when DOWN"
-  },
-  "Poder de Ataque de Habilidad Peculiar Γ+": {
-    "habilidad": "Quirk Skill γ Attack Power+",
-    "descripcion": "Increases damage dealt for Quirk Skill γ"
   }
 }
