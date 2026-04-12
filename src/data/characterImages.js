@@ -66,6 +66,8 @@ const characterImages = {
   'Present Mic|Héroe|Daño|especial':                                '/assets/Images/Tunning Especial/Present Mic Agresor (Especial).png',
   'Lady Nagant|Villano|Daño|especial':                              '/assets/Images/Tunning Especial/Lady Nagant agresor (Especial).png',
   'Star and Stripe|Héroe|Daño|especial':                          '/assets/Images/Tunning Especial/Starn And Stripe  (Especial).png',
+  'All For One (Factor Fusion)|Villano|Daño|especial':            '/assets/Images/Tunning Especial/All For One (Factor Fusion).png',
+  'Katsuki Bakugo (Cluster)|Héroe|Técnico|especial':              '/assets/Images/Tunning Especial/Katsuki Bakugo (Cluster).png',
 
   // ────────────────────────────────────────────────────────────────────────────
   // TUNNINGS NORMALES
@@ -127,6 +129,8 @@ const characterImages = {
   'Present Mic|Héroe|Daño|normal':                                  '/assets/Images/Tunning Normal/Present Mic Agresor (Normal).png',
   'Lady Nagant|Villano|Daño|normal':                                '/assets/Images/Tunning Normal/Lady Nagant Agresor (Normal).png',
   'Star and Stripe|Héroe|Daño|normal':                            '/assets/Images/Tunning Normal/Star and Stripe.png',
+  'All For One (Factor Fusion)|Villano|Daño|normal':              '/assets/Images/Tunning Normal/All For One (Factor Fusion).png',
+  'Katsuki Bakugo (Cluster)|Héroe|Técnico|normal':                '/assets/Images/Tunning Normal/Katsuki Bakugo (Cluster).png',
 };
 
 /**

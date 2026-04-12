@@ -93,7 +93,7 @@
   },
   "Recarga de PU/PC+": {
     "habilidad": "PU/PC Reload+",
-    "descripcion": "Increases PU/PC Gauge filling speed."
+    "descripcion": "Increases PU/PC Gauge filling speed"
   },
   "Velocidad de Carrera+": {
     "habilidad": "Run Speed+",
@@ -110,5 +110,17 @@
   "Velocidad de Rastreo en CAÍDO+": {
     "habilidad": "Downed Crawl Speed+",
     "descripcion": "Increases the speed at which the character crawls when DOWNd."
+  },
+  "Poder de ataque a los PV+": {
+    "habilidad": "HP Attack Power+",
+    "descripcion": "Increases damage dealt towards HP"
+  },
+  "Velocidad de arrastre caído+": {
+    "habilidad": "Downed Crawl Speed+",
+    "descripcion": "Increases your Movement speed when DOWN"
+  },
+  "Poder de ataque de Don γ+": {
+    "habilidad": "Quirk Skill γ Attack Power+",
+    "descripcion": "Increases damage dealt for Quirk Skill γ"
   }
 }

@@ -278,5 +278,15 @@
     "habilidad": "Star and Stripe: Area Reduction",
     "descripcion": "Reduces damage received outside the Safe Area for a set time after battle starts.",
     "subir_nivel": "Level up to increase effect duration."
+  },
+  "Aniquilación": {
+    "habilidad": "Annihilation",
+    "descripcion": "When you take DOWN an opponent, the positions of that opponent's allies are revealed for a set time.",
+    "subir_nivel": "Level up to increase effect time."
+  },
+  "Alboroto Explosivo": {
+    "habilidad": "Explosive Rampage",
+    "descripcion": "If you take DOWN an opponent while GP is full, a Team Enhancement Kit appears when that opponent is K.O.'d.",
+    "subir_nivel": "Leveling up increases the maximum number of activations."
   }
 }
