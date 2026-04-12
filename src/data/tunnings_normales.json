@@ -1340,7 +1340,7 @@
     "clase": "Daño",
     "habilidades": [
       {
-        "habilidad": "Poder de ataque a los PV+",
+        "habilidad": "Poder de Ataque de HP+",
         "descripcion": "Aumenta el daño infligido a los PV.",
         "niveles": {
           "1": 1.01,
@@ -1350,7 +1350,7 @@
         }
       },
       {
-        "habilidad": "Velocidad de arrastre caído+",
+        "habilidad": "Velocidad de Movimiento en CAÍDO+",
         "descripcion": "Aumenta tu velocidad de movimiento estando DERRIBADO.",
         "niveles": {
           "1": 1.01,
@@ -1377,7 +1377,7 @@
         }
       },
       {
-        "habilidad": "Poder de ataque de Don γ+",
+        "habilidad": "Poder de Ataque de Habilidad Peculiar Γ+",
         "descripcion": "Aumenta el daño infligido por la Habilidad de Don γ.",
         "niveles": {
           "1": 1.01,
