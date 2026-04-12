@@ -175,6 +175,7 @@ export default function StatsSummaryPanel({ characterBuild, slotLevels, specialT
     const lower = subirNivel.toLowerCase();
     if (lower.includes('restauración')) return 'Restauración';
     if (lower.includes('carga')) return 'Carga';
+    if (lower.includes('número máximo de activaciones') || lower.includes('activacion')) return 'Número máximo de activaciones';
     if (lower.includes('activación')) return 'Activación';
     if (lower.includes('tiempo')) return 'Tiempo';
     if (lower.includes('efecto')) return 'Efecto';
